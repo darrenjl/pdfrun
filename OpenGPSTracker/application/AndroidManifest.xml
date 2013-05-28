@@ -280,7 +280,7 @@
         </activity>
         <activity
             android:name="com.pdfrun.DashboardActivity"
-            android:label="@string/title_activity_dashboard" 
+            android:label="@string/application_name" 
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
