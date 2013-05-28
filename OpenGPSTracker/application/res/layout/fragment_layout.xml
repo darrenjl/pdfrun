@@ -1,0 +1,49 @@
+<com.pdfrun.DashboardLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:background="#f8f9fe" >
+	<!--  News Feed Button -->
+    <Button
+        android:id="@+id/btn_record"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_newsfeed"
+        android:text="Record" />
+    
+	<!--  Friends Button -->
+    <Button
+        android:id="@+id/btn_runs"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_friends"
+        android:text="Runs" />
+    
+	<!--  Messages Button -->
+    <Button
+        android:id="@+id/btn_profile"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_messages"
+        android:text="Profile" />
+	
+    <!--  Places Button -->
+    <Button
+        android:id="@+id/btn_groups"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_places"
+        android:text="Groups" />
+
+    <!--  Events Button -->
+    <Button
+        android:id="@+id/btn_academy"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_events"
+        android:text="Academy" />
+
+    <!--  Photos Button -->
+    <Button
+        android:id="@+id/btn_settings"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_photos"
+        android:text="Settings" />
+
+</com.pdfrun.DashboardLayout>

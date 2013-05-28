@@ -148,7 +148,7 @@ public class LoggerMap extends MapActivity
    private UnitsI18n mUnits;
    private WakeLock mWakeLock = null;
    private SharedPreferences mSharedPreferences;
-   private GPSLoggerServiceManager mLoggerServiceManager;
+   protected GPSLoggerServiceManager mLoggerServiceManager;
    private SegmentOverlay mLastSegmentOverlay;
    private BaseAdapter mMediaAdapter;
 
