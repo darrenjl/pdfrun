@@ -101,6 +101,8 @@ import com.google.android.maps.MapActivity;
  */
 public class LoggerMap extends MapActivity
 {
+   
+   protected int layout=-1;
 
    public static final String OSM_PROVIDER = "OSM";
    public static final String GOOGLE_PROVIDER = "GOOGLE";
@@ -113,14 +115,14 @@ public class LoggerMap extends MapActivity
    private static final int ZOOM_LEVEL = 16;
    // MENU'S
    private static final int MENU_SETTINGS = 1;
-   private static final int MENU_TRACKING = 2;
-   private static final int MENU_TRACKLIST = 3;
-   private static final int MENU_STATS = 4;
-   private static final int MENU_ABOUT = 5;
-   private static final int MENU_LAYERS = 6;
-   private static final int MENU_NOTE = 7;
-   private static final int MENU_SHARE = 13;
-   private static final int MENU_CONTRIB = 14;
+   protected static final int MENU_TRACKING = 2;
+   protected static final int MENU_TRACKLIST = 3;
+   protected static final int MENU_STATS = 4;
+   protected static final int MENU_ABOUT = 5;
+   protected static final int MENU_LAYERS = 6;
+   protected static final int MENU_NOTE = 7;
+   protected static final int MENU_SHARE = 13;
+   protected static final int MENU_CONTRIB = 14;
    private static final int DIALOG_NOTRACK = 24;
    private static final int DIALOG_INSTALL_ABOUT = 29;
    private static final int DIALOG_LAYERS = 31;
@@ -141,7 +143,7 @@ public class LoggerMap extends MapActivity
    private Gallery mGallery;
 
    private double mAverageSpeed = 33.33d / 3d;
-   private long mTrackId = -1;
+   protected long mTrackId = -1;
    private long mLastSegment = -1;
    private UnitsI18n mUnits;
    private WakeLock mWakeLock = null;
@@ -178,8 +180,10 @@ public class LoggerMap extends MapActivity
    protected void onCreate(Bundle load)
    {
       super.onCreate(load);
-
-      setContentView(R.layout.map);
+      if(layout==-1)
+         setContentView(R.layout.map);
+      else
+         setContentView(layout);
       findViewById(R.id.mapScreen).setDrawingCacheEnabled(true);
       mUnits = new UnitsI18n(this);
       mLoggerServiceManager = new GPSLoggerServiceManager(this);
@@ -1091,7 +1095,7 @@ public class LoggerMap extends MapActivity
       return mSharedPreferences.getBoolean(Constants.LOCATION, false) || mLoggerServiceManager.getLoggingState() == Constants.LOGGING;
    }
 
-   private void updateTitleBar()
+   protected void updateTitleBar()
    {
       ContentResolver resolver = this.getContentResolver();
       Cursor trackCursor = null;
