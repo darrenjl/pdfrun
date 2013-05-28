@@ -40,13 +40,14 @@ import java.util.Vector;
 import java.util.concurrent.Semaphore;
 
 import com.pdfrun.R;
+import com.pdfrun.activity.RecordActivity;
+
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
 import nl.sogeti.android.gpstracker.db.GPStracking.MetaData;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.db.GPStracking.Waypoints;
 import nl.sogeti.android.gpstracker.streaming.StreamUtils;
 import nl.sogeti.android.gpstracker.util.Constants;
-import nl.sogeti.android.gpstracker.viewer.LoggerMap;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -993,7 +994,7 @@ public class GPSLoggerService extends Service implements LocationListener
             }
             break;
       }
-      Intent notificationIntent = new Intent(this, LoggerMap.class);
+      Intent notificationIntent = new Intent(this, RecordActivity.class);
       notificationIntent.setData(ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId));
       mNotification.contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
       mNotification.setLatestEventInfo(this, contentTitle, contentText, mNotification.contentIntent);
@@ -1028,7 +1029,7 @@ public class GPSLoggerService extends Service implements LocationListener
       long when = System.currentTimeMillis();
       Notification signalNotification = new Notification(icon, tickerText, when);
       CharSequence contentTitle = getResources().getString(R.string.app_name);
-      Intent notificationIntent = new Intent(this, LoggerMap.class);
+      Intent notificationIntent = new Intent(this, RecordActivity.class);
       PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
       signalNotification.setLatestEventInfo(this, contentTitle, tickerText, contentIntent);
       signalNotification.flags |= Notification.FLAG_AUTO_CANCEL;
@@ -1046,7 +1047,7 @@ public class GPSLoggerService extends Service implements LocationListener
 
       CharSequence contentTitle = getResources().getString(R.string.app_name);
       CharSequence contentText = getResources().getString(resId);
-      Intent notificationIntent = new Intent(this, LoggerMap.class);
+      Intent notificationIntent = new Intent(this, RecordActivity.class);
       notificationIntent.setData(ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId));
       PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
       gpsNotification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
@@ -1085,7 +1086,7 @@ public class GPSLoggerService extends Service implements LocationListener
    private void sendRequestLocationUpdatesMessage()
    {
       stopListening();
-      mPrecision = Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.PRECISION, "2")).intValue();
+      mPrecision = Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.PRECISION, "1")).intValue();
       Message msg = Message.obtain();
       switch (mPrecision)
       {
