@@ -1086,7 +1086,7 @@ public class GPSLoggerService extends Service implements LocationListener
    private void sendRequestLocationUpdatesMessage()
    {
       stopListening();
-      mPrecision = Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.PRECISION, "1")).intValue();
+      mPrecision = Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.PRECISION, "0")).intValue();
       Message msg = Message.obtain();
       switch (mPrecision)
       {

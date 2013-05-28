@@ -153,22 +153,22 @@ public class Constants
    /**
     * The precision of the GPS provider is based on the custom time interval and distance.
     */
-   public static final int LOGGING_CUSTOM = 0;
+   public static final int LOGGING_CUSTOM = 3;
 
    /**
     * The GPS location provider is asked to update every 10 seconds or every 5 meters.
     */
-   public static final int LOGGING_FINE = 1;
+   public static final int LOGGING_FINE = 0;
 
    /**
     * The GPS location provider is asked to update every 15 seconds or every 10 meters.
     */
-   public static final int LOGGING_NORMAL = 2;
+   public static final int LOGGING_NORMAL = 1;
 
    /**
     * The GPS location provider is asked to update every 30 seconds or every 25 meters.
     */
-   public static final int LOGGING_COARSE = 3;
+   public static final int LOGGING_COARSE = 2;
 
    /**
     * The radio location provider is asked to update every 5 minutes or every 500 meters.
