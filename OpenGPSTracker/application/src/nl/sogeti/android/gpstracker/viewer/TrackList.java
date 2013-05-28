@@ -29,6 +29,8 @@
 package nl.sogeti.android.gpstracker.viewer;
 
 import com.pdfrun.R;
+import com.pdfrun.activity.RecordActivity;
+
 import nl.sogeti.android.gpstracker.actions.DescribeTrack;
 import nl.sogeti.android.gpstracker.actions.Statistics;
 import nl.sogeti.android.gpstracker.actions.tasks.GpxParser;
@@ -243,9 +245,9 @@ public class TrackList extends ListActivity implements ProgressListener
       boolean result = super.onCreateOptionsMenu(menu);
 
       menu.add(ContextMenu.NONE, MENU_SEARCH, ContextMenu.NONE, android.R.string.search_go).setIcon(android.R.drawable.ic_search_category_default).setAlphabeticShortcut(SearchManager.MENU_KEY);
-      menu.add(ContextMenu.NONE, MENU_VACUUM, ContextMenu.NONE, R.string.menu_vacuum).setIcon(android.R.drawable.ic_menu_crop);
+//      menu.add(ContextMenu.NONE, MENU_VACUUM, ContextMenu.NONE, R.string.menu_vacuum).setIcon(android.R.drawable.ic_menu_crop);
       menu.add(ContextMenu.NONE, MENU_PICKER, ContextMenu.NONE, R.string.menu_picker).setIcon(android.R.drawable.ic_menu_add);
-      menu.add(ContextMenu.NONE, MENU_BREADCRUMBS, ContextMenu.NONE, R.string.dialog_breadcrumbsconnect).setIcon(android.R.drawable.ic_menu_revert);
+//      menu.add(ContextMenu.NONE, MENU_BREADCRUMBS, ContextMenu.NONE, R.string.dialog_breadcrumbsconnect).setIcon(android.R.drawable.ic_menu_revert);
       return result;
    }
 
@@ -331,7 +333,7 @@ public class TrackList extends ListActivity implements ProgressListener
          }
          else
          {
-            intent.setClass(this, LoggerMap.class);
+            intent.setClass(this, RecordActivity.class);
             startActivity(intent);
          }
       }
@@ -610,96 +612,96 @@ public class TrackList extends ListActivity implements ProgressListener
       int[] toItems = new int[] { R.id.listitem_name, R.id.listitem_from, R.id.bcSyncedCheckBox };
       SimpleCursorAdapter trackAdapter = new SimpleCursorAdapter(this, R.layout.trackitem, tracksCursor, fromColumns, toItems);
 
-      mBreadcrumbAdapter = new BreadcrumbsAdapter(this, mService);
+      //mBreadcrumbAdapter = new BreadcrumbsAdapter(this, mService);
       sectionedAdapter.addSection("Local", trackAdapter);
-      sectionedAdapter.addSection("www.gobreadcrumbs.com", mBreadcrumbAdapter);
+      //sectionedAdapter.addSection("www.gobreadcrumbs.com", mBreadcrumbAdapter);
 
       // Enrich the track adapter with Breadcrumbs adapter data 
-      trackAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder()
-         {
-            @Override
-            public boolean setViewValue(View view, final Cursor cursor, int columnIndex)
-            {
-               if (columnIndex == 0)
-               {
-                  final long trackId = cursor.getLong(0);
-                  final String trackName = cursor.getString(1);
-                  // Show the check if Breadcrumbs is online
-                  final CheckBox checkbox = (CheckBox) view;
-                  final ProgressBar progressbar = (ProgressBar) ((View) view.getParent()).findViewById(R.id.bcExportProgress);
-                  if (mService != null && mService.isAuthorized())
-                  {
-                     checkbox.setVisibility(View.VISIBLE);
-
-                     // Disable the checkbox if marked online
-                     boolean isOnline = mService.isLocalTrackSynced(trackId);
-                     checkbox.setEnabled(!isOnline);
-
-                     // Check the checkbox if determined synced
-                     boolean isSynced = mService.isLocalTrackSynced(trackId);
-                     checkbox.setOnCheckedChangeListener(null);
-                     checkbox.setChecked(isSynced);
-                     checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener()
-                        {
-                           @Override
-                           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-                           {
-                              if (isChecked)
-                              {
-                                 // Start a description of the track
-                                 Intent namingIntent = new Intent(TrackList.this, DescribeTrack.class);
-                                 namingIntent.setData(ContentUris.withAppendedId(Tracks.CONTENT_URI, trackId));
-                                 namingIntent.putExtra(Constants.NAME, trackName);
-                                 mExportListener = new ProgressListener()
-                                    {
-                                       @Override
-                                       public void setIndeterminate(boolean indeterminate)
-                                       {
-                                          progressbar.setIndeterminate(indeterminate);
-                                       }
-
-                                       @Override
-                                       public void started()
-                                       {
-                                          checkbox.setVisibility(View.INVISIBLE);
-                                          progressbar.setVisibility(View.VISIBLE);
-                                       }
-
-                                       @Override
-                                       public void finished(Uri result)
-                                       {
-                                          checkbox.setVisibility(View.VISIBLE);
-                                          progressbar.setVisibility(View.INVISIBLE);
-                                          progressbar.setIndeterminate(false);
-                                       }
-
-                                       @Override
-                                       public void setProgress(int value)
-                                       {
-                                          progressbar.setProgress(value);
-                                       }
-
-                                       @Override
-                                       public void showError(String task, String errorMessage, Exception exception)
-                                       {
-                                          TrackList.this.showError(task, errorMessage, exception);
-                                       }
-                                    };
-                                 startActivityForResult(namingIntent, DESCRIBE);
-                              }
-                           }
-                        });
-                  }
-                  else
-                  {
-                     checkbox.setVisibility(View.INVISIBLE);
-                     checkbox.setOnCheckedChangeListener(null);
-                  }
-                  return true;
-               }
-               return false;
-            }
-         });
+//      trackAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder()
+//         {
+//            @Override
+//            public boolean setViewValue(View view, final Cursor cursor, int columnIndex)
+//            {
+//               if (columnIndex == 0)
+//               {
+//                  final long trackId = cursor.getLong(0);
+//                  final String trackName = cursor.getString(1);
+//                  // Show the check if Breadcrumbs is online
+//                  final CheckBox checkbox = (CheckBox) view;
+//                  final ProgressBar progressbar = (ProgressBar) ((View) view.getParent()).findViewById(R.id.bcExportProgress);
+//                  if (mService != null && mService.isAuthorized())
+//                  {
+//                     checkbox.setVisibility(View.VISIBLE);
+//
+//                     // Disable the checkbox if marked online
+//                     boolean isOnline = mService.isLocalTrackSynced(trackId);
+//                     checkbox.setEnabled(!isOnline);
+//
+//                     // Check the checkbox if determined synced
+//                     boolean isSynced = mService.isLocalTrackSynced(trackId);
+//                     checkbox.setOnCheckedChangeListener(null);
+//                     checkbox.setChecked(isSynced);
+//                     checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener()
+//                        {
+//                           @Override
+//                           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+//                           {
+//                              if (isChecked)
+//                              {
+//                                 // Start a description of the track
+//                                 Intent namingIntent = new Intent(TrackList.this, DescribeTrack.class);
+//                                 namingIntent.setData(ContentUris.withAppendedId(Tracks.CONTENT_URI, trackId));
+//                                 namingIntent.putExtra(Constants.NAME, trackName);
+//                                 mExportListener = new ProgressListener()
+//                                    {
+//                                       @Override
+//                                       public void setIndeterminate(boolean indeterminate)
+//                                       {
+//                                          progressbar.setIndeterminate(indeterminate);
+//                                       }
+//
+//                                       @Override
+//                                       public void started()
+//                                       {
+//                                          checkbox.setVisibility(View.INVISIBLE);
+//                                          progressbar.setVisibility(View.VISIBLE);
+//                                       }
+//
+//                                       @Override
+//                                       public void finished(Uri result)
+//                                       {
+//                                          checkbox.setVisibility(View.VISIBLE);
+//                                          progressbar.setVisibility(View.INVISIBLE);
+//                                          progressbar.setIndeterminate(false);
+//                                       }
+//
+//                                       @Override
+//                                       public void setProgress(int value)
+//                                       {
+//                                          progressbar.setProgress(value);
+//                                       }
+//
+//                                       @Override
+//                                       public void showError(String task, String errorMessage, Exception exception)
+//                                       {
+//                                          TrackList.this.showError(task, errorMessage, exception);
+//                                       }
+//                                    };
+//                                 startActivityForResult(namingIntent, DESCRIBE);
+//                              }
+//                           }
+//                        });
+//                  }
+//                  else
+//                  {
+//                     checkbox.setVisibility(View.INVISIBLE);
+//                     checkbox.setOnCheckedChangeListener(null);
+//                  }
+//                  return true;
+//               }
+//               return false;
+//            }
+//         });
 
       setListAdapter(sectionedAdapter);
    }

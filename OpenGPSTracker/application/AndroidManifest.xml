@@ -279,7 +279,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pdfrun.DashboardActivity"
+            android:name="com.pdfrun.activity.DashboardActivity"
             android:label="@string/application_name" 
             >
             <intent-filter>

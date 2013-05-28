@@ -61,10 +61,10 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
    
    private EditTextPreference time;
    private EditTextPreference distance;
-   private EditTextPreference implentWidth;
-
-   private EditTextPreference streambroadcast_distance;
-   private EditTextPreference custumupload_backlog;
+//   private EditTextPreference implentWidth;
+//
+//   private EditTextPreference streambroadcast_distance;
+//   private EditTextPreference custumupload_backlog;
 
    @Override
    protected void onCreate(Bundle savedInstanceState)
@@ -76,7 +76,7 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
       ListPreference precision = (ListPreference) findPreference(PRECISION_PREFERENCE);
       time = (EditTextPreference) findPreference(CUSTOMPRECISIONTIME_PREFERENCE);
       distance = (EditTextPreference) findPreference(CUSTOMPRECISIONDISTANCE_PREFERENCE);
-      implentWidth = (EditTextPreference) findPreference(UNITS_IMPLEMENT_WIDTH_PREFERENCE);
+      //implentWidth = (EditTextPreference) findPreference(UNITS_IMPLEMENT_WIDTH_PREFERENCE);
 //      streambroadcast_distance = (EditTextPreference) findPreference(STREAMBROADCAST_PREFERENCE);
 //      custumupload_backlog = (EditTextPreference) findPreference(CUSTOMUPLOAD_BACKLOG);
 
@@ -86,7 +86,7 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
          @Override
          public boolean onPreferenceChange(Preference preference, Object newValue)
          {
-            setEnabledCustomValues(newValue);
+//            setEnabledCustomValues(newValue);
             return true;
          }
       });
@@ -127,10 +127,10 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
 //      });
    }
 
-   private void setEnabledCustomValues(Object newValue)
-   {
-      boolean customPresicion = Integer.toString(Constants.LOGGING_CUSTOM).equals(newValue);
-      time.setEnabled(customPresicion);
-      distance.setEnabled(customPresicion);
-   }
+//   private void setEnabledCustomValues(Object newValue)
+//   {
+//      boolean customPresicion = Integer.toString(Constants.LOGGING_CUSTOM).equals(newValue);
+//      time.setEnabled(customPresicion);
+//      distance.setEnabled(customPresicion);
+//   }
 }
