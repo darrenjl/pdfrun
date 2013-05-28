@@ -31,7 +31,7 @@ package nl.sogeti.android.gpstracker.adapter;
 import java.util.LinkedList;
 import java.util.List;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.actions.tasks.GpxParser;
 import nl.sogeti.android.gpstracker.breadcrumbs.BreadcrumbsService;
 import nl.sogeti.android.gpstracker.breadcrumbs.BreadcrumbsTracks;

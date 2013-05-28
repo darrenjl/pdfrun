@@ -50,7 +50,7 @@ public class MapViewProxy
    private MapControllerProxy mMapControllerProxy;
    private ProjectionProxy mProjectionProxy;
    
-   private org.osmdroid.views.MapView mOpenStreetMapView;
+   //private org.osmdroid.views.MapView mOpenStreetMapView;
    private boolean buildinzoom;
    private List<OverlayProxy> mOverlayProxies;
 
@@ -69,34 +69,34 @@ public class MapViewProxy
          mMapControllerProxy.setController( mGoogleMapView.getController() );
          mProjectionProxy.setProjection( mGoogleMapView.getProjection() );
          
-         if( mOpenStreetMapView != null )
-         {
-            GeoPoint mapCenter = convertOSMGeoPoint( mOpenStreetMapView.getMapCenter() );
-            int zoomLevel = mOpenStreetMapView.getZoomLevel();
-            mMapControllerProxy.setCenter( mapCenter );
-            mMapControllerProxy.setZoom( zoomLevel );
-         }
-         mOpenStreetMapView = null;
+//         if( mOpenStreetMapView != null )
+//         {
+//            GeoPoint mapCenter = convertOSMGeoPoint( mOpenStreetMapView.getMapCenter() );
+//            int zoomLevel = mOpenStreetMapView.getZoomLevel();
+//            mMapControllerProxy.setCenter( mapCenter );
+//            mMapControllerProxy.setZoom( zoomLevel );
+//         }
+         //mOpenStreetMapView = null;
       }
-      else if( newView instanceof org.osmdroid.views.MapView )
-      {
-         mOpenStreetMapView = (org.osmdroid.views.MapView) newView;
-         if (Build.VERSION.SDK_INT > 11)
-         {
-            mOpenStreetMapView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-         }
-         mMapControllerProxy.setController( mOpenStreetMapView );
-         mProjectionProxy.setProjection( mOpenStreetMapView );
-         
-         if( mGoogleMapView != null )
-         {
-            GeoPoint mapCenter = mGoogleMapView.getMapCenter();
-            int zoomLevel = mGoogleMapView.getZoomLevel();
-            mMapControllerProxy.setCenter( mapCenter );
-            mMapControllerProxy.setZoom( zoomLevel );
-         }
-         mGoogleMapView = null;
-      }
+//      else if( newView instanceof org.osmdroid.views.MapView )
+//      {
+//         mOpenStreetMapView = (org.osmdroid.views.MapView) newView;
+//         if (Build.VERSION.SDK_INT > 11)
+//         {
+//            mOpenStreetMapView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//         }
+//         mMapControllerProxy.setController( mOpenStreetMapView );
+//         mProjectionProxy.setProjection( mOpenStreetMapView );
+//         
+//         if( mGoogleMapView != null )
+//         {
+//            GeoPoint mapCenter = mGoogleMapView.getMapCenter();
+//            int zoomLevel = mGoogleMapView.getZoomLevel();
+//            mMapControllerProxy.setCenter( mapCenter );
+//            mMapControllerProxy.setZoom( zoomLevel );
+//         }
+//         mGoogleMapView = null;
+//      }
       else 
       {
          Log.e( TAG, "Unusable map provided: "+ newView);
@@ -117,10 +117,10 @@ public class MapViewProxy
       {
          return mGoogleMapView;
       }
-      else if( mOpenStreetMapView != null )
-      {
-         return mOpenStreetMapView;
-      }
+//      else if( mOpenStreetMapView != null )
+//      {
+//         return mOpenStreetMapView;
+//      }
       else 
       {
          return null;
@@ -133,10 +133,10 @@ public class MapViewProxy
       {
          mGoogleMapView.postInvalidate();
       }
-      if( mOpenStreetMapView != null )
-      {
-         mOpenStreetMapView.postInvalidate();
-      }
+//      if( mOpenStreetMapView != null )
+//      {
+//         mOpenStreetMapView.postInvalidate();
+//      }
    }
    
    public void invalidate()
@@ -145,10 +145,10 @@ public class MapViewProxy
       {
          mGoogleMapView.invalidate();
       }
-      if( mOpenStreetMapView != null )
-      {
-         mOpenStreetMapView.invalidate();
-      }
+//      if( mOpenStreetMapView != null )
+//      {
+//         mOpenStreetMapView.invalidate();
+//      }
    }
 
    public void clearAnimation()
@@ -157,10 +157,10 @@ public class MapViewProxy
       {
          mGoogleMapView.clearAnimation();
       }
-      if( mOpenStreetMapView != null )
-      {
-         mOpenStreetMapView.clearAnimation();
-      }
+//      if( mOpenStreetMapView != null )
+//      {
+//         mOpenStreetMapView.clearAnimation();
+//      }
    }
 
    public MapControllerProxy getController()
@@ -179,10 +179,10 @@ public class MapViewProxy
       {
          return mGoogleMapView.getMapCenter();
       }
-      if( mOpenStreetMapView != null )
-      {
-         return convertOSMGeoPoint( mOpenStreetMapView.getMapCenter() );
-      }
+//      if( mOpenStreetMapView != null )
+//      {
+//         return convertOSMGeoPoint( mOpenStreetMapView.getMapCenter() );
+//      }
       return null;
    }
 
@@ -192,10 +192,10 @@ public class MapViewProxy
       {
          return mGoogleMapView.getHeight();
       }      
-      if( mOpenStreetMapView != null )
-      {
-         return mOpenStreetMapView.getHeight();
-      }
+//      if( mOpenStreetMapView != null )
+//      {
+//         return mOpenStreetMapView.getHeight();
+//      }
       return 0;
    }
 
@@ -205,10 +205,10 @@ public class MapViewProxy
       {
          return mGoogleMapView.getWidth();
       }
-      else if( mOpenStreetMapView != null )
-      {
-         return mOpenStreetMapView.getWidth();
-      }
+//      else if( mOpenStreetMapView != null )
+//      {
+//         return mOpenStreetMapView.getWidth();
+//      }
       return 0;
    }
 
@@ -219,10 +219,10 @@ public class MapViewProxy
       {
          zoomlevel = mGoogleMapView.getZoomLevel();
       }
-      else if( mOpenStreetMapView != null )
-      {
-         zoomlevel = mOpenStreetMapView.getZoomLevel();
-      }
+//      else if( mOpenStreetMapView != null )
+//      {
+//         zoomlevel = mOpenStreetMapView.getZoomLevel();
+//      }
       return zoomlevel;
    }
 
@@ -232,10 +232,10 @@ public class MapViewProxy
       {
          return mGoogleMapView.getMaxZoomLevel();
       }
-      else if( mOpenStreetMapView != null )
-      {
-         return mOpenStreetMapView.getMaxZoomLevel();
-      }
+//      else if( mOpenStreetMapView != null )
+//      {
+//         return mOpenStreetMapView.getMaxZoomLevel();
+//      }
       return 0;
    }
 
@@ -251,10 +251,10 @@ public class MapViewProxy
       {
          mGoogleMapView.getOverlays().add( overlay.getGoogleOverlay() );
       }
-      else if( mOpenStreetMapView != null )
-      {
-         mOpenStreetMapView.getOverlays().add( overlay.getOSMOverlay() );
-      }
+//      else if( mOpenStreetMapView != null )
+//      {
+//         mOpenStreetMapView.getOverlays().add( overlay.getOSMOverlay() );
+//      }
    }
 
    /**
@@ -273,10 +273,10 @@ public class MapViewProxy
       {
          mGoogleMapView.getOverlays().clear();
       }
-      if( mOpenStreetMapView != null )
-      {
-         mOpenStreetMapView.getOverlays().clear();
-      }
+//      if( mOpenStreetMapView != null )
+//      {
+//         mOpenStreetMapView.getOverlays().clear();
+//      }
       for( OverlayProxy proxy : mOverlayProxies )
       {
          proxy.closeResources();
@@ -291,10 +291,10 @@ public class MapViewProxy
       {
          mGoogleMapView.setBuiltInZoomControls( b );
       }
-      else if( mOpenStreetMapView != null )
-      {
-         mOpenStreetMapView.setBuiltInZoomControls( b );
-      }
+//      else if( mOpenStreetMapView != null )
+//      {
+//         mOpenStreetMapView.setBuiltInZoomControls( b );
+//      }
    }
 
    public void setClickable( boolean b )
@@ -303,22 +303,22 @@ public class MapViewProxy
       {
          mGoogleMapView.setClickable( b );
       }
-      else if( mOpenStreetMapView != null )
-      {
-         mOpenStreetMapView.setClickable( b );
-      }
+//      else if( mOpenStreetMapView != null )
+//      {
+//         mOpenStreetMapView.setClickable( b );
+//      }
       
    }
 
-   static GeoPoint convertOSMGeoPoint( IGeoPoint point )
-   {
-      return new GeoPoint(point.getLatitudeE6(), point.getLongitudeE6() );
-   }
-   
-   static org.osmdroid.util.GeoPoint convertMapGeoPoint( GeoPoint point )
-   {
-      return new org.osmdroid.util.GeoPoint(point.getLatitudeE6(), point.getLongitudeE6() );
-   }
+//   static GeoPoint convertOSMGeoPoint( IGeoPoint point )
+//   {
+//      return new GeoPoint(point.getLatitudeE6(), point.getLongitudeE6() );
+//   }
+//   
+//   static org.osmdroid.util.GeoPoint convertMapGeoPoint( GeoPoint point )
+//   {
+//      return new org.osmdroid.util.GeoPoint(point.getLatitudeE6(), point.getLongitudeE6() );
+//   }
 
    public boolean isSatellite()
    {
@@ -356,24 +356,24 @@ public class MapViewProxy
    
    public void setOSMType(int renderer )
    {
-      if( mOpenStreetMapView != null )
-      {
-         switch( renderer )
-         {
-            case Constants.OSM_CLOUDMADE:
-               mOpenStreetMapView.setTileSource(TileSourceFactory.CLOUDMADESTANDARDTILES);
-               break;
-            case Constants.OSM_MAKNIK:
-               mOpenStreetMapView.setTileSource(TileSourceFactory.MAPNIK);
-               break;
-            case Constants.OSM_CYCLE:
-               mOpenStreetMapView.setTileSource(TileSourceFactory.CYCLEMAP);
-               break;
-            default:
-               break;
-         }
-         
-      }
+//      if( mOpenStreetMapView != null )
+//      {
+//         switch( renderer )
+//         {
+//            case Constants.OSM_CLOUDMADE:
+//               mOpenStreetMapView.setTileSource(TileSourceFactory.CLOUDMADESTANDARDTILES);
+//               break;
+//            case Constants.OSM_MAKNIK:
+//               mOpenStreetMapView.setTileSource(TileSourceFactory.MAPNIK);
+//               break;
+//            case Constants.OSM_CYCLE:
+//               mOpenStreetMapView.setTileSource(TileSourceFactory.CYCLEMAP);
+//               break;
+//            default:
+//               break;
+//         }
+//         
+//      }
    }
    
    public void executePostponedActions()

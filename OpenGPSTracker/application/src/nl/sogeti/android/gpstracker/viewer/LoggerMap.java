@@ -31,7 +31,7 @@ package nl.sogeti.android.gpstracker.viewer;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.actions.ControlTracking;
 import nl.sogeti.android.gpstracker.actions.InsertNote;
 import nl.sogeti.android.gpstracker.actions.ShareTrack;
@@ -1119,20 +1119,23 @@ public class LoggerMap extends MapActivity
       switch (provider)
       {
          case Constants.GOOGLE:
-            findViewById(R.id.myOsmMapView).setVisibility(View.GONE);
+            //findViewById(R.id.myOsmMapView).setVisibility(View.GONE);
             findViewById(R.id.myMapView).setVisibility(View.VISIBLE);
             mMapView.setMap(findViewById(R.id.myMapView));
             updateGoogleOverlays();
             break;
-         case Constants.OSM:
-            CloudmadeUtil.retrieveCloudmadeKey(this);
-            findViewById(R.id.myMapView).setVisibility(View.GONE);
-            findViewById(R.id.myOsmMapView).setVisibility(View.VISIBLE);
-            mMapView.setMap(findViewById(R.id.myOsmMapView));
-            updateOsmBaseOverlay();
-            break;
+//         case Constants.OSM:
+//            CloudmadeUtil.retrieveCloudmadeKey(this);
+//            findViewById(R.id.myMapView).setVisibility(View.GONE);
+//            findViewById(R.id.myOsmMapView).setVisibility(View.VISIBLE);
+//            mMapView.setMap(findViewById(R.id.myOsmMapView));
+//            updateOsmBaseOverlay();
+//            break;
          default:
             Log.e(TAG, "Fault in value " + provider + " as MapProvider.");
+            findViewById(R.id.myMapView).setVisibility(View.VISIBLE);
+            mMapView.setMap(findViewById(R.id.myMapView));
+            updateGoogleOverlays();
             break;
       }
    }
@@ -1155,11 +1158,11 @@ public class LoggerMap extends MapActivity
       {
          mLoggerServiceManager.storeDerivedDataSource(GOOGLE_PROVIDER);
       }
-      if (findViewById(R.id.myOsmMapView).getVisibility() == View.VISIBLE)
-      {
-         mLoggerServiceManager.storeDerivedDataSource(OSM_PROVIDER);
-
-      }
+//      if (findViewById(R.id.myOsmMapView).getVisibility() == View.VISIBLE)
+//      {
+//         mLoggerServiceManager.storeDerivedDataSource(OSM_PROVIDER);
+//
+//      }
    }
 
    private void updateBlankingBehavior()

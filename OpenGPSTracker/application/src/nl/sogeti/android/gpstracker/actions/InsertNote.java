@@ -35,7 +35,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.logger.GPSLoggerServiceManager;
 import nl.sogeti.android.gpstracker.util.Constants;
 import android.app.Activity;

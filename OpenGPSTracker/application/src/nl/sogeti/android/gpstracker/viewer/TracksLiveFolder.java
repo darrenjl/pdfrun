@@ -28,7 +28,7 @@
  */
 package nl.sogeti.android.gpstracker.viewer;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.db.GPStracking;
 import android.app.Activity;
 import android.content.Intent;

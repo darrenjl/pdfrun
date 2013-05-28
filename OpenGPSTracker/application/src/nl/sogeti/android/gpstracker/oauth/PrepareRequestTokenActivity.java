@@ -28,7 +28,7 @@
  */
 package nl.sogeti.android.gpstracker.oauth;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.util.Constants;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;

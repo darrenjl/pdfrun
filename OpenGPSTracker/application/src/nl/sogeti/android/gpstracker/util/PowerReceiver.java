@@ -21,7 +21,8 @@
  */
 package nl.sogeti.android.gpstracker.util;
 
-import nl.sogeti.android.gpstracker.BuildConfig;
+import com.pdfrun.BuildConfig;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.logger.GPSLoggerService;
 import android.content.BroadcastReceiver;
 import android.content.Context;

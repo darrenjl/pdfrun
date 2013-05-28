@@ -19,7 +19,7 @@
  */
 package nl.sogeti.android.gpstracker.viewer;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;

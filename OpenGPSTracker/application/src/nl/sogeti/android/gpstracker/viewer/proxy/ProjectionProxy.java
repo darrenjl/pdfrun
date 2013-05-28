@@ -40,7 +40,7 @@ public class ProjectionProxy
    private static final String TAG = "OGT.ProjectionProxy";
    
    private Projection mProjection;
-   private org.osmdroid.views.MapView mOpenStreetMapViewProjectionSource;
+//   private org.osmdroid.views.MapView mOpenStreetMapViewProjectionSource;
 
    public ProjectionProxy()
    {
@@ -51,13 +51,13 @@ public class ProjectionProxy
       if( projection instanceof Projection )
       {
          mProjection = (Projection) projection;
-         mOpenStreetMapViewProjectionSource = null;
+//         mOpenStreetMapViewProjectionSource = null;
       } 
-      else if( projection instanceof org.osmdroid.views.MapView )
-      {
-         mOpenStreetMapViewProjectionSource = (org.osmdroid.views.MapView) projection;
-         mProjection = null;
-      }
+//      else if( projection instanceof org.osmdroid.views.MapView )
+//      {
+//         mOpenStreetMapViewProjectionSource = (org.osmdroid.views.MapView) projection;
+//         mProjection = null;
+//      }
    }
 
    public void toPixels( GeoPoint geoPoint, Point out )
@@ -73,15 +73,15 @@ public class ProjectionProxy
             Log.w( TAG, "Problem using the Google map projection" );
          }
       } 
-      else if( mOpenStreetMapViewProjectionSource != null )
-      {
-         org.osmdroid.views.MapView.Projection projection = mOpenStreetMapViewProjectionSource.getProjection();
-         if( projection != null )
-         {
-            org.osmdroid.util.GeoPoint osmGeopoint = MapViewProxy.convertMapGeoPoint(geoPoint);
-            projection.toMapPixels(osmGeopoint, out );
-         }
-      }
+//      else if( mOpenStreetMapViewProjectionSource != null )
+//      {
+//         org.osmdroid.views.MapView.Projection projection = mOpenStreetMapViewProjectionSource.getProjection();
+//         if( projection != null )
+//         {
+//            org.osmdroid.util.GeoPoint osmGeopoint = MapViewProxy.convertMapGeoPoint(geoPoint);
+//            projection.toMapPixels(osmGeopoint, out );
+//         }
+//      }
       else 
       {
          throw new IllegalStateException( "No working projection available" );
@@ -95,10 +95,10 @@ public class ProjectionProxy
       {
          point  = mProjection.fromPixels( i, j );
       } 
-      else if( mOpenStreetMapViewProjectionSource != null )
-      {
-         point = MapViewProxy.convertOSMGeoPoint( mOpenStreetMapViewProjectionSource.getProjection().fromPixels( i, j ) );
-      }
+//      else if( mOpenStreetMapViewProjectionSource != null )
+//      {
+//         point = MapViewProxy.convertOSMGeoPoint( mOpenStreetMapViewProjectionSource.getProjection().fromPixels( i, j ) );
+//      }
       else
       {
          throw new IllegalStateException( "No working projection available" );
@@ -113,10 +113,10 @@ public class ProjectionProxy
       {
          pixels  = mProjection.metersToEquatorPixels( i );
       } 
-      else if( mOpenStreetMapViewProjectionSource != null )
-      {
-         pixels = mOpenStreetMapViewProjectionSource.getProjection().metersToEquatorPixels( i ) ;
-      }
+//      else if( mOpenStreetMapViewProjectionSource != null )
+//      {
+//         pixels = mOpenStreetMapViewProjectionSource.getProjection().metersToEquatorPixels( i ) ;
+//      }
       else
       {
          throw new IllegalStateException( "No working projection available" );

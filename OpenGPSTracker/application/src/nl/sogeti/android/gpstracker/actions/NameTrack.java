@@ -30,7 +30,7 @@ package nl.sogeti.android.gpstracker.actions;
 
 import java.util.Calendar;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import android.app.Activity;
 import android.app.AlertDialog;

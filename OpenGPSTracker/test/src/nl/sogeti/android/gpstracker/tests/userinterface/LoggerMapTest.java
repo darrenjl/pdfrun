@@ -29,7 +29,7 @@
 package nl.sogeti.android.gpstracker.tests.userinterface;
 
 import junit.framework.Assert;
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.*;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.db.GPStracking.Waypoints;
 import nl.sogeti.android.gpstracker.logger.GPSLoggerServiceManager;

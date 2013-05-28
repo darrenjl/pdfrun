@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.db.GPStracking;
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
 import nl.sogeti.android.gpstracker.db.GPStracking.Waypoints;
@@ -105,7 +105,7 @@ public class SegmentOverlay extends Overlay implements OverlayProxy
    private ContentResolver mResolver;
    private LoggerMap mLoggerMap;
    private ProjectionProxy mProjection;
-   private org.osmdroid.views.overlay.Overlay mOsmOverlay;
+   //private org.osmdroid.views.overlay.Overlay mOsmOverlay;
 
    private int mPlacement = SegmentOverlay.MIDDLE_SEGMENT;
    private Uri mWaypointsUri;
@@ -218,27 +218,27 @@ public class SegmentOverlay extends Overlay implements OverlayProxy
       mMediaPath = new Vector<MediaVO>();
       mMediaPathCalculation = new Vector<MediaVO>();
       
-      mOsmOverlay = new org.osmdroid.views.overlay.Overlay(mLoggerMap) {
-         
-         @Override
-         public boolean onSingleTapUp(MotionEvent e, org.osmdroid.views.MapView openStreetMapView) 
-         {
-            int x = (int) e.getX();
-            int y = (int) e.getY();
-            GeoPoint tappedGeoPoint = mProjection.fromPixels(x, y);
-            return SegmentOverlay.this.commonOnTap(tappedGeoPoint );
-         }
-
-         @Override
-         protected void draw(Canvas canvas, org.osmdroid.views.MapView view, boolean shadow)
-         {
-            if( !shadow )
-            {
-               mProjection.setProjection(view);
-               SegmentOverlay.this.draw( canvas );
-            }
-         }      
-      };
+//      mOsmOverlay = new org.osmdroid.views.overlay.Overlay(mLoggerMap) {
+//         
+//         @Override
+//         public boolean onSingleTapUp(MotionEvent e, org.osmdroid.views.MapView openStreetMapView) 
+//         {
+//            int x = (int) e.getX();
+//            int y = (int) e.getY();
+//            GeoPoint tappedGeoPoint = mProjection.fromPixels(x, y);
+//            return SegmentOverlay.this.commonOnTap(tappedGeoPoint );
+//         }
+//
+//         @Override
+//         protected void draw(Canvas canvas, org.osmdroid.views.MapView view, boolean shadow)
+//         {
+//            if( !shadow )
+//            {
+//               mProjection.setProjection(view);
+//               SegmentOverlay.this.draw( canvas );
+//            }
+//         }      
+//      };
       
       mTrackSegmentsObserver = new ContentObserver( new Handler() )
       {
@@ -1390,9 +1390,9 @@ public class SegmentOverlay extends Overlay implements OverlayProxy
       return this;
    }
 
-   @Override
-   public org.osmdroid.views.overlay.Overlay getOSMOverlay()
-   {
-      return mOsmOverlay;
-   }
+//   @Override
+//   public org.osmdroid.views.overlay.Overlay getOSMOverlay()
+//   {
+//      return mOsmOverlay;
+//   }
 }

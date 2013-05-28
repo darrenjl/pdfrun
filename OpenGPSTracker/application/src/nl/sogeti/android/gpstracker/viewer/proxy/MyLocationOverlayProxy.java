@@ -45,7 +45,7 @@ public class MyLocationOverlayProxy implements OverlayProxy
    private static final String TAG = "OGT.MyLocationOverlayProxy";
 
    private MyLocationOverlay googleLocationOverlay;
-   private org.osmdroid.views.overlay.MyLocationOverlay osmLocationOverlay;
+   //private org.osmdroid.views.overlay.MyLocationOverlay osmLocationOverlay;
    private Context mContext;
 
    private MapViewProxy mMapViewProxy;
@@ -62,10 +62,10 @@ public class MyLocationOverlayProxy implements OverlayProxy
       {
          googleLocationOverlay.enableMyLocation();
       }
-      if( osmLocationOverlay != null )
-      {
-         osmLocationOverlay.enableMyLocation();
-      }
+//      if( osmLocationOverlay != null )
+//      {
+//         osmLocationOverlay.enableMyLocation();
+//      }
    }
 
    public void disableMyLocation()
@@ -74,12 +74,12 @@ public class MyLocationOverlayProxy implements OverlayProxy
       {
          googleLocationOverlay.disableMyLocation();
       }
-      if( osmLocationOverlay != null )
-      {
-         osmLocationOverlay.disableMyLocation();
-         osmLocationOverlay.onLocationChanged( new Location( "STUB" ) );
-         mMapViewProxy.invalidate();
-      }
+//      if( osmLocationOverlay != null )
+//      {
+//         osmLocationOverlay.disableMyLocation();
+//         osmLocationOverlay.onLocationChanged( new Location( "STUB" ) );
+//         mMapViewProxy.invalidate();
+//      }
    }
 
    public void enableCompass()
@@ -88,10 +88,10 @@ public class MyLocationOverlayProxy implements OverlayProxy
       {
          googleLocationOverlay.enableCompass();
       }
-      if( osmLocationOverlay != null )
-      {
-         osmLocationOverlay.enableCompass();
-      }
+//      if( osmLocationOverlay != null )
+//      {
+//         osmLocationOverlay.enableCompass();
+//      }
    }
 
    public void disableCompass()
@@ -100,11 +100,11 @@ public class MyLocationOverlayProxy implements OverlayProxy
       {
          googleLocationOverlay.disableCompass();
       }
-      if( osmLocationOverlay != null )
-      {
-         osmLocationOverlay.disableCompass();
-         mMapViewProxy.invalidate();
-      }
+//      if( osmLocationOverlay != null )
+//      {
+//         osmLocationOverlay.disableCompass();
+//         mMapViewProxy.invalidate();
+//      }
    }
 
    @Override
@@ -115,13 +115,13 @@ public class MyLocationOverlayProxy implements OverlayProxy
       return googleLocationOverlay;
    }
 
-   @Override
-   public org.osmdroid.views.overlay.Overlay getOSMOverlay()
-   {
-      View mapview = mMapViewProxy.getMap();
-      osmLocationOverlay = new org.osmdroid.views.overlay.MyLocationOverlay( mContext, (org.osmdroid.views.MapView) mapview );
-      return osmLocationOverlay;
-   }
+//   @Override
+//   public org.osmdroid.views.overlay.Overlay getOSMOverlay()
+//   {
+//      View mapview = mMapViewProxy.getMap();
+//      osmLocationOverlay = new org.osmdroid.views.overlay.MyLocationOverlay( mContext, (org.osmdroid.views.MapView) mapview );
+//      return osmLocationOverlay;
+//   }
 
    @Override
    public void closeResources()

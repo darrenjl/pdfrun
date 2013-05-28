@@ -30,7 +30,7 @@ package nl.sogeti.android.gpstracker.util;
 
 import java.util.Locale;
 
-import nl.sogeti.android.gpstracker.R;
+import com.pdfrun.R;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
