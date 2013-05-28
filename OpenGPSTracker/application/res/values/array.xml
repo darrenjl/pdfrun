@@ -10,27 +10,27 @@
 
    <string-array
       name="precision_choices">
-      <item>Custom</item>
+<!--       <item>Custom</item> -->
       <item>Fine</item>
       <item>Normal</item>
       <item>Coarse</item>
-      <item>Global network</item>
+<!--       <item>Global network</item> -->
    </string-array>
 
-   <string-array
-      name="mapprovider_choices">
-      <item>Google Maps</item>
-      <item>OpenStreetMap</item>
-   </string-array>
+<!--    <string-array -->
+<!--       name="mapprovider_choices"> -->
+<!--       <item>Google Maps</item> -->
+<!--       <item>OpenStreetMap</item> -->
+<!--    </string-array> -->
 
-   <string-array
-      name="trackcoloring_choices">
-      <item>Green</item>
-      <item>Red</item>
-      <item>Speed</item>
-      <item>Average speed</item>
-      <item>Waypoints</item>
-   </string-array>
+<!--    <string-array -->
+<!--       name="trackcoloring_choices"> -->
+<!--       <item>Green</item> -->
+<!--       <item>Red</item> -->
+<!--       <item>Speed</item> -->
+<!--       <item>Average speed</item> -->
+<!--       <item>Waypoints</item> -->
+<!--    </string-array> -->
 
    <string-array
       name="units_choices">
@@ -55,9 +55,9 @@
       name="sharegpxtarget_choices">
       <item>Store to SD Card</item>
       <item>Send with an (email) application</item>
-      <item>Publish to www.jogmap.de</item>
-      <item>Publish as OpenStreetMap trace</item>
-      <item>Publish to Breadcrumbs</item>
+<!--       <item>Publish to www.jogmap.de</item> -->
+<!--       <item>Publish as OpenStreetMap trace</item> -->
+<!--       <item>Publish to Breadcrumbs</item> -->
    </string-array>
 
    <string-array
@@ -73,13 +73,13 @@
       <item>Generic text send</item>
    </string-array>
 
-   <string-array
-      name="osmvisibility_choices">
-      <item>Identifiable (Recommended)</item>
-      <item>Public</item>
-      <item>Trackable (Preferred over Private)</item>
-      <item>Private</item>
-   </string-array>
+<!--    <string-array -->
+<!--       name="osmvisibility_choices"> -->
+<!--       <item>Identifiable (Recommended)</item> -->
+<!--       <item>Public</item> -->
+<!--       <item>Trackable (Preferred over Private)</item> -->
+<!--       <item>Private</item> -->
+<!--    </string-array> -->
 
    <string-array
       name="about_translators"

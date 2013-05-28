@@ -77,10 +77,10 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
       time = (EditTextPreference) findPreference(CUSTOMPRECISIONTIME_PREFERENCE);
       distance = (EditTextPreference) findPreference(CUSTOMPRECISIONDISTANCE_PREFERENCE);
       implentWidth = (EditTextPreference) findPreference(UNITS_IMPLEMENT_WIDTH_PREFERENCE);
-      streambroadcast_distance = (EditTextPreference) findPreference(STREAMBROADCAST_PREFERENCE);
-      custumupload_backlog = (EditTextPreference) findPreference(CUSTOMUPLOAD_BACKLOG);
+//      streambroadcast_distance = (EditTextPreference) findPreference(STREAMBROADCAST_PREFERENCE);
+//      custumupload_backlog = (EditTextPreference) findPreference(CUSTOMUPLOAD_BACKLOG);
 
-      setEnabledCustomValues(precision.getValue());
+      //setEnabledCustomValues(precision.getValue());
       precision.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
       {
          @Override
@@ -90,41 +90,41 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
             return true;
          }
       });
-      implentWidth.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-      {
-         @Override
-         public boolean onPreferenceChange(Preference preference, Object newValue)
-         {
-            String fpExpr = "\\d{1,4}([,\\.]\\d+)?";
-            return Pattern.matches(fpExpr, newValue.toString());
-         }
-      });
-      streambroadcast_distance.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-      {
-         @Override
-         public boolean onPreferenceChange(Preference preference, Object newValue)
-         {
-            String fpExpr = "\\d{1,5}";
-            boolean matches = Pattern.matches(fpExpr, newValue.toString());
-            if (matches)
-            {
-               Editor editor = getPreferenceManager().getSharedPreferences().edit();
-               double value = new UnitsI18n(ApplicationPreferenceActivity.this).conversionFromLocalToMeters(Integer.parseInt(newValue.toString()));
-               editor.putFloat("streambroadcast_distance_meter", (float) value);
-               editor.commit();
-            }
-            return matches;
-         }
-      });
-      custumupload_backlog.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-      {
-         @Override
-         public boolean onPreferenceChange(Preference preference, Object newValue)
-         {
-            String fpExpr = "\\d{1,3}";
-            return Pattern.matches(fpExpr, newValue.toString());
-         }
-      });
+//      implentWidth.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+//      {
+//         @Override
+//         public boolean onPreferenceChange(Preference preference, Object newValue)
+//         {
+//            String fpExpr = "\\d{1,4}([,\\.]\\d+)?";
+//            return Pattern.matches(fpExpr, newValue.toString());
+//         }
+//      });
+//      streambroadcast_distance.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+//      {
+//         @Override
+//         public boolean onPreferenceChange(Preference preference, Object newValue)
+//         {
+//            String fpExpr = "\\d{1,5}";
+//            boolean matches = Pattern.matches(fpExpr, newValue.toString());
+//            if (matches)
+//            {
+//               Editor editor = getPreferenceManager().getSharedPreferences().edit();
+//               double value = new UnitsI18n(ApplicationPreferenceActivity.this).conversionFromLocalToMeters(Integer.parseInt(newValue.toString()));
+//               editor.putFloat("streambroadcast_distance_meter", (float) value);
+//               editor.commit();
+//            }
+//            return matches;
+//         }
+//      });
+//      custumupload_backlog.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+//      {
+//         @Override
+//         public boolean onPreferenceChange(Preference preference, Object newValue)
+//         {
+//            String fpExpr = "\\d{1,3}";
+//            return Pattern.matches(fpExpr, newValue.toString());
+//         }
+//      });
    }
 
    private void setEnabledCustomValues(Object newValue)
