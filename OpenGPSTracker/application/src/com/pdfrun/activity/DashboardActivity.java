@@ -63,7 +63,7 @@ public class DashboardActivity extends Activity
            
           @Override
           public void onClick(View view) {
-              Intent i = new Intent(getApplicationContext(), RecordActivity.class);
+              Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
               startActivity(i);
           }
       });
@@ -72,7 +72,7 @@ public class DashboardActivity extends Activity
            
           @Override
           public void onClick(View view) {
-              Intent i = new Intent(getApplicationContext(), RecordActivity.class);
+              Intent i = new Intent(getApplicationContext(), GroupsActivity.class);
               startActivity(i);
           }
       });
@@ -81,7 +81,7 @@ public class DashboardActivity extends Activity
            
           @Override
           public void onClick(View view) {
-              Intent i = new Intent(getApplicationContext(), RecordActivity.class);
+              Intent i = new Intent(getApplicationContext(), AcademyActivity.class);
               startActivity(i);
           }
       });
