@@ -22,7 +22,11 @@ public class ProfileActivity extends Activity implements StatisticsDelegate
 {
    private Cursor tracksCursor;
    private TextView numRunsView;
+   private TextView totalDistanceView;
+   private TextView maxSpeedView;
    private UnitsI18n mUnits;
+   private float totalDistance=0;
+   private double maxSpeed=0;
 
    @Override
    protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +34,8 @@ public class ProfileActivity extends Activity implements StatisticsDelegate
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_profile);
       numRunsView = (TextView)findViewById(R.id.numRuns);
+      totalDistanceView = (TextView)findViewById(R.id.totalDistance);
+      maxSpeedView = (TextView)findViewById(R.id.maxSpeed);
       mUnits = new UnitsI18n( this, new UnitsI18n.UnitsChangeListener()
       {
          @Override
@@ -69,7 +75,7 @@ public class ProfileActivity extends Activity implements StatisticsDelegate
       return numRows;
    }
    
-   private float getTotalDistance(){
+   private void getTotalDistance(){
       tracksCursor = managedQuery(Tracks.CONTENT_URI, new String[] { Tracks._ID, Tracks.NAME, Tracks.CREATION_TIME }, null, null, Tracks.CREATION_TIME + " DESC");
       tracksCursor.moveToFirst();
       while (tracksCursor.isAfterLast() == false) 
@@ -84,7 +90,6 @@ public class ProfileActivity extends Activity implements StatisticsDelegate
 //      Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
 //      StatisticsCalulator calculator = new StatisticsCalulator( this, mUnits, this );
 //      calculator.execute(mTrackUri);
-      return -1;
    }
 
    @Override
@@ -92,5 +97,11 @@ public class ProfileActivity extends Activity implements StatisticsDelegate
    {
       
       Log.d("runpdf", "finishedCalculations: distance " + calculated.getDistanceText());
+      totalDistance+=calculated.getDistanceTraveled();
+      totalDistanceView.setText(String.format( "%.2f %s", mUnits.conversionFromMeter( totalDistance ),mUnits.getDistanceUnit()));
+      if(calculated.getMaxSpeed()>maxSpeed){
+         maxSpeed=calculated.getMaxSpeed();
+         maxSpeedView.setText(calculated.getMaxSpeedText());
+      }
    }
 }
