@@ -52,6 +52,10 @@ public class RecordActivity extends LoggerMap
             if (intent.getBooleanExtra(com.pdfrun.Constants.TRACKING_STOPPED, false))
             {
                Log.d("PDFRun", "Stopped tracking run");
+               Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
+               Intent detailsIntent = new Intent(this, RunDetailsActivity.class);
+               detailsIntent.setData(trackUri);
+               startActivity(detailsIntent);
             }
          }
       }
