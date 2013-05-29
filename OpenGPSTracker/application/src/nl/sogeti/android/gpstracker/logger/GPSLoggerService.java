@@ -1077,7 +1077,7 @@ public class GPSLoggerService extends Service implements LocationListener
 
    private void sendRequestStatusUpdateMessage()
    {
-      mStatusMonitor = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.STATUS_MONITOR, false);
+      mStatusMonitor = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.STATUS_MONITOR, true);
       Message msg = Message.obtain();
       msg.what = ADDGPSSTATUSLISTENER;
       mHandler.sendMessage(msg);

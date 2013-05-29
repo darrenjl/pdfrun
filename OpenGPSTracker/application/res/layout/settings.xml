@@ -37,7 +37,7 @@
                 android:title="@string/sanitycheck_title" />
 
             <CheckBoxPreference
-                android:defaultValue="false"
+                android:defaultValue="true"
                 android:key="gpsstatusmonitor"
                 android:summary="@string/gpsstatusmonitor_summary"
                 android:title="@string/gpsstatusmonitor_title" />
@@ -49,7 +49,7 @@
         <PreferenceCategory android:title="@string/preference_behavior" >
 
             <CheckBoxPreference
-                android:defaultValue="false"
+                android:defaultValue="true"
                 android:key="disableblanking"
                 android:summary="@string/disableblanking_summary"
                 android:title="@string/disableblanking_title" />
@@ -160,7 +160,7 @@
 <!--                 android:title="@string/showcompass_title" /> -->
 
             <CheckBoxPreference
-                android:defaultValue="false"
+                android:defaultValue="true"
                 android:key="LOCATION"
                 android:summary="@string/showlocation_summary"
                 android:title="@string/showlocation_title" />

@@ -216,11 +216,11 @@ public class LoggerMap extends MapActivity
       mMapView.setBuiltInZoomControls(true);
       mMapView.setClickable(true);
 
-      TextView[] speeds = { (TextView) findViewById(R.id.speedview05), (TextView) findViewById(R.id.speedview04), (TextView) findViewById(R.id.speedview03),
-            (TextView) findViewById(R.id.speedview02), (TextView) findViewById(R.id.speedview01), (TextView) findViewById(R.id.speedview00) };
-      mSpeedtexts = speeds;
+//      TextView[] speeds = { (TextView) findViewById(R.id.speedview05), (TextView) findViewById(R.id.speedview04), (TextView) findViewById(R.id.speedview03),
+//            (TextView) findViewById(R.id.speedview02), (TextView) findViewById(R.id.speedview01), (TextView) findViewById(R.id.speedview00) };
+//      mSpeedtexts = speeds;
       mLastGPSSpeedView = (TextView) findViewById(R.id.currentSpeed);
-      mLastGPSAltitudeView = (TextView) findViewById(R.id.currentAltitude);
+//      mLastGPSAltitudeView = (TextView) findViewById(R.id.currentAltitude);
       mDistanceView = (TextView) findViewById(R.id.currentDistance);
 
       createListeners();
@@ -571,15 +571,15 @@ public class LoggerMap extends MapActivity
                case R.id.layer_google_regular:
                   setSatelliteOverlay(false);
                   break;
-               case R.id.layer_osm_cloudmade:
-                  setOsmBaseOverlay(Constants.OSM_CLOUDMADE);
-                  break;
-               case R.id.layer_osm_maknik:
-                  setOsmBaseOverlay(Constants.OSM_MAKNIK);
-                  break;
-               case R.id.layer_osm_bicycle:
-                  setOsmBaseOverlay(Constants.OSM_CYCLE);
-                  break;
+//               case R.id.layer_osm_cloudmade:
+//                  setOsmBaseOverlay(Constants.OSM_CLOUDMADE);
+//                  break;
+//               case R.id.layer_osm_maknik:
+//                  setOsmBaseOverlay(Constants.OSM_MAKNIK);
+//                  break;
+//               case R.id.layer_osm_bicycle:
+//                  setOsmBaseOverlay(Constants.OSM_CYCLE);
+//                  break;
                default:
                   break;
             }
@@ -1093,7 +1093,7 @@ public class LoggerMap extends MapActivity
    @Override
    protected boolean isLocationDisplayed()
    {
-      return mSharedPreferences.getBoolean(Constants.LOCATION, false) || mLoggerServiceManager.getLoggingState() == Constants.LOGGING;
+      return mSharedPreferences.getBoolean(Constants.LOCATION, true) || mLoggerServiceManager.getLoggingState() == Constants.LOGGING;
    }
 
    protected void updateTitleBar()
@@ -1172,7 +1172,7 @@ public class LoggerMap extends MapActivity
 
    private void updateBlankingBehavior()
    {
-      boolean disableblanking = mSharedPreferences.getBoolean(Constants.DISABLEBLANKING, false);
+      boolean disableblanking = mSharedPreferences.getBoolean(Constants.DISABLEBLANKING, true);
       boolean disabledimming = mSharedPreferences.getBoolean(Constants.DISABLEDIMMING, false);
       if (disableblanking)
       {
@@ -1328,11 +1328,11 @@ public class LoggerMap extends MapActivity
             mMapView.postInvalidate();
          }
 
-         //Altitude number
-         double altitude = lastWaypoint.getAltitude();
-         altitude = units.conversionFromMeterToHeight(altitude);
-         String altitudeText = String.format("%.0f %s", altitude, units.getHeightUnit());
-         mLastGPSAltitudeView.setText(altitudeText);
+//         //Altitude number
+//         double altitude = lastWaypoint.getAltitude();
+//         altitude = units.conversionFromMeterToHeight(altitude);
+//         String altitudeText = String.format("%.0f %s", altitude, units.getHeightUnit());
+//         mLastGPSAltitudeView.setText(altitudeText);
          
          //Distance number
          double distance = units.conversionFromMeter( mLoggerServiceManager.getTrackedDistance() );
