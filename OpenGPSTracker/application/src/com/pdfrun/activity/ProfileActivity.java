@@ -52,14 +52,6 @@ public class ProfileActivity extends Activity implements StatisticsDelegate
       super.onResume();
       updateUI();
    }
-
-   @Override
-   public boolean onCreateOptionsMenu(Menu menu)
-   {
-      // Inflate the menu; this adds items to the action bar if it is present.
-      getMenuInflater().inflate(R.menu.profile, menu);
-      return true;
-   }
    
    private void updateUI()
    {
@@ -87,9 +79,6 @@ public class ProfileActivity extends Activity implements StatisticsDelegate
           Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, id);
           calculator.execute(trackUri);
       }
-//      Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
-//      StatisticsCalulator calculator = new StatisticsCalulator( this, mUnits, this );
-//      calculator.execute(mTrackUri);
    }
 
    @Override
