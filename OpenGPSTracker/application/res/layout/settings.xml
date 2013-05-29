@@ -141,11 +141,11 @@
                 android:summary="@string/showspeed_summary"
                 android:title="@string/showspeed_title" />
 
-            <CheckBoxPreference
-                android:defaultValue="false"
-                android:key="showaltitude"
-                android:summary="@string/showaltitude_summary"
-                android:title="@string/showaltitude_title" />
+<!--             <CheckBoxPreference -->
+<!--                 android:defaultValue="false" -->
+<!--                 android:key="showaltitude" -->
+<!--                 android:summary="@string/showaltitude_summary" -->
+<!--                 android:title="@string/showaltitude_title" /> -->
 
             <CheckBoxPreference
                 android:defaultValue="true"
@@ -153,11 +153,11 @@
                 android:summary="@string/showdistance_summary"
                 android:title="@string/showdistance_title" />
 
-            <CheckBoxPreference
-                android:defaultValue="false"
-                android:key="COMPASS"
-                android:summary="@string/showcompass_summary"
-                android:title="@string/showcompass_title" />
+<!--             <CheckBoxPreference -->
+<!--                 android:defaultValue="false" -->
+<!--                 android:key="COMPASS" -->
+<!--                 android:summary="@string/showcompass_summary" -->
+<!--                 android:title="@string/showcompass_title" /> -->
 
             <CheckBoxPreference
                 android:defaultValue="false"
