@@ -306,6 +306,10 @@
             android:name="com.pdfrun.activity.RunDetailsActivity"
             android:label="@string/title_activity_run_details" >
         </activity>
+        <activity
+            android:name="com.pdfrun.activity.RunsListActivity"
+            android:label="@string/title_activity_runs_list" >
+        </activity>
     </application>
 
 </manifest>

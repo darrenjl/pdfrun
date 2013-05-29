@@ -1,16 +1,63 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".RunDetailsActivity" >
+<TableLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:gravity="top"
+>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+   >
+      <TextView
+         android:text="@string/stat_distance"
+         android:paddingRight="15dp" />
+      <TextView
+         android:id="@+id/stat_distance" />
+   </TableRow>
 
-</RelativeLayout>
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+   >
+      <TextView
+         android:text="@string/stat_averagespeed"
+         android:paddingRight="15dp" />
+      <TextView
+         android:id="@+id/stat_averagespeed" />
+   </TableRow>
+   
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+   >
+      <TextView
+         android:text="@string/stat_maximumspeed"
+         android:paddingRight="15dp" />
+      <TextView
+         android:id="@+id/stat_maximumspeed" />
+   </TableRow>
+
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+   >
+      <TextView
+         android:text="@string/stat_elapsedtime"
+         android:paddingRight="15dp" />
+      <TextView
+         android:id="@+id/stat_elapsedtime" />
+   </TableRow>
+   
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+   >
+      <TextView
+         android:text="@string/stat_ascension"
+         android:paddingRight="15dp" />
+      <TextView
+         android:id="@+id/stat_ascension" />
+   </TableRow>
+
+</TableLayout>

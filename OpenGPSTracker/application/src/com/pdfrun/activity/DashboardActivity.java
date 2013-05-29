@@ -54,7 +54,7 @@ public class DashboardActivity extends Activity
            
           @Override
           public void onClick(View view) {
-              Intent i = new Intent(getApplicationContext(), TrackList.class);
+              Intent i = new Intent(getApplicationContext(), RunsListActivity.class);
               startActivity(i);
           }
       });
