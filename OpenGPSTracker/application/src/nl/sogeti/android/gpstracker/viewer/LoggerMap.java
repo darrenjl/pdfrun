@@ -1240,7 +1240,7 @@ public class LoggerMap extends MapActivity
 
    private void updateSpeedDisplayVisibility()
    {
-      boolean showspeed = mSharedPreferences.getBoolean(Constants.SPEED, false);
+      boolean showspeed = mSharedPreferences.getBoolean(Constants.SPEED, true);
       if (showspeed)
       {
          mLastGPSSpeedView.setVisibility(View.VISIBLE);
@@ -1266,7 +1266,7 @@ public class LoggerMap extends MapActivity
    
    private void updateDistanceDisplayVisibility()
    {
-      boolean showdistance = mSharedPreferences.getBoolean(Constants.DISTANCE, false);
+      boolean showdistance = mSharedPreferences.getBoolean(Constants.DISTANCE, true);
       if (showdistance)
       {
          mDistanceView.setVisibility(View.VISIBLE);
@@ -1292,7 +1292,7 @@ public class LoggerMap extends MapActivity
 
    private void updateLocationDisplayVisibility()
    {
-      boolean location = mSharedPreferences.getBoolean(Constants.LOCATION, false);
+      boolean location = mSharedPreferences.getBoolean(Constants.LOCATION, true);
       if (location)
       {
          mMylocation.enableMyLocation();
