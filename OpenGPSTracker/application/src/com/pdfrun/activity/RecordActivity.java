@@ -27,14 +27,12 @@ import com.pdfrun.R;
 
 public class RecordActivity extends LoggerMap
 {
-   private boolean started;
 
    @Override
    protected void onCreate(Bundle load)
    {
       this.layout = R.layout.activity_record;
       super.onCreate(load);
-      started = false;
    }
 
    public void trackRun(View view)
@@ -50,9 +48,8 @@ public class RecordActivity extends LoggerMap
       if (requestCode == MENU_TRACKING)
       {
          if (resultCode == RESULT_OK)
-         {
-            started = !started;
-            if (!started)
+         {                
+            if (intent.getBooleanExtra(com.pdfrun.Constants.TRACKING_STOPPED, false))
             {
                Log.d("PDFRun", "Stopped tracking run");
             }

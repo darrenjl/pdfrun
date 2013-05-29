@@ -101,12 +101,14 @@ public class ControlTracking extends Activity
                   break;
                case R.id.logcontrol_stop:
                   mLoggerServiceManager.stopGPSLogging();
+                  intent.putExtra(com.pdfrun.Constants.TRACKING_STOPPED, true);
                   setResult( RESULT_OK, intent );
                   break;
                default:
                   setResult( RESULT_CANCELED, intent );
                   break;
             }
+            Log.d("PDFRun", "ControlTracking - Logging State"+mLoggerServiceManager.getLoggingState());
             finish();
          }
       };
