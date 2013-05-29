@@ -149,12 +149,12 @@ public class TrackList extends ListActivity implements ProgressListener
          getListView().setSelection(savedInstanceState.getInt("POSITION"));
       }
 
-      IntentFilter filter = new IntentFilter();
-      filter.addAction(BreadcrumbsService.NOTIFY_DATA_SET_CHANGED);
-      registerReceiver(mReceiver, filter);
-
-      Intent service = new Intent(this, BreadcrumbsService.class);
-      startService(service);
+//      IntentFilter filter = new IntentFilter();
+//      filter.addAction(BreadcrumbsService.NOTIFY_DATA_SET_CHANGED);
+//      registerReceiver(mReceiver, filter);
+//
+//      Intent service = new Intent(this, BreadcrumbsService.class);
+//      startService(service);
    }
 
    @Override
@@ -202,7 +202,7 @@ public class TrackList extends ListActivity implements ProgressListener
          Intent service = new Intent(this, BreadcrumbsService.class);
          stopService(service);
       }
-      unregisterReceiver(mReceiver);
+//      unregisterReceiver(mReceiver);
       super.onDestroy();
    }
 
@@ -613,7 +613,7 @@ public class TrackList extends ListActivity implements ProgressListener
       SimpleCursorAdapter trackAdapter = new SimpleCursorAdapter(this, R.layout.trackitem, tracksCursor, fromColumns, toItems);
 
       //mBreadcrumbAdapter = new BreadcrumbsAdapter(this, mService);
-      sectionedAdapter.addSection("Local", trackAdapter);
+      sectionedAdapter.addSection("Runs", trackAdapter);
       //sectionedAdapter.addSection("www.gobreadcrumbs.com", mBreadcrumbAdapter);
 
       // Enrich the track adapter with Breadcrumbs adapter data 
