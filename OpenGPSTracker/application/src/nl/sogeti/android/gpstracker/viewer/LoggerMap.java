@@ -1039,6 +1039,7 @@ public class LoggerMap extends MapActivity
       super.onActivityResult(requestCode, resultCode, intent);
       Uri trackUri;
       long trackId;
+//      Intent locIntent = intent.c
       switch (requestCode)
       {
          case MENU_TRACKLIST:

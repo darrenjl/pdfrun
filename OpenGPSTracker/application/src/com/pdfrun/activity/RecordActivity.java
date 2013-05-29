@@ -27,44 +27,45 @@ import com.pdfrun.R;
 
 public class RecordActivity extends LoggerMap
 {
-   protected static final int MENU_TRACKING_PARENT = 15;
+   private boolean started;
+
    @Override
    protected void onCreate(Bundle load)
    {
-      this.layout=R.layout.activity_record;
+      this.layout = R.layout.activity_record;
       super.onCreate(load);
+      started = false;
    }
-   
-   public void trackRun(View view){
+
+   public void trackRun(View view)
+   {
       Intent intent = new Intent(this, ControlTracking.class);
-      startActivityForResult(intent,MENU_TRACKING_PARENT);
+      startActivityForResult(intent, MENU_TRACKING);
    }
-   
+
    @Override
    protected void onActivityResult(int requestCode, int resultCode, Intent intent)
    {
       super.onActivityResult(requestCode, resultCode, intent);
-      Uri trackUri;
-      long trackId;
-       if (requestCode==MENU_TRACKING_PARENT){
-            if (resultCode == RESULT_OK)
+      if (requestCode == MENU_TRACKING)
+      {
+         if (resultCode == RESULT_OK)
+         {
+            started = !started;
+            if (!started)
             {
-               trackUri = intent.getData();
-               trackId = Long.parseLong(trackUri.getLastPathSegment());
-               if (mLoggerServiceManager.getLoggingState() == Constants.STOPPED)
-               {
-                  Log.d("PDFRun", "Stopped tracking run");
-               }
+               Log.d("PDFRun", "Stopped tracking run");
             }
-       }
+         }
+      }
    }
-   
+
    @Override
    public boolean onCreateOptionsMenu(Menu menu)
    {
-      return true;  
+      return true;
    }
-   
+
    @Override
    public boolean onPrepareOptionsMenu(Menu menu)
    {
@@ -76,7 +77,7 @@ public class RecordActivity extends LoggerMap
    {
       return true;
    }
-   
+
    @Override
    protected void updateTitleBar()
    {
