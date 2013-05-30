@@ -547,6 +547,26 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
       return updates;
    }
+   
+   int updateTrackSignificantTime(long trackId, long time, String column)
+   {
+      int updates;
+      String whereclause = Tracks._ID + " = " + trackId;
+      ContentValues args = new ContentValues();
+      args.put(column, time);
+
+      // Execute the query.
+      SQLiteDatabase mDb = getWritableDatabase();
+      updates = mDb.update(Tracks.TABLE, args, whereclause, null);
+
+      ContentResolver resolver = this.mContext.getContentResolver();
+      Uri notifyUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, trackId);
+      resolver.notifyChange(notifyUri, null);
+
+      return updates;
+   }
+   
+   
 
    /**
     * Insert a key/value pair as meta-data for a track and optionally narrow the

@@ -32,6 +32,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.pdfrun.Constants;
+
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
 import nl.sogeti.android.gpstracker.db.GPStracking.MetaData;
 import nl.sogeti.android.gpstracker.db.GPStracking.Segments;
@@ -531,8 +533,9 @@ public class GPStrackingProvider extends ContentProvider
                String name = givenValues.getAsString(Tracks.NAME);
                updates = mDbHelper.updateTrack(trackId, name);
             }
-            else{
+            else if(selection!=null){
                Log.d("PDFRun", givenValues.toString());
+               updates = mDbHelper.updateTrackSignificantTime(trackId, givenValues.getAsLong(Constants.SIGNIFICANT_DISTANCE_TIME), selection);
             }
             break;
          case TRACK_METADATA:

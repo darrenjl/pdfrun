@@ -279,7 +279,7 @@ public class GPSLoggerService extends Service implements LocationListener
             mDistance += mPreviousLocation.distanceTo(filteredLocation);
             mElapsedTime = filteredLocation.getTime()- mStartTime;
          }
-         storeDistanceTimeIfSignificant(mDistance);
+         storeDistanceTimeIfSignificant(mElapsedTime);
          storeLocation(filteredLocation);
          broadcastLocation(filteredLocation);
          mPreviousLocation = location;
@@ -1464,11 +1464,11 @@ public class GPSLoggerService extends Service implements LocationListener
       mWaypointId = Long.parseLong(inserted.getLastPathSegment());
    }
    
-   public void storeDistanceTimeIfSignificant(float distance){
+   public void storeDistanceTimeIfSignificant(long time){
       ContentValues values = new ContentValues();
-      values.put( Tracks.KM_1_TIME, distance );
+      values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );
       Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
-      this.getContentResolver().update(trackUri, values, null, null);
+      this.getContentResolver().update(trackUri, values, Tracks.KM_1_TIME, null);
    }
 
    /**
