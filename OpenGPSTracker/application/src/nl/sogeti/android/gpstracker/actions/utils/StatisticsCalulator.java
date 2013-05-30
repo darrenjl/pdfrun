@@ -39,6 +39,7 @@ import android.database.Cursor;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
 {
@@ -63,6 +64,11 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
    private double mAscension;
    private double mDistanceTraveled;
    private long mDuration;
+   private long km1Time;
+   private long km3Time;
+   private long km5Time;
+   private long km8Time;
+   private long km10Time;
    private double mAverageActiveSpeed;
    private StatisticsDelegate mDelegate;
    
@@ -130,10 +136,17 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
       Cursor trackCursor = null;
       try
       {
-         trackCursor = resolver.query( trackUri, new String[] { Tracks.NAME }, null, null, null );
+         trackCursor = resolver.query( trackUri, new String[] { Tracks.NAME, Tracks.KM_1_TIME, Tracks.KM_3_TIME, Tracks.KM_5_TIME, Tracks.KM_8_TIME, Tracks.KM_10_TIME }, null, null, null );
          if( trackCursor.moveToLast() )
          {
             tracknameText = trackCursor.getString( 0 );
+            km1Time = trackCursor.getLong(1);
+            km3Time = trackCursor.getLong(2);
+            km5Time = trackCursor.getLong(3);
+            km8Time = trackCursor.getLong(4);
+            km10Time = trackCursor.getLong(5);
+            Log.d("PDFRun", "km1time - "+km1Time);
+            Log.d("PDFRun", "km3time - "+km3Time);
          }
       }
       finally
@@ -436,5 +449,25 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
          mDelegate.finishedCalculations(this);
       }
       
+   }
+   
+   public long getKm1Time(){return km1Time;}
+   public long getKm3Time(){return km3Time;}
+   public long getKm5Time(){return km5Time;}
+   public long getKm8Time(){return km8Time;}
+   public long getKm10Time(){return km10Time;}
+   
+   public String getKm1TimeText(){return getTimeText(km1Time);}
+   public String getKm3TimeText(){return getTimeText(km3Time);}
+   public String getKm5TimeText(){return getTimeText(km5Time);}
+   public String getKm8TimeText(){return getTimeText(km8Time);}
+   public String getKm10TimeText(){return getTimeText(km10Time);}
+   
+   public String getTimeText(long time)
+   {
+      long s = time / 1000;
+      String duration = String.format("%dh:%02dm:%02ds", s/3600, (s%3600)/60, (s%60));
+
+      return duration;
    }
 }
