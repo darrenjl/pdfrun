@@ -1465,10 +1465,49 @@ public class GPSLoggerService extends Service implements LocationListener
    }
    
    public void storeDistanceTimeIfSignificant(long time){
-      ContentValues values = new ContentValues();
-      values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );
+      Cursor trackCursor = null;
       Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
-      this.getContentResolver().update(trackUri, values, Tracks.KM_1_TIME, null);
+      long km1Time=0;
+      long km3Time=0;
+      long km5Time=0;
+      long km8Time=0;
+      long km10Time=0;
+      try
+      {
+         trackCursor = this.getContentResolver().query( trackUri, new String[] { Tracks.KM_1_TIME, Tracks.KM_3_TIME, Tracks.KM_5_TIME, Tracks.KM_8_TIME, Tracks.KM_10_TIME }, null, null, null );
+         if( trackCursor.moveToLast() )
+         {
+            km1Time = trackCursor.getLong(0);
+            km3Time = trackCursor.getLong(1);
+            km5Time = trackCursor.getLong(2);
+            km8Time = trackCursor.getLong(3);
+            km10Time = trackCursor.getLong(4);
+         }
+      }
+      finally
+      {
+         if( trackCursor != null )
+         {
+            trackCursor.close();
+         }
+      }
+      ContentValues values = new ContentValues();
+      if(mDistance>1000&&km1Time==0){
+         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         this.getContentResolver().update(trackUri, values, Tracks.KM_1_TIME, null);
+      } else if(mDistance>3000&&km3Time==0){
+         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         this.getContentResolver().update(trackUri, values, Tracks.KM_3_TIME, null);
+      } else if(mDistance>5000&&km5Time==0){
+         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         this.getContentResolver().update(trackUri, values, Tracks.KM_5_TIME, null);
+      } else if(mDistance>8000&&km8Time==0){
+         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         this.getContentResolver().update(trackUri, values, Tracks.KM_8_TIME, null);
+      } else if(mDistance>10000&&km10Time==0){
+         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         this.getContentResolver().update(trackUri, values, Tracks.KM_10_TIME, null);
+      } 
    }
 
    /**
