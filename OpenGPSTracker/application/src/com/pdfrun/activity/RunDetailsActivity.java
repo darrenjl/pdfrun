@@ -32,6 +32,7 @@ public class RunDetailsActivity extends Activity implements StatisticsDelegate
       private TextView maxSpeedView;
       private TextView mAscensionView;
       private TextView mElapsedTimeView;
+      private TextView km1TimeView;
 
       private UnitsI18n mUnits;
 
@@ -71,6 +72,7 @@ public class RunDetailsActivity extends Activity implements StatisticsDelegate
          mElapsedTimeView = (TextView) findViewById( R.id.stat_elapsedtime );
          avgSpeedView = (TextView) findViewById( R.id.stat_averagespeed );
          distanceView = (TextView) findViewById( R.id.stat_distance );
+         km1TimeView = (TextView) findViewById(R.id.km_1_time);
 
          if( load != null && load.containsKey( TRACKURI ) )
          {

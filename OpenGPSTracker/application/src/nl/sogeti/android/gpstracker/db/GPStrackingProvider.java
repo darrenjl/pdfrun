@@ -533,7 +533,7 @@ public class GPStrackingProvider extends ContentProvider
                String name = givenValues.getAsString(Tracks.NAME);
                updates = mDbHelper.updateTrack(trackId, name);
             }
-            else if(selection!=null){
+            else if(selection!=null&&givenValues.containsKey(Constants.SIGNIFICANT_DISTANCE_TIME)){
                Log.d("PDFRun", givenValues.toString());
                updates = mDbHelper.updateTrackSignificantTime(trackId, givenValues.getAsLong(Constants.SIGNIFICANT_DISTANCE_TIME), selection);
             }
