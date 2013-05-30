@@ -279,6 +279,7 @@ public class GPSLoggerService extends Service implements LocationListener
             mDistance += mPreviousLocation.distanceTo(filteredLocation);
             mElapsedTime = filteredLocation.getTime()- mStartTime;
          }
+         storeDistanceTimeIfSignificant(mDistance);
          storeLocation(filteredLocation);
          broadcastLocation(filteredLocation);
          mPreviousLocation = location;
@@ -1461,6 +1462,13 @@ public class GPSLoggerService extends Service implements LocationListener
       Uri waypointInsertUri = Uri.withAppendedPath(Tracks.CONTENT_URI, mTrackId + "/segments/" + mSegmentId + "/waypoints");
       Uri inserted = this.getContentResolver().insert(waypointInsertUri, args);
       mWaypointId = Long.parseLong(inserted.getLastPathSegment());
+   }
+   
+   public void storeDistanceTimeIfSignificant(float distance){
+      ContentValues values = new ContentValues();
+      values.put( Tracks.KM_1_TIME, distance );
+      Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
+      this.getContentResolver().update(trackUri, values, null, null);
    }
 
    /**
