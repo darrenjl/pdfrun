@@ -30,6 +30,7 @@ package nl.sogeti.android.gpstracker.viewer;
 
 import java.util.List;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.actions.ControlTracking;
@@ -138,8 +139,8 @@ public class LoggerMap extends MapActivity
    private CheckBox mLocation;
    private TextView[] mSpeedtexts = new TextView[0];
    private TextView mLastGPSSpeedView = null;
-   private TextView mLastGPSAltitudeView = null;
    private TextView mDistanceView = null;
+   private TextView mElapsedTimeView = null;
    private Gallery mGallery;
 
    private double mAverageSpeed = 33.33d / 3d;
@@ -222,7 +223,7 @@ public class LoggerMap extends MapActivity
       mLastGPSSpeedView = (TextView) findViewById(R.id.currentSpeed);
 //      mLastGPSAltitudeView = (TextView) findViewById(R.id.currentAltitude);
       mDistanceView = (TextView) findViewById(R.id.currentDistance);
-
+      mElapsedTimeView = (TextView) findViewById(R.id.elapsedTime);
       createListeners();
       onRestoreInstanceState(load);
    }
@@ -1338,6 +1339,10 @@ public class LoggerMap extends MapActivity
          double distance = units.conversionFromMeter( mLoggerServiceManager.getTrackedDistance() );
          String distanceText = String.format("%.2f %s", distance, units.getDistanceUnit());
          mDistanceView.setText(distanceText);
+         long millis = mLoggerServiceManager.getElapsedTime();
+         int seconds = (int) ((millis / 1000) % 60);
+         int minutes = (int) ((millis / 1000) / 60);
+         mElapsedTimeView.setText(minutes+":"+seconds);
       }
    }
 

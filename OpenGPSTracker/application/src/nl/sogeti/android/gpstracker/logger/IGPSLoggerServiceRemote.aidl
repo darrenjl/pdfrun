@@ -15,4 +15,5 @@ interface IGPSLoggerServiceRemote {
     void storeDerivedDataSource(in String sourceName);
     Location getLastWaypoint();
     float getTrackedDistance();
+    long getElapsedTime();
 }

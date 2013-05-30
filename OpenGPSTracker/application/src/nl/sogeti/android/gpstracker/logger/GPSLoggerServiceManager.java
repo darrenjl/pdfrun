@@ -37,6 +37,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.text.format.Time;
 import android.util.Log;
 
 /**
@@ -108,6 +109,30 @@ public class GPSLoggerServiceManager
             Log.e( TAG, "Could get tracked distance from GPSLoggerService.", e );
          }
          return distance;
+      }
+   }
+   
+   public long getElapsedTime()
+   {
+      synchronized (mStartLock)
+      {
+         long time=0;
+         try
+         {
+            if( mBound )
+            {
+               time  = this.mGPSLoggerRemote.getElapsedTime();
+            }
+            else
+            {
+               Log.w( TAG, "Remote interface to logging service not found. Started: " + mBound );
+            }
+         }
+         catch (RemoteException e)
+         {
+            Log.e( TAG, "Could get tracked distance from GPSLoggerService.", e );
+         }
+         return time;
       }
    }
    

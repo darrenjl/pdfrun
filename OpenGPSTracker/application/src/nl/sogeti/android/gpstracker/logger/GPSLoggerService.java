@@ -82,6 +82,7 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -179,6 +180,8 @@ public class GPSLoggerService extends Service implements LocationListener
 
    private Location mPreviousLocation;
    private float mDistance;
+   private long mStartTime;
+   private long mElapsedTime;
    private Notification mNotification;
 
    private Vector<Location> mWeakLocations;
@@ -274,6 +277,7 @@ public class GPSLoggerService extends Service implements LocationListener
          else if( mPreviousLocation != null )
          {
             mDistance += mPreviousLocation.distanceTo(filteredLocation);
+            mElapsedTime = filteredLocation.getTime()- mStartTime;
          }
          storeLocation(filteredLocation);
          broadcastLocation(filteredLocation);
@@ -431,6 +435,12 @@ public class GPSLoggerService extends Service implements LocationListener
       {
          return GPSLoggerService.this.getTrackedDistance();
       }
+      
+      @Override
+      public long getElapsedTime() throws RemoteException
+      {
+         return GPSLoggerService.this.getElapsedTime();
+      }
    };
 
    /**
@@ -550,7 +560,6 @@ public class GPSLoggerService extends Service implements LocationListener
          Log.d(TAG, "onCreate()");
       }
       ;
-
       GPSLoggerServiceThread looper = new GPSLoggerServiceThread();
       looper.start();
       try
@@ -765,6 +774,16 @@ public class GPSLoggerService extends Service implements LocationListener
          distance = mDistance;
       }
       return distance;
+   }
+   
+   public long getElapsedTime()
+   {
+      long time=0;
+      if (isLogging())
+      {
+         time=mElapsedTime;
+      }
+      return time;
    }
 
    protected boolean isMediaPrepared()
@@ -1376,6 +1395,7 @@ public class GPSLoggerService extends Service implements LocationListener
    private void startNewTrack()
    {
       mDistance = 0;
+      mStartTime = System.currentTimeMillis();
       Uri newTrack = this.getContentResolver().insert(Tracks.CONTENT_URI, new ContentValues(0));
       mTrackId = Long.valueOf(newTrack.getLastPathSegment()).longValue();
       startNewSegment();
