@@ -16,6 +16,8 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.pdfrun.R;
@@ -33,6 +35,15 @@ public class RunDetailsActivity extends Activity implements StatisticsDelegate
       private TextView mAscensionView;
       private TextView mElapsedTimeView;
       private TextView km1TimeView;
+      private TextView km3TimeView;
+      private TextView km5TimeView;
+      private TextView km8TimeView;
+      private TextView km10TimeView;
+      private TableRow km1TimeTableRow;
+      private TableRow km3TimeTableRow;
+      private TableRow km5TimeTableRow;
+      private TableRow km8TimeTableRow;
+      private TableRow km10TimeTableRow;
 
       private UnitsI18n mUnits;
 
@@ -73,7 +84,15 @@ public class RunDetailsActivity extends Activity implements StatisticsDelegate
          avgSpeedView = (TextView) findViewById( R.id.stat_averagespeed );
          distanceView = (TextView) findViewById( R.id.stat_distance );
          km1TimeView = (TextView) findViewById(R.id.km_1_time);
-
+         km3TimeView = (TextView) findViewById(R.id.km_3_time);
+         km5TimeView = (TextView) findViewById(R.id.km_5_time);
+         km8TimeView = (TextView) findViewById(R.id.km_8_time);
+         km10TimeView = (TextView) findViewById(R.id.km_10_time);
+         km1TimeTableRow   = (TableRow) findViewById(R.id.km_1_table_row);
+         km3TimeTableRow   = (TableRow) findViewById(R.id.km_3_table_row);
+         km5TimeTableRow   = (TableRow) findViewById(R.id.km_5_table_row);
+         km8TimeTableRow   = (TableRow) findViewById(R.id.km_8_table_row);
+         km10TimeTableRow   = (TableRow) findViewById(R.id.km_10_table_row);
          if( load != null && load.containsKey( TRACKURI ) )
          {
             mTrackUri = Uri.withAppendedPath( Tracks.CONTENT_URI, load.getString( TRACKURI ) );
@@ -150,7 +169,26 @@ public class RunDetailsActivity extends Activity implements StatisticsDelegate
          distanceView.setText( calculated.getDistanceText() );
          String titleFormat = getString( R.string.stat_title );
          setTitle( String.format( titleFormat, calculated.getTracknameText() ) );
-
+         if(calculated.getKm1Time()>0){
+            km1TimeView.setText(calculated.getKm1TimeText());
+            km1TimeTableRow.setVisibility(View.VISIBLE);
+         }
+         if(calculated.getKm3Time()>0){
+            km3TimeView.setText(calculated.getKm3TimeText());
+            km3TimeTableRow.setVisibility(View.VISIBLE);
+         }
+         if(calculated.getKm5Time()>0){
+            km5TimeView.setText(calculated.getKm5TimeText());
+            km5TimeTableRow.setVisibility(View.VISIBLE);
+         }
+         if(calculated.getKm8Time()>0){
+            km8TimeView.setText(calculated.getKm8TimeText());
+            km8TimeTableRow.setVisibility(View.VISIBLE);
+         }
+         if(calculated.getKm10Time()>0){
+            km10TimeView.setText(calculated.getKm10TimeText());
+            km10TimeTableRow.setVisibility(View.VISIBLE);
+         }
          calculating = false;
       }
    }
