@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,7 +49,7 @@ public class RecordActivity extends LoggerMap
       if (requestCode == MENU_TRACKING)
       {
          if (resultCode == RESULT_OK)
-         {                
+         {
             if (intent.getBooleanExtra(com.pdfrun.Constants.TRACKING_STOPPED, false))
             {
                Log.d("PDFRun", "Stopped tracking run");
@@ -100,6 +101,20 @@ public class RecordActivity extends LoggerMap
             trackCursor.close();
          }
       }
+   }
+
+   @Override
+   public boolean onKeyDown(int keycode, KeyEvent e)
+   {
+      switch (keycode)
+      {
+         case KeyEvent.KEYCODE_MENU:
+            Intent intent = new Intent(this, ControlTracking.class);
+            startActivityForResult(intent, MENU_TRACKING);
+            return true;
+      }
+
+      return super.onKeyDown(keycode, e);
    }
 
 }
