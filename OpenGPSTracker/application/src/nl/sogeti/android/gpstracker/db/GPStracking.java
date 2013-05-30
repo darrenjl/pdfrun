@@ -69,7 +69,12 @@ public final class GPStracking
       static final String CREATE_STATEMENT = 
          "CREATE TABLE " + Tracks.TABLE + "(" + " " + Tracks._ID           + " " + Tracks._ID_TYPE + 
                                           "," + " " + Tracks.NAME          + " " + Tracks.NAME_TYPE + 
-                                          "," + " " + Tracks.CREATION_TIME + " " + Tracks.CREATION_TIME_TYPE + 
+                                          "," + " " + Tracks.CREATION_TIME + " " + Tracks.CREATION_TIME_TYPE +
+                                          "," + " " + Tracks.KM_1_TIME + " " + Tracks.KM_1_TIME_TYPE +
+                                          "," + " " + Tracks.KM_3_TIME + " " + Tracks.KM_3_TIME_TYPE +
+                                          "," + " " + Tracks.KM_5_TIME + " " + Tracks.KM_5_TIME_TYPE +
+                                          "," + " " + Tracks.KM_8_TIME + " " + Tracks.KM_8_TIME_TYPE +
+                                          "," + " " + Tracks.KM_10_TIME + " " + Tracks.KM_10_TIME_TYPE +
                                           ");";
    }
    
@@ -215,6 +220,16 @@ public final class GPStracking
    {
       public static final String NAME          = "name";
       public static final String CREATION_TIME = "creationtime";
+      public static final String KM_1_TIME = "km1time";
+      public static final String KM_3_TIME = "km3time";
+      public static final String KM_5_TIME = "km5time";
+      public static final String KM_8_TIME = "km8time";
+      public static final String KM_10_TIME = "km10time";
+      static final String KM_1_TIME_TYPE = "INTEGER";
+      static final String KM_3_TIME_TYPE = "INTEGER";
+      static final String KM_5_TIME_TYPE = "INTEGER";
+      static final String KM_8_TIME_TYPE = "INTEGER";
+      static final String KM_10_TIME_TYPE = "INTEGER";
       static final String CREATION_TIME_TYPE   = "INTEGER NOT NULL";
       static final String NAME_TYPE            = "TEXT";
       static final String _ID_TYPE             = "INTEGER PRIMARY KEY AUTOINCREMENT";
