@@ -1,24 +1,20 @@
 package com.pdfrun.activity;
 
 import nl.sogeti.android.gpstracker.actions.ControlTracking;
-import nl.sogeti.android.gpstracker.actions.InsertNote;
-import nl.sogeti.android.gpstracker.actions.ShareTrack;
-import nl.sogeti.android.gpstracker.actions.Statistics;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
-import nl.sogeti.android.gpstracker.util.Constants;
-import nl.sogeti.android.gpstracker.viewer.ApplicationPreferenceActivity;
 import nl.sogeti.android.gpstracker.viewer.LoggerMap;
-import nl.sogeti.android.gpstracker.viewer.TrackList;
-import android.content.ActivityNotFoundException;
+import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,18 +24,20 @@ import com.pdfrun.R;
 
 public class RecordActivity extends LoggerMap
 {
+   private boolean isGPSEnabled;
+   private LocationManager locationManager;
 
    @Override
    protected void onCreate(Bundle load)
    {
       this.layout = R.layout.activity_record;
+      locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
       super.onCreate(load);
    }
 
    public void trackRun(View view)
    {
-      Intent intent = new Intent(this, ControlTracking.class);
-      startActivityForResult(intent, MENU_TRACKING);
+      checkGPSAndOpenControls();
    }
 
    @Override
@@ -58,7 +56,9 @@ public class RecordActivity extends LoggerMap
                detailsIntent.setData(trackUri);
                startActivity(detailsIntent);
             }
-         }
+         } 
+      } else if(requestCode==100){
+         checkGPSAndOpenControls();
       }
    }
 
@@ -109,12 +109,51 @@ public class RecordActivity extends LoggerMap
       switch (keycode)
       {
          case KeyEvent.KEYCODE_MENU:
-            Intent intent = new Intent(this, ControlTracking.class);
-            startActivityForResult(intent, MENU_TRACKING);
+            checkGPSAndOpenControls();
             return true;
       }
 
       return super.onKeyDown(keycode, e);
+   }
+
+   private void checkGPSAndOpenControls()
+   {
+      try
+      {
+         isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+      }
+      catch (Exception ex)
+      {
+      }
+
+      if (!isGPSEnabled)
+      {
+         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+         builder.setMessage("Your GPS module is disabled. Would you like to enable it ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
+            {
+               public void onClick(DialogInterface dialog, int id)
+               {
+
+                  //Sent user to GPS settings screen
+                  final Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                  startActivityForResult(intent, 100);
+
+                  dialog.dismiss();
+
+               }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener()
+            {
+               public void onClick(DialogInterface dialog, int id)
+               {
+                  dialog.cancel();
+               }
+            });
+         AlertDialog alert = builder.create();
+         alert.show();
+      } else {
+         Intent intent = new Intent(this, ControlTracking.class);
+         startActivityForResult(intent, MENU_TRACKING);
+      }
    }
 
 }
