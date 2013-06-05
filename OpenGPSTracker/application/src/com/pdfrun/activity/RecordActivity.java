@@ -1,5 +1,7 @@
 package com.pdfrun.activity;
 
+import java.util.Locale;
+
 import nl.sogeti.android.gpstracker.actions.ControlTracking;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.viewer.LoggerMap;
@@ -19,19 +21,23 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.speech.tts.TextToSpeech;
 
 import com.pdfrun.R;
 
-public class RecordActivity extends LoggerMap
+public class RecordActivity extends LoggerMap implements
+TextToSpeech.OnInitListener
 {
    private boolean isGPSEnabled;
    private LocationManager locationManager;
+   private TextToSpeech tts;
 
    @Override
    protected void onCreate(Bundle load)
    {
       this.layout = R.layout.activity_record;
       locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+      tts = new TextToSpeech(this, this);
       super.onCreate(load);
    }
 
@@ -114,6 +120,39 @@ public class RecordActivity extends LoggerMap
       }
 
       return super.onKeyDown(keycode, e);
+   }
+   
+   @Override
+   public void onDestroy() {
+       if (tts != null) {
+           tts.stop();
+           tts.shutdown();
+       }
+       super.onDestroy();
+   }
+   
+   @Override
+   public void onInit(int status) {
+
+       if (status == TextToSpeech.SUCCESS) {
+
+           int result = tts.setLanguage(Locale.ENGLISH);
+
+           if (result == TextToSpeech.LANG_MISSING_DATA
+                   || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+               Log.e("TTS", "This Language is not supported");
+           } else {
+               speakOut();
+           }
+
+       } else {
+           Log.e("TTS", "Initilization Failed!");
+       }
+
+   }
+
+   private void speakOut() {
+       tts.speak("Go", TextToSpeech.QUEUE_FLUSH, null);
    }
 
    private void checkGPSAndOpenControls()
