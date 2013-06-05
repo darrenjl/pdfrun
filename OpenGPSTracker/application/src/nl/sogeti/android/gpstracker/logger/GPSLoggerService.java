@@ -1480,8 +1480,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       mWaypointId = Long.parseLong(inserted.getLastPathSegment());
    }
    
-   public void storeDistanceTimeIfSignificant(long time){
-      speakOut(mDistance, time);
+   public void storeDistanceTimeIfSignificant(long time){      
       Cursor trackCursor = null;
       Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
       long km1Time=0;
@@ -1512,18 +1511,23 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       if(mDistance>1000&&km1Time==0){
          values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_1_TIME, null);
+         speakOut(mDistance, time);
       } else if(mDistance>3000&&km3Time==0){
          values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_3_TIME, null);
+         speakOut(mDistance, time);
       } else if(mDistance>5000&&km5Time==0){
          values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_5_TIME, null);
+         speakOut(mDistance, time);
       } else if(mDistance>8000&&km8Time==0){
          values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_8_TIME, null);
+         speakOut(mDistance, time);
       } else if(mDistance>10000&&km10Time==0){
          values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_10_TIME, null);
+         speakOut(mDistance, time);
       } 
    }
 
