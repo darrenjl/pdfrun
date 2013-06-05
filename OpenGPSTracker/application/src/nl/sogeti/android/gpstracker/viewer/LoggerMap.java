@@ -1126,7 +1126,7 @@ public class LoggerMap extends MapActivity
       {
          case Constants.GOOGLE:
             //findViewById(R.id.myOsmMapView).setVisibility(View.GONE);
-            findViewById(R.id.myMapView).setVisibility(View.VISIBLE);
+            findViewById(R.id.myMapView).setVisibility(View.INVISIBLE);
             mMapView.setMap(findViewById(R.id.myMapView));
             updateGoogleOverlays();
             break;
@@ -1139,7 +1139,7 @@ public class LoggerMap extends MapActivity
 //            break;
          default:
             Log.e(TAG, "Fault in value " + provider + " as MapProvider.");
-            findViewById(R.id.myMapView).setVisibility(View.VISIBLE);
+            findViewById(R.id.myMapView).setVisibility(View.INVISIBLE);
             mMapView.setMap(findViewById(R.id.myMapView));
             updateGoogleOverlays();
             break;
