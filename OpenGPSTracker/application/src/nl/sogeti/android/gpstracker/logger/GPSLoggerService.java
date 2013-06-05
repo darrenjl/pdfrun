@@ -33,11 +33,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Locale;
 import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 import com.pdfrun.R;
 import com.pdfrun.activity.RecordActivity;
@@ -48,6 +50,7 @@ import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.db.GPStracking.Waypoints;
 import nl.sogeti.android.gpstracker.streaming.StreamUtils;
 import nl.sogeti.android.gpstracker.util.Constants;
+import nl.sogeti.android.gpstracker.util.UnitsI18n;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -82,6 +85,7 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.speech.tts.TextToSpeech;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
@@ -92,7 +96,7 @@ import android.widget.Toast;
  * @version $Id$
  * @author rene (c) Jan 22, 2009, Sogeti B.V.
  */
-public class GPSLoggerService extends Service implements LocationListener
+public class GPSLoggerService extends Service implements LocationListener, TextToSpeech.OnInitListener
 {
    private static final float FINE_DISTANCE = 5F;
    private static final long  FINE_INTERVAL = 1000l;
@@ -206,6 +210,9 @@ public class GPSLoggerService extends Service implements LocationListener
     * enough to consider the GPS system alive.
     */
    private Timer mHeartbeatTimer;
+   
+   private TextToSpeech tts;
+   private UnitsI18n mUnits;
 
    /**
     * Listens to changes in preference to precision and sanity checks
@@ -598,6 +605,9 @@ public class GPSLoggerService extends Service implements LocationListener
       {
          broadCastLoggingState();
       }
+      
+      tts = new TextToSpeech(this, this);
+      mUnits = new UnitsI18n(this);
    }
 
    /**
@@ -685,6 +695,12 @@ public class GPSLoggerService extends Service implements LocationListener
       Message msg = Message.obtain();
       msg.what = STOPLOOPER;
       mHandler.sendMessage(msg);
+      
+      if (tts != null)
+      {
+         tts.stop();
+         tts.shutdown();
+      }
    }
 
    private void crashProtectState()
@@ -1465,6 +1481,7 @@ public class GPSLoggerService extends Service implements LocationListener
    }
    
    public void storeDistanceTimeIfSignificant(long time){
+      speakOut(mDistance, time);
       Cursor trackCursor = null;
       Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
       long km1Time=0;
@@ -1673,4 +1690,53 @@ public class GPSLoggerService extends Service implements LocationListener
       }
 
    }
+   
+   @Override
+   public void onInit(int status)
+   {
+
+      if (status == TextToSpeech.SUCCESS)
+      {
+
+         int result = tts.setLanguage(Locale.UK);
+
+         if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED)
+         {
+            Log.e("TTS", "This Language is not supported");
+         }
+         else
+         {
+            speakOut(0,0);
+         }
+
+      }
+      else
+      {
+         Log.e("TTS", "Initilization Failed!");
+      }
+
+   }
+
+   private void speakOut(float distance, long time)
+   {
+      StringBuilder strBuilder= new StringBuilder();
+      strBuilder.append("You have run ");
+      strBuilder.append(String.format( "%.2f", mUnits.conversionFromMeter(distance)));
+      if (mUnits.getDistanceUnit().equalsIgnoreCase("km"))
+         strBuilder.append(" kilometers");
+      else
+         strBuilder.append(" miles");
+      strBuilder.append(" in ");
+      strBuilder.append(getElapsedTimeMinutesSecondsString(time));
+      tts.speak(strBuilder.toString(), TextToSpeech.QUEUE_FLUSH, null);
+   }
+   
+   private static String getElapsedTimeMinutesSecondsString(long miliseconds) {
+      long elapsedTime = miliseconds;
+      String format = String.format("%%0%dd", 2);
+      elapsedTime = elapsedTime / 1000;
+      String seconds = String.format(format, elapsedTime % 60);
+      String minutes = String.format(format, elapsedTime / 60);
+      return minutes + " minutes, " + seconds + " seconds";
+    }
 }

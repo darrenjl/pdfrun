@@ -6,7 +6,6 @@ import nl.sogeti.android.gpstracker.actions.ControlTracking;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.viewer.LoggerMap;
 import android.app.AlertDialog;
-import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.DialogInterface;
@@ -16,17 +15,16 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.speech.tts.TextToSpeech;
 
 import com.pdfrun.R;
 
-public class RecordActivity extends LoggerMap implements
-TextToSpeech.OnInitListener
+public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitListener
 {
    private boolean isGPSEnabled;
    private LocationManager locationManager;
@@ -62,8 +60,10 @@ TextToSpeech.OnInitListener
                detailsIntent.setData(trackUri);
                startActivity(detailsIntent);
             }
-         } 
-      } else if(requestCode==100){
+         }
+      }
+      else if (requestCode == 100)
+      {
          checkGPSAndOpenControls();
       }
    }
@@ -121,38 +121,47 @@ TextToSpeech.OnInitListener
 
       return super.onKeyDown(keycode, e);
    }
-   
+
    @Override
-   public void onDestroy() {
-       if (tts != null) {
-           tts.stop();
-           tts.shutdown();
-       }
-       super.onDestroy();
-   }
-   
-   @Override
-   public void onInit(int status) {
-
-       if (status == TextToSpeech.SUCCESS) {
-
-           int result = tts.setLanguage(Locale.ENGLISH);
-
-           if (result == TextToSpeech.LANG_MISSING_DATA
-                   || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-               Log.e("TTS", "This Language is not supported");
-           } else {
-               speakOut();
-           }
-
-       } else {
-           Log.e("TTS", "Initilization Failed!");
-       }
-
+   public void onDestroy()
+   {
+      if (tts != null)
+      {
+         tts.stop();
+         tts.shutdown();
+      }
+      super.onDestroy();
    }
 
-   private void speakOut() {
-       tts.speak("Go", TextToSpeech.QUEUE_FLUSH, null);
+   @Override
+   public void onInit(int status)
+   {
+
+      if (status == TextToSpeech.SUCCESS)
+      {
+
+         int result = tts.setLanguage(Locale.UK);
+
+         if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED)
+         {
+            Log.e("TTS", "This Language is not supported");
+         }
+         else
+         {
+            speakOut();
+         }
+
+      }
+      else
+      {
+         Log.e("TTS", "Initilization Failed!");
+      }
+
+   }
+
+   private void speakOut()
+   {
+      tts.speak("Go", TextToSpeech.QUEUE_FLUSH, null);
    }
 
    private void checkGPSAndOpenControls()
@@ -189,7 +198,9 @@ TextToSpeech.OnInitListener
             });
          AlertDialog alert = builder.create();
          alert.show();
-      } else {
+      }
+      else
+      {
          Intent intent = new Intent(this, ControlTracking.class);
          startActivityForResult(intent, MENU_TRACKING);
       }
