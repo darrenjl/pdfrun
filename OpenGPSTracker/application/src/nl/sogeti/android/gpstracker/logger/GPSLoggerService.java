@@ -1010,7 +1010,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
 
    private void updateNotification()
    {
-      CharSequence contentTitle = getResources().getString(R.string.app_name);
+      CharSequence contentTitle = getResources().getString(R.string.application_name);
 
       String precision = getResources().getStringArray(R.array.precision_choices)[mPrecision];
       String state = getResources().getStringArray(R.array.state_choices)[mLoggingState - 1];
@@ -1031,10 +1031,16 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
             }
             break;
       }
+      StringBuilder strBuilder= new StringBuilder();
+      strBuilder.append(state+": ");
+      strBuilder.append(String.format( "%.2f", mUnits.conversionFromMeter(mDistance)));
+      strBuilder.append(mUnits.getDistanceUnit());
+      strBuilder.append(" in ");
+      strBuilder.append(getElapsedTimeMinutesSecondsString(mElapsedTime,false));
       Intent notificationIntent = new Intent(this, RecordActivity.class);
       notificationIntent.setData(ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId));
       mNotification.contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
-      mNotification.setLatestEventInfo(this, contentTitle, contentText, mNotification.contentIntent);
+      mNotification.setLatestEventInfo(this, contentTitle, strBuilder.toString(), mNotification.contentIntent);
       mNoticationManager.notify(R.layout.map, mNotification);
    }
 
@@ -1732,16 +1738,19 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       else
          strBuilder.append(" miles");
       strBuilder.append(" in ");
-      strBuilder.append(getElapsedTimeMinutesSecondsString(time));
+      strBuilder.append(getElapsedTimeMinutesSecondsString(time,true));
       tts.speak(strBuilder.toString(), TextToSpeech.QUEUE_FLUSH, null);
    }
    
-   private static String getElapsedTimeMinutesSecondsString(long miliseconds) {
+   private static String getElapsedTimeMinutesSecondsString(long miliseconds, boolean forSpeech) {
       long elapsedTime = miliseconds;
       String format = String.format("%%0%dd", 2);
       elapsedTime = elapsedTime / 1000;
       String seconds = String.format(format, elapsedTime % 60);
       String minutes = String.format(format, elapsedTime / 60);
-      return minutes + " minutes, " + seconds + " seconds";
+      if (forSpeech)
+         return minutes + " minutes, " + seconds + " seconds";
+      else
+         return minutes + ":" + seconds;
     }
 }
