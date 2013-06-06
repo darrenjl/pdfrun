@@ -285,6 +285,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
          {
             mDistance += mPreviousLocation.distanceTo(filteredLocation);
             mElapsedTime = filteredLocation.getTime()- mStartTime;
+            updateNotification();
          }
          storeDistanceTimeIfSignificant(mElapsedTime);
          storeLocation(filteredLocation);
@@ -1710,7 +1711,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
          }
          else
          {
-            speakOut(0,0);
+            Log.d("TTS", "Initialised");
          }
 
       }
