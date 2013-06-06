@@ -41,4 +41,69 @@
         
         <TextView android:id="@+id/maxSpeed" />
     </TableRow>
+    
+    <TableRow
+        android:id="@+id/km_1_table_row"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:visibility="gone">
+
+        <TextView
+            android:paddingRight="15dp"
+            android:text="Best time for 1km" />
+
+        <TextView android:id="@+id/km_1_time" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/km_3_table_row"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:visibility="gone">
+
+        <TextView
+            android:paddingRight="15dp"
+            android:text="Best time for 3km" />
+
+        <TextView android:id="@+id/km_3_time" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/km_5_table_row"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:visibility="gone">
+
+        <TextView
+            android:paddingRight="15dp"
+            android:text="Best time for 5km" />
+
+        <TextView android:id="@+id/km_5_time" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/km_8_table_row"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:visibility="gone">
+
+        <TextView
+            android:paddingRight="15dp"
+            android:text="Best time for 8km" />
+
+        <TextView android:id="@+id/km_8_time" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/km_10_table_row"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:visibility="gone">
+
+        <TextView
+            android:paddingRight="15dp"
+            android:text="Best time for 10km" />
+
+        <TextView android:id="@+id/km_10_time" />
+    </TableRow>
 </TableLayout>
