@@ -1033,6 +1033,8 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       }
       StringBuilder strBuilder= new StringBuilder();
       strBuilder.append(state+": ");
+      if(mUnits==null)
+         mUnits = new UnitsI18n(this);
       strBuilder.append(String.format( "%.2f", mUnits.conversionFromMeter(mDistance)));
       strBuilder.append(mUnits.getDistanceUnit());
       strBuilder.append(" in ");

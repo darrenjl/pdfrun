@@ -104,6 +104,7 @@ public class LoggerMap extends MapActivity
 {
    
    protected int layout=-1;
+   protected int loggingState=-1;
 
    public static final String OSM_PROVIDER = "OSM";
    public static final String GOOGLE_PROVIDER = "GOOGLE";
@@ -544,6 +545,8 @@ public class LoggerMap extends MapActivity
          public void run()
          {
             updateBlankingBehavior();
+            loggingState=mLoggerServiceManager.getLoggingState();
+            Log.d("PDFRun", "Record logging state: " + mLoggerServiceManager.getLoggingState());
          }
       };
       /*******************************************************

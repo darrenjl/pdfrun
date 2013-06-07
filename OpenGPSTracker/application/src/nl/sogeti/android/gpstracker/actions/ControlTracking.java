@@ -142,8 +142,9 @@ public class ControlTracking extends Activity
             public void run()
             {
                showDialog( DIALOG_LOGCONTROL );
+               Log.d("PDFRun", "Control logging state: " + mLoggerServiceManager.getLoggingState());
             }
-         } );
+         } );      
    }
 
    @Override
