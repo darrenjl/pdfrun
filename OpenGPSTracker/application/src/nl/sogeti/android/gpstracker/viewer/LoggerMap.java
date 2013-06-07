@@ -172,7 +172,7 @@ public class LoggerMap extends MapActivity
    /**
     * Run after the ServiceManager completes the binding to the remote service
     */
-   private Runnable mServiceConnected;
+   protected Runnable mServiceConnected;
    private Runnable speedCalculator;
 
    /**
@@ -1174,7 +1174,7 @@ public class LoggerMap extends MapActivity
 //      }
    }
 
-   private void updateBlankingBehavior()
+   protected void updateBlankingBehavior()
    {
       boolean disableblanking = mSharedPreferences.getBoolean(Constants.DISABLEBLANKING, true);
       boolean disabledimming = mSharedPreferences.getBoolean(Constants.DISABLEDIMMING, false);

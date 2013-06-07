@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import nl.sogeti.android.gpstracker.actions.ControlTracking;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
+import nl.sogeti.android.gpstracker.util.Constants;
 import nl.sogeti.android.gpstracker.viewer.LoggerMap;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -21,6 +22,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.pdfrun.R;
 
@@ -29,6 +31,8 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private boolean isGPSEnabled;
    private LocationManager locationManager;
    private TextToSpeech tts;
+   private TextView recordingTextView;
+   private static final String TAG = "PDFRun";
 
    @Override
    protected void onCreate(Bundle load)
@@ -36,7 +40,35 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       this.layout = R.layout.activity_record;
       locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
       tts = new TextToSpeech(this, this);
+      recordingTextView = (TextView) findViewById(R.id.recording);
       super.onCreate(load);
+      mServiceConnected = new Runnable()
+      {
+         @Override
+         public void run()
+         {
+            updateBlankingBehavior();
+            loggingState=mLoggerServiceManager.getLoggingState();
+            Log.d("PDFRun", "Record logging state: " + mLoggerServiceManager.getLoggingState());
+            if (recordingTextView==null)
+               recordingTextView = (TextView) findViewById(R.id.recording);
+            switch(loggingState){
+               case Constants.STOPPED:
+                  recordingTextView.setText("Stopped");
+                  break;
+               case Constants.LOGGING:
+                  recordingTextView.setText("Recording");
+                  break;
+               case Constants.PAUSED:
+                  recordingTextView.setText("Paused");
+                  break;
+               default:
+                  Log.d(TAG, "unknown logging state");
+                  recordingTextView.setText("No");
+                  break;
+            }
+         }
+      };
    }
 
    public void trackRun(View view)
