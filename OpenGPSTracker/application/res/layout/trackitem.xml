@@ -14,14 +14,14 @@
       android:paddingLeft="6dip"
       android:paddingRight="6dip" />
 
-   <TextView
-      android:id="@+id/from_textview"
-      android:layout_height="wrap_content"
-      android:layout_width="wrap_content"
-      android:text="@string/from"
-      android:layout_below="@+id/listitem_name"
-      android:paddingLeft="6dip"
-      android:paddingTop="3dip" />
+<!--    <TextView -->
+<!--       android:id="@+id/from_textview" -->
+<!--       android:layout_height="wrap_content" -->
+<!--       android:layout_width="wrap_content" -->
+<!--       android:text="@string/from" -->
+<!--       android:layout_below="@+id/listitem_name" -->
+<!--       android:paddingLeft="6dip" -->
+<!--       android:paddingTop="3dip" /> -->
 
    <nl.sogeti.android.gpstracker.util.DateView
       android:layout_height="wrap_content"

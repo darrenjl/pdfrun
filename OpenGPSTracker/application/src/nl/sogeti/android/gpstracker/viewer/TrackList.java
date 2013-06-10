@@ -613,7 +613,7 @@ public class TrackList extends ListActivity implements ProgressListener
       SimpleCursorAdapter trackAdapter = new SimpleCursorAdapter(this, R.layout.trackitem, tracksCursor, fromColumns, toItems);
 
       //mBreadcrumbAdapter = new BreadcrumbsAdapter(this, mService);
-      sectionedAdapter.addSection("Runs", trackAdapter);
+      sectionedAdapter.addSection("", trackAdapter);
       //sectionedAdapter.addSection("www.gobreadcrumbs.com", mBreadcrumbAdapter);
 
       // Enrich the track adapter with Breadcrumbs adapter data 
