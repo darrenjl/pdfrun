@@ -73,7 +73,7 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
 
       addPreferencesFromResource(R.layout.settings);
 
-      ListPreference precision = (ListPreference) findPreference(PRECISION_PREFERENCE);
+      //ListPreference precision = (ListPreference) findPreference(PRECISION_PREFERENCE);
       time = (EditTextPreference) findPreference(CUSTOMPRECISIONTIME_PREFERENCE);
       distance = (EditTextPreference) findPreference(CUSTOMPRECISIONDISTANCE_PREFERENCE);
       //implentWidth = (EditTextPreference) findPreference(UNITS_IMPLEMENT_WIDTH_PREFERENCE);
@@ -81,15 +81,15 @@ public class ApplicationPreferenceActivity extends PreferenceActivity
 //      custumupload_backlog = (EditTextPreference) findPreference(CUSTOMUPLOAD_BACKLOG);
 
       //setEnabledCustomValues(precision.getValue());
-      precision.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-      {
-         @Override
-         public boolean onPreferenceChange(Preference preference, Object newValue)
-         {
-//            setEnabledCustomValues(newValue);
-            return true;
-         }
-      });
+//      precision.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+//      {
+//         @Override
+//         public boolean onPreferenceChange(Preference preference, Object newValue)
+//         {
+////            setEnabledCustomValues(newValue);
+//            return true;
+//         }
+//      });
 //      implentWidth.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
 //      {
 //         @Override
