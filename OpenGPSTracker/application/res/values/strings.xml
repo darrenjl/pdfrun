@@ -296,7 +296,7 @@ Enter number of feet for acres/hour or meters for use in hectares/hour.\n </stri
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_groups">GroupsActivity</string>
     <string name="title_activity_academy">AcademyActivity</string>
-    <string name="title_activity_run_details">RunDetailsActivity</string>
+    <string name="title_activity_run_details">Run Details</string>
     <string name="title_activity_runs_list">Runs</string>
 
 </resources>

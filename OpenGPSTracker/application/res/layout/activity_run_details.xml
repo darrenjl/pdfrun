@@ -15,9 +15,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="@string/stat_distance" />
+            android:text="@string/stat_distance" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/stat_distance" />
+        <TextView android:id="@+id/stat_distance" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
 
     <TableRow
@@ -26,9 +28,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="@string/stat_averagespeed" />
+            android:text="@string/stat_averagespeed" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/stat_averagespeed" />
+        <TextView android:id="@+id/stat_averagespeed" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
 
     <TableRow
@@ -37,9 +41,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="@string/stat_maximumspeed" />
+            android:text="@string/stat_maximumspeed" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/stat_maximumspeed" />
+        <TextView android:id="@+id/stat_maximumspeed" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
 
     <TableRow
@@ -48,9 +54,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="@string/stat_elapsedtime" />
+            android:text="@string/stat_elapsedtime" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/stat_elapsedtime" />
+        <TextView android:id="@+id/stat_elapsedtime" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
     
     <TableRow
@@ -61,9 +69,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="Time for 1km" />
+            android:text="Time for 1km" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/km_1_time" />
+        <TextView android:id="@+id/km_1_time" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
     
     <TableRow
@@ -74,9 +84,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="Time for 3km" />
+            android:text="Time for 3km" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/km_3_time" />
+        <TextView android:id="@+id/km_3_time" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
     
     <TableRow
@@ -87,9 +99,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="Time for 5km" />
+            android:text="Time for 5km" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/km_5_time" />
+        <TextView android:id="@+id/km_5_time" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
     
     <TableRow
@@ -100,9 +114,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="Time for 8km" />
+            android:text="Time for 8km" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/km_8_time" />
+        <TextView android:id="@+id/km_8_time" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
     
     <TableRow
@@ -113,9 +129,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="Time for 10km" />
+            android:text="Time for 10km" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/km_10_time" />
+        <TextView android:id="@+id/km_10_time" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
 
     <TableRow
@@ -124,9 +142,11 @@
 
         <TextView
             android:paddingRight="15dp"
-            android:text="@string/stat_ascension" />
+            android:text="@string/stat_ascension" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <TextView android:id="@+id/stat_ascension" />
+        <TextView android:id="@+id/stat_ascension" 
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </TableRow>
 
 </TableLayout>
