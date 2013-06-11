@@ -1343,9 +1343,10 @@ public class LoggerMap extends MapActivity
          String distanceText = String.format("%.2f %s", distance, units.getDistanceUnit());
          mDistanceView.setText(distanceText);
          long millis = mLoggerServiceManager.getElapsedTime();
-         int seconds = (int) ((millis / 1000) % 60);
-         int minutes = (int) ((millis / 1000) / 60);
-         mElapsedTimeView.setText(minutes+":"+seconds);
+         long s = millis / 1000;
+         String duration = String.format("%dh:%02dm:%02ds", s/3600, (s%3600)/60, (s%60));
+
+         mElapsedTimeView.setText(duration);
       }
    }
 
