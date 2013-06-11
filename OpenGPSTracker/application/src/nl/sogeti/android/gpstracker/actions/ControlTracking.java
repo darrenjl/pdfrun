@@ -88,8 +88,9 @@ public class ControlTracking extends Activity
                   if( caller != null )
                   {
                      intent.setData( ContentUris.withAppendedId( Tracks.CONTENT_URI, loggerTrackId ) );
+                     intent.putExtra(com.pdfrun.Constants.TRACKING_STARTED, true);
                      setResult( RESULT_OK, intent );
-                  }                  
+                  }                        
                   break;
                case R.id.logcontrol_pause:
                   mLoggerServiceManager.pauseGPSLogging();

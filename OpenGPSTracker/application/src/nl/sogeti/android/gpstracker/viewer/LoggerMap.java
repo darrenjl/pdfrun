@@ -130,7 +130,7 @@ public class LoggerMap extends MapActivity
    private static final int DIALOG_LAYERS = 31;
    private static final int DIALOG_URIS = 34;
    private static final int DIALOG_CONTRIB = 35;
-   private static final String TAG = "OGT.LoggerMap";
+   private static final String TAG = "PDFRun.LoggerMap";
    // UI's
    private CheckBox mTraffic;
    private CheckBox mSpeed;
@@ -146,7 +146,7 @@ public class LoggerMap extends MapActivity
 
    private double mAverageSpeed = 33.33d / 3d;
    protected long mTrackId = -1;
-   private long mLastSegment = -1;
+   protected long mLastSegment = -1;
    private UnitsI18n mUnits;
    private WakeLock mWakeLock = null;
    private SharedPreferences mSharedPreferences;
@@ -159,7 +159,7 @@ public class LoggerMap extends MapActivity
    private Handler mHandler;
 
    private ContentObserver mTrackSegmentsObserver;
-   private ContentObserver mSegmentWaypointsObserver;
+   protected ContentObserver mSegmentWaypointsObserver;
    private ContentObserver mTrackMediasObserver;
    private DialogInterface.OnClickListener mNoTrackDialogListener;
    private DialogInterface.OnClickListener mOiAboutDialogListener;
@@ -747,6 +747,7 @@ public class LoggerMap extends MapActivity
          {
             if (!selfUpdate)
             {
+               Log.d(TAG, "update track numbers");
                LoggerMap.this.updateTrackNumbers();
                if (mLastSegmentOverlay != null)
                {
@@ -1312,7 +1313,7 @@ public class LoggerMap extends MapActivity
     * recent waypoint and updates UI components with this latest bit of
     * information.
     */
-   private void updateTrackNumbers()
+   protected void updateTrackNumbers()
    {
       Location lastWaypoint = mLoggerServiceManager.getLastWaypoint();
       UnitsI18n units = mUnits;

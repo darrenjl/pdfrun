@@ -11,10 +11,12 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -33,6 +35,8 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private TextToSpeech tts;
    private TextView recordingTextView;
    private static final String TAG = "PDFRun";
+   private boolean firstLocationFound=false;
+   private boolean started=false;
 
    @Override
    protected void onCreate(Bundle load)
@@ -58,7 +62,10 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                   RecordActivity.this.setTitle(RecordActivity.this.getString(R.string.application_name));
                   break;
                case Constants.LOGGING:
-                  recordingTextView.setText("Recording");
+                  if (started)
+                     recordingTextView.setText("Waiting For Satelites");
+                  else
+                     recordingTextView.setText("Recording");
                   break;
                case Constants.PAUSED:
                   recordingTextView.setText("Paused");
@@ -70,8 +77,34 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
             }
          }
       };
+      mSegmentWaypointsObserver = new ContentObserver(new Handler())
+      {
+         @Override
+         public void onChange(boolean selfUpdate)
+         {
+            if (!selfUpdate)
+            {
+               Log.d(TAG, "RA update track numbers");
+               RecordActivity.this.updateTrackNumbers();            
+            }
+            else
+            {
+               Log.w(TAG, "mSegmentWaypointsObserver skipping change on " + mLastSegment);
+            }
+         }
+      };
    }
 
+   @Override
+   protected void updateTrackNumbers()
+   {
+      if(started&&!firstLocationFound){
+         Log.d(TAG, "First Location Found");
+         recordingTextView.setText("Recording");
+         speakOut();
+      }
+      super.updateTrackNumbers();
+   }
    public void trackRun(View view)
    {
       checkGPSAndOpenControls();
@@ -92,6 +125,8 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                Intent detailsIntent = new Intent(this, RunDetailsActivity.class);
                detailsIntent.setData(trackUri);
                startActivity(detailsIntent);
+            } else if (intent.getBooleanExtra(com.pdfrun.Constants.TRACKING_STARTED, false)){
+               started=true;
             }
          }
       }
