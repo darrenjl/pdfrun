@@ -55,6 +55,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
             switch(loggingState){
                case Constants.STOPPED:
                   recordingTextView.setText("Stopped");
+                  RecordActivity.this.setTitle(RecordActivity.this.getString(R.string.application_name));
                   break;
                case Constants.LOGGING:
                   recordingTextView.setText("Recording");
