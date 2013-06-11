@@ -139,9 +139,9 @@ public class LoggerMap extends MapActivity
    private CheckBox mCompass;
    private CheckBox mLocation;
    private TextView[] mSpeedtexts = new TextView[0];
-   private TextView mLastGPSSpeedView = null;
-   private TextView mDistanceView = null;
-   private TextView mElapsedTimeView = null;
+   protected TextView mLastGPSSpeedView = null;
+   protected TextView mDistanceView = null;
+   protected TextView mElapsedTimeView = null;
    private Gallery mGallery;
 
    private double mAverageSpeed = 33.33d / 3d;
@@ -255,14 +255,14 @@ public class LoggerMap extends MapActivity
          resolver.registerContentObserver(lastSegmentUri, true, this.mSegmentWaypointsObserver);
          resolver.registerContentObserver(mediaUri, true, this.mTrackMediasObserver);
       }
-      updateDataOverlays();
-
-      updateSpeedColoring();
-      updateSpeedDisplayVisibility();
+//      updateDataOverlays();
+//
+//      updateSpeedColoring();
+//      updateSpeedDisplayVisibility();
 //      updateAltitudeDisplayVisibility();
-      updateDistanceDisplayVisibility();
+//      updateDistanceDisplayVisibility();
 //      updateCompassDisplayVisibility();
-      updateLocationDisplayVisibility();
+//      updateLocationDisplayVisibility();
 
       mMapView.executePostponedActions();
    }

@@ -178,10 +178,10 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          {
             Log.e("TTS", "This Language is not supported");
          }
-         else
-         {
-            speakOut();
-         }
+//         else
+//         {
+//            speakOut();
+//         }
 
       }
       else
