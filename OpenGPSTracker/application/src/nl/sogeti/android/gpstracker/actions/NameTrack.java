@@ -32,6 +32,7 @@ import java.util.Calendar;
 
 import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -164,7 +165,8 @@ public class NameTrack extends Activity
       }
    }
    
-   @Override
+   @SuppressLint("NewApi")
+@Override
    protected Dialog onCreateDialog( int id )
    {
       Dialog dialog = null;
@@ -174,7 +176,10 @@ public class NameTrack extends Activity
       switch (id)
       {
          case DIALOG_TRACKNAME:
-            builder = new AlertDialog.Builder( this );
+            if (android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.HONEYCOMB) 
+               builder = new AlertDialog.Builder( this, AlertDialog.THEME_HOLO_LIGHT );
+            else
+               builder = new AlertDialog.Builder( this);
             factory = LayoutInflater.from( this );
             view = factory.inflate( R.layout.namedialog, null );
             mTrackNameView = (EditText) view.findViewById( R.id.nameField );
