@@ -125,6 +125,9 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
          {
             mAverageActiveSpeed = waypointsCursor.getDouble( 0 );
          }
+      }catch(NullPointerException e){
+         Log.d(TAG, "No waypoints");
+         return;
       }
       finally
       {

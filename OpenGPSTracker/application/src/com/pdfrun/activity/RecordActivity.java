@@ -26,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.maps.GeoPoint;
 import com.pdfrun.R;
 
 public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitListener
@@ -37,6 +38,9 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private static final String TAG = "PDFRun";
    private boolean firstLocationFound=false;
    private boolean started=false;
+   private static final String INSTANCE_TIME = "time";
+   private static final String INSTANCE_SPEED = "speed";
+   private static final String INSTANCE_DISTANCE = "distance";
 
    @Override
    protected void onCreate(Bundle load)
@@ -272,6 +276,39 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          Intent intent = new Intent(this, ControlTracking.class);
          startActivityForResult(intent, MENU_TRACKING);
       }
+   }
+   
+   @Override
+   protected void onRestoreInstanceState(Bundle load)
+   {
+      if (load != null)
+      {
+         super.onRestoreInstanceState(load);
+      }
+      if (load != null) // 1st method: track from a previous instance of this activity
+      {
+         if (load.containsKey(INSTANCE_SPEED))
+         {
+            mLastGPSSpeedView.setText(load.getString(INSTANCE_SPEED));
+         }
+         if (load.containsKey(INSTANCE_DISTANCE))
+         {
+            mDistanceView.setText(load.getString(INSTANCE_DISTANCE));
+         }
+         if (load.containsKey(INSTANCE_TIME))
+         {
+            mElapsedTimeView.setText(load.getString(INSTANCE_TIME));
+         }
+      }
+   }
+
+   @Override
+   protected void onSaveInstanceState(Bundle save)
+   {
+      super.onSaveInstanceState(save);
+      save.putString(INSTANCE_SPEED, mCurrentSpeed);
+      save.putString(INSTANCE_DISTANCE, mCurrentDistance);
+      save.putString(INSTANCE_TIME, mElapsedTime);
    }
 
 }

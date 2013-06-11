@@ -145,6 +145,9 @@ public class LoggerMap extends MapActivity
    private Gallery mGallery;
 
    private double mAverageSpeed = 33.33d / 3d;
+   protected String mCurrentSpeed;
+   protected String mElapsedTime;
+   protected String mCurrentDistance;
    protected long mTrackId = -1;
    protected long mLastSegment = -1;
    private UnitsI18n mUnits;
@@ -1324,6 +1327,7 @@ public class LoggerMap extends MapActivity
          speed = units.conversionFromMetersPerSecond(speed);
          String speedText = units.formatSpeed(speed, false);
          mLastGPSSpeedView.setText(speedText);
+         mCurrentSpeed = speedText;
 
          // Speed color bar and refrence numbers
          if (speed > 2 * mAverageSpeed)
@@ -1343,10 +1347,11 @@ public class LoggerMap extends MapActivity
          double distance = units.conversionFromMeter( mLoggerServiceManager.getTrackedDistance() );
          String distanceText = String.format("%.2f %s", distance, units.getDistanceUnit());
          mDistanceView.setText(distanceText);
+         mCurrentDistance=distanceText;
          long millis = mLoggerServiceManager.getElapsedTime();
          long s = millis / 1000;
          String duration = String.format("%dh:%02dm:%02ds", s/3600, (s%3600)/60, (s%60));
-
+         mElapsedTime = duration;
          mElapsedTimeView.setText(duration);
       }
    }
