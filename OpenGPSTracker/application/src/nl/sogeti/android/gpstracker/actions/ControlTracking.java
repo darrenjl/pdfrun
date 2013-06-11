@@ -28,10 +28,12 @@
  */
 package nl.sogeti.android.gpstracker.actions;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.pdfrun.R;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.logger.GPSLoggerServiceManager;
 import nl.sogeti.android.gpstracker.util.Constants;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -41,6 +43,7 @@ import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources.Theme;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,7 +57,7 @@ import android.widget.Button;
  * @version $Id$
  * @author rene (c) Jul 27, 2010, Sogeti B.V.
  */
-public class ControlTracking extends Activity
+public class ControlTracking extends SherlockActivity
 {
    private static final int DIALOG_LOGCONTROL = 26;
    private static final String TAG = "OGT.ControlTracking";
@@ -156,23 +159,28 @@ public class ControlTracking extends Activity
       paused = true;
    }
 
-   @Override
+   @SuppressLint("NewApi")
+@Override
    protected Dialog onCreateDialog( int id )
    {
       Dialog dialog = null;
       LayoutInflater factory = null;
       View view = null;
-      Builder builder = null;
+      AlertDialog.Builder builder = null;
       switch( id )
       {
          case DIALOG_LOGCONTROL:
-            builder = new AlertDialog.Builder( this );
+            if (android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.HONEYCOMB) 
+               builder = new AlertDialog.Builder( this, AlertDialog.THEME_HOLO_LIGHT );
+            else
+               builder = new AlertDialog.Builder( this);
             factory = LayoutInflater.from( this );
             view = factory.inflate( R.layout.logcontrol, null );
             builder.setTitle( R.string.dialog_tracking_title ).
             setIcon( android.R.drawable.ic_dialog_alert ).
             setNegativeButton( R.string.btn_cancel, mDialogClickListener ).
             setView( view );
+            //setInverseBackgroundForced(true);
             dialog = builder.create();
             start = (Button) view.findViewById( R.id.logcontrol_start );
             pause = (Button) view.findViewById( R.id.logcontrol_pause );
