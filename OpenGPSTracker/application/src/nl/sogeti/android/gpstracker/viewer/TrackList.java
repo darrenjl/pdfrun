@@ -354,7 +354,7 @@ public class TrackList extends ListActivity implements ProgressListener
          Object listItem = getListAdapter().getItem(itemInfo.position);
          if (listItem instanceof Cursor)
          {
-            menu.add(0, MENU_STATS, 0, R.string.menu_statistics);
+            //menu.add(0, MENU_STATS, 0, R.string.menu_statistics);
             menu.add(0, MENU_SHARE, 0, R.string.menu_shareTrack);
             menu.add(0, MENU_RENAME, 0, R.string.menu_renameTrack);
             menu.add(0, MENU_DETELE, 0, R.string.menu_deleteTrack);
