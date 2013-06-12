@@ -26,7 +26,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.maps.GeoPoint;
 import com.patdivillyfitness.runcoach.R;
 
 public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitListener
@@ -136,7 +135,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       }
       else if (requestCode == 100)
       {
-         checkGPSAndOpenControls();
+         //checkGPSAndOpenControls();
       }
    }
 
