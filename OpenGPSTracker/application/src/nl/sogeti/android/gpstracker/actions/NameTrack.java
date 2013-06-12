@@ -45,12 +45,15 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 /**
@@ -204,6 +207,13 @@ public class NameTrack extends Activity
                   }
                }
             });
+            dialog.setOnShowListener(new OnShowListener() {
+               @Override
+                public void onShow(DialogInterface dialog) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(mTrackNameView, InputMethodManager.SHOW_IMPLICIT);
+               }
+           });
             return dialog;
          default:
             return super.onCreateDialog( id );
