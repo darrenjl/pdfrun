@@ -277,7 +277,7 @@ Enter number of feet for acres/hour or meters for use in hectares/hour.\n </stri
     <!--
    ***************************
    About information
-   ***************************
+   ***************************
     -->
     <string name="about_comments">An application that can record, by GPS, the travels of your device.</string>
     <string name="about_activity_name_extended">About %s</string>
@@ -285,7 +285,7 @@ Enter number of feet for acres/hour or meters for use in hectares/hour.\n </stri
     <!--
    ***************************
    Strings below added by Darren Lyons once project was forked to pdfrun
-   ***************************
+   ***************************
     -->
     <string name="title_activity_record">Record new run</string>
     <string name="action_settings">Settings</string>
@@ -298,5 +298,6 @@ Enter number of feet for acres/hour or meters for use in hectares/hour.\n </stri
     <string name="title_activity_academy">AcademyActivity</string>
     <string name="title_activity_run_details">Run Details</string>
     <string name="title_activity_runs_list">Runs</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>

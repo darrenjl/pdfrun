@@ -280,11 +280,6 @@
         <activity
             android:name="com.pdfrun.activity.DashboardActivity"
             android:label="@string/application_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.pdfrun.activity.InfoActivity"
@@ -309,6 +304,16 @@
         <activity
             android:name="com.pdfrun.activity.RunsListActivity"
             android:label="@string/title_activity_runs_list" >
+        </activity>
+        <activity
+            android:name="com.pdfrun.activity.SplashActivity"
+            android:label="@string/title_activity_splash" 
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
