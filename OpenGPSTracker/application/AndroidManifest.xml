@@ -279,7 +279,8 @@
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.DashboardActivity"
-            android:label="@string/application_name" >
+            android:label="@string/application_name" 
+            android:theme="@style/AppNoTitleTheme">
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.InfoActivity"

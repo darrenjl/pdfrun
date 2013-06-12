@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_weight="1"
+    android:layout_weight="2"
     android:background="#d8d9de" >
 	<!--  News Feed Button -->
     <Button
@@ -15,14 +15,14 @@
     <Button
         android:id="@+id/btn_runs"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_record"
+        android:drawableTop="@drawable/btn_groups"
         android:text="Runs" />
     
 	<!--  Messages Button -->
     <Button
         android:id="@+id/btn_profile"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_record"
+        android:drawableTop="@drawable/btn_groups"
         android:text="Profile" />
 	
     <!--  Places Button -->
@@ -36,14 +36,14 @@
     <Button
         android:id="@+id/btn_academy"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_record"
+        android:drawableTop="@drawable/btn_groups"
         android:text="Academy" />
 
     <!--  Photos Button -->
     <Button
         android:id="@+id/btn_settings"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_record"
+        android:drawableTop="@drawable/btn_groups"
         android:text="Settings" />
 
 </com.patdivillyfitness.runcoach.DashboardLayout>

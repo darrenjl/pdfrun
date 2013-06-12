@@ -2,12 +2,20 @@
     android:id="@+id/home_root"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal">
     	
-    	<!--  Include Fragmented dashboard -->	
+    	<!--  Include Fragmented dashboard -->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:src="@drawable/logo" />
+	
 		<include layout="@layout/fragment_layout"/>	
 		
 		<!--  Include Footer -->
-		<include layout="@layout/footer_layout"/>
+<!-- 		<include layout="@layout/footer_layout"/> -->
     	    
 </LinearLayout>

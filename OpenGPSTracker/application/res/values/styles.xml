@@ -9,6 +9,11 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <!-- Application theme. -->
+    <style name="AppNoTitleTheme" parent="Theme.Sherlock.Light.NoActionBar">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
         
     <style name="DashboardButton">
         <item name="android:layout_gravity">center_vertical</item>
