@@ -19,7 +19,8 @@
  */
 package nl.sogeti.android.gpstracker.viewer;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;

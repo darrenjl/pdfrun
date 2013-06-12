@@ -40,7 +40,8 @@ import java.util.Vector;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.Executor;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.utils.ProgressListener;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.db.GPStracking.Waypoints;

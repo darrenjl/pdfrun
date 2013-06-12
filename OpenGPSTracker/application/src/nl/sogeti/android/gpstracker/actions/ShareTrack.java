@@ -35,7 +35,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.tasks.GpxCreator;
 import nl.sogeti.android.gpstracker.actions.tasks.GpxSharing;
 import nl.sogeti.android.gpstracker.actions.tasks.JogmapSharing;

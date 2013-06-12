@@ -30,7 +30,8 @@ package nl.sogeti.android.gpstracker.util;
 
 import java.util.Locale;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;

@@ -1,4 +1,4 @@
-package com.pdfrun.activity;
+package com.patdivillyfitness.runcoach.activity;
 
 import java.util.Locale;
 
@@ -27,7 +27,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
 
 public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitListener
 {
@@ -122,14 +122,14 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       {
          if (resultCode == RESULT_OK)
          {
-            if (intent.getBooleanExtra(com.pdfrun.Constants.TRACKING_STOPPED, false))
+            if (intent.getBooleanExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STOPPED, false))
             {
                Log.d("PDFRun", "Stopped tracking run");
                Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
                Intent detailsIntent = new Intent(this, RunDetailsActivity.class);
                detailsIntent.setData(trackUri);
                startActivity(detailsIntent);
-            } else if (intent.getBooleanExtra(com.pdfrun.Constants.TRACKING_STARTED, false)){
+            } else if (intent.getBooleanExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STARTED, false)){
                started=true;
             }
          }

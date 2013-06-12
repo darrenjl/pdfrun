@@ -29,7 +29,8 @@
 package nl.sogeti.android.gpstracker.actions;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.logger.GPSLoggerServiceManager;
 import nl.sogeti.android.gpstracker.util.Constants;
@@ -91,7 +92,7 @@ public class ControlTracking extends SherlockActivity
                   if( caller != null )
                   {
                      intent.setData( ContentUris.withAppendedId( Tracks.CONTENT_URI, loggerTrackId ) );
-                     intent.putExtra(com.pdfrun.Constants.TRACKING_STARTED, true);
+                     intent.putExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STARTED, true);
                      setResult( RESULT_OK, intent );
                   }                        
                   break;
@@ -105,7 +106,7 @@ public class ControlTracking extends SherlockActivity
                   break;
                case R.id.logcontrol_stop:
                   mLoggerServiceManager.stopGPSLogging();
-                  intent.putExtra(com.pdfrun.Constants.TRACKING_STOPPED, true);
+                  intent.putExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STOPPED, true);
                   setResult( RESULT_OK, intent );
                   break;
                default:

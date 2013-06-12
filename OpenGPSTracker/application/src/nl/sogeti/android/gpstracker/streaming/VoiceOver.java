@@ -28,7 +28,8 @@
  */
 package nl.sogeti.android.gpstracker.streaming;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.util.Constants;
 import android.content.BroadcastReceiver;
 import android.content.Context;

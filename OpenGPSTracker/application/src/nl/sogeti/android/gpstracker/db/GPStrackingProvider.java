@@ -32,7 +32,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.pdfrun.Constants;
+import com.patdivillyfitness.runcoach.Constants;
 
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
 import nl.sogeti.android.gpstracker.db.GPStracking.MetaData;

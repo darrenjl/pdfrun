@@ -1,8 +1,8 @@
-package com.pdfrun.activity;
+package com.patdivillyfitness.runcoach.activity;
 
-import com.pdfrun.R;
-import com.pdfrun.R.layout;
-import com.pdfrun.R.menu;
+import com.patdivillyfitness.runcoach.R;
+import com.patdivillyfitness.runcoach.R.layout;
+import com.patdivillyfitness.runcoach.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;

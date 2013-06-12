@@ -32,7 +32,8 @@ import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.ControlTracking;
 import nl.sogeti.android.gpstracker.actions.InsertNote;
 import nl.sogeti.android.gpstracker.actions.ShareTrack;

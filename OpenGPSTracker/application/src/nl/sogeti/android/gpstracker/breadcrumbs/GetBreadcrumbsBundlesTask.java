@@ -35,7 +35,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.tasks.XmlCreator;
 import nl.sogeti.android.gpstracker.actions.utils.ProgressListener;
 import nl.sogeti.android.gpstracker.adapter.BreadcrumbsAdapter;

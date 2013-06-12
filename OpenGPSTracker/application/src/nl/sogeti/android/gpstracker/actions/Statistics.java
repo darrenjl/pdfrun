@@ -28,7 +28,8 @@
  */
 package nl.sogeti.android.gpstracker.actions;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.utils.GraphCanvas;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsCalulator;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;

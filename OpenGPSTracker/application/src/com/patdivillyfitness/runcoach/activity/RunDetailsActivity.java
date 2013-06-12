@@ -4,7 +4,7 @@
  *     file originally in this project. I have removed a lot of the code
  *     and also added some customisations.
  */
-package com.pdfrun.activity;
+package com.patdivillyfitness.runcoach.activity;
 
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsCalulator;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;
@@ -20,7 +20,7 @@ import android.view.View;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
 
 public class RunDetailsActivity extends Activity implements StatisticsDelegate
    {

@@ -33,7 +33,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.tasks.GpxParser;
 import nl.sogeti.android.gpstracker.actions.tasks.XmlCreator;
 import nl.sogeti.android.gpstracker.actions.utils.ProgressListener;

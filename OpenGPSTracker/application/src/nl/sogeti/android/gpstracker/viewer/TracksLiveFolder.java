@@ -28,7 +28,8 @@
  */
 package nl.sogeti.android.gpstracker.viewer;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.db.GPStracking;
 import android.app.Activity;
 import android.content.Intent;

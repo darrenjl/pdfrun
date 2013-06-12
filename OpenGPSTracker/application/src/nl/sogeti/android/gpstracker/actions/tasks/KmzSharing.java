@@ -28,7 +28,8 @@
  */
 package nl.sogeti.android.gpstracker.actions.tasks;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.ShareTrack;
 import nl.sogeti.android.gpstracker.actions.utils.ProgressListener;
 import android.content.Context;

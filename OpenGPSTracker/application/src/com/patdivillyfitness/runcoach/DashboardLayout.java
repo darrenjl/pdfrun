@@ -1,4 +1,4 @@
-package com.pdfrun;
+package com.patdivillyfitness.runcoach;
 /*
  * Copyright 2011 Google Inc.
  *

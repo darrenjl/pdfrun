@@ -1,13 +1,13 @@
-package com.pdfrun.activity;
+package com.patdivillyfitness.runcoach.activity;
 
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsCalulator;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.util.UnitsI18n;
 
-import com.pdfrun.R;
-import com.pdfrun.R.layout;
-import com.pdfrun.R.menu;
+import com.patdivillyfitness.runcoach.R;
+import com.patdivillyfitness.runcoach.R.layout;
+import com.patdivillyfitness.runcoach.R.menu;
 
 import android.net.Uri;
 import android.os.Bundle;

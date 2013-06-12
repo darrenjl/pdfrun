@@ -28,7 +28,8 @@
  */
 package nl.sogeti.android.gpstracker.oauth;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.util.Constants;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;

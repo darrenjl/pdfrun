@@ -30,7 +30,8 @@ package nl.sogeti.android.gpstracker.actions;
 
 import java.util.List;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.breadcrumbs.BreadcrumbsService;
 import nl.sogeti.android.gpstracker.breadcrumbs.BreadcrumbsService.LocalBinder;
 import nl.sogeti.android.gpstracker.breadcrumbs.BreadcrumbsTracks;

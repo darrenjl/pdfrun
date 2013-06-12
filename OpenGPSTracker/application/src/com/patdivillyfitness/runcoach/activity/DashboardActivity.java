@@ -1,12 +1,12 @@
-package com.pdfrun.activity;
+package com.patdivillyfitness.runcoach.activity;
 
 import nl.sogeti.android.gpstracker.viewer.ApplicationPreferenceActivity;
 import nl.sogeti.android.gpstracker.viewer.TrackList;
 
-import com.pdfrun.R;
-import com.pdfrun.R.id;
-import com.pdfrun.R.layout;
-import com.pdfrun.R.menu;
+import com.patdivillyfitness.runcoach.R;
+import com.patdivillyfitness.runcoach.R.id;
+import com.patdivillyfitness.runcoach.R.layout;
+import com.patdivillyfitness.runcoach.R.menu;
 
 import android.app.Activity;
 import android.content.Intent;

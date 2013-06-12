@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pdfrun"
+    package="com.patdivillyfitness.runcoach"
     android:installLocation="auto"
     android:versionCode="1"
     android:versionName="1" >
@@ -265,7 +265,7 @@
         </receiver>
 
         <activity
-            android:name="com.pdfrun.activity.RecordActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.RecordActivity"
             android:label="@string/title_activity_record" >
             <intent-filter android:label="Show track on map" >
                 <action android:name="android.intent.action.VIEW" />
@@ -278,35 +278,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pdfrun.activity.DashboardActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.DashboardActivity"
             android:label="@string/application_name" >
         </activity>
         <activity
-            android:name="com.pdfrun.activity.InfoActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>
         <activity
-            android:name="com.pdfrun.activity.ProfileActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
-            android:name="com.pdfrun.activity.GroupsActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.GroupsActivity"
             android:label="@string/title_activity_groups" >
         </activity>
         <activity
-            android:name="com.pdfrun.activity.AcademyActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.AcademyActivity"
             android:label="@string/title_activity_academy" >
         </activity>
         <activity
-            android:name="com.pdfrun.activity.RunDetailsActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.RunDetailsActivity"
             android:label="@string/title_activity_run_details" >
         </activity>
         <activity
-            android:name="com.pdfrun.activity.RunsListActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.RunsListActivity"
             android:label="@string/title_activity_runs_list" >
         </activity>
         <activity
-            android:name="com.pdfrun.activity.SplashActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.SplashActivity"
             android:label="@string/application_name" 
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>

@@ -37,7 +37,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.tasks.GpxCreator;
 import nl.sogeti.android.gpstracker.actions.tasks.XmlCreator;
 import nl.sogeti.android.gpstracker.actions.utils.ProgressListener;

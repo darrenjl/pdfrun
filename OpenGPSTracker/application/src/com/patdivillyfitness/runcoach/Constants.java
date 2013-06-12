@@ -1,4 +1,4 @@
-package com.pdfrun;
+package com.patdivillyfitness.runcoach;
 
 public class Constants
 {

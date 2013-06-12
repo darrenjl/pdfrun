@@ -28,7 +28,8 @@
  */
 package nl.sogeti.android.gpstracker.widget;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.actions.ControlTracking;
 import nl.sogeti.android.gpstracker.actions.InsertNote;
 import nl.sogeti.android.gpstracker.util.Constants;

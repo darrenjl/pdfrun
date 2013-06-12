@@ -34,7 +34,8 @@ import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.util.Constants;
 import nl.sogeti.android.gpstracker.viewer.ApplicationPreferenceActivity;
 

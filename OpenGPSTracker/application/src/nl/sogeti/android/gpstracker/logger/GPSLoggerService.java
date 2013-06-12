@@ -41,8 +41,8 @@ import java.util.Vector;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-import com.pdfrun.R;
-import com.pdfrun.activity.RecordActivity;
+import com.patdivillyfitness.runcoach.R;
+import com.patdivillyfitness.runcoach.activity.RecordActivity;
 
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
 import nl.sogeti.android.gpstracker.db.GPStracking.MetaData;
@@ -1518,23 +1518,23 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       }
       ContentValues values = new ContentValues();
       if(mDistance>1000&&km1Time==0){
-         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         values.put( com.patdivillyfitness.runcoach.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_1_TIME, null);
          speakOut(mDistance, time);
       } else if(mDistance>3000&&km3Time==0){
-         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         values.put( com.patdivillyfitness.runcoach.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_3_TIME, null);
          speakOut(mDistance, time);
       } else if(mDistance>5000&&km5Time==0){
-         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         values.put( com.patdivillyfitness.runcoach.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_5_TIME, null);
          speakOut(mDistance, time);
       } else if(mDistance>8000&&km8Time==0){
-         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         values.put( com.patdivillyfitness.runcoach.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_8_TIME, null);
          speakOut(mDistance, time);
       } else if(mDistance>10000&&km10Time==0){
-         values.put( com.pdfrun.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
+         values.put( com.patdivillyfitness.runcoach.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_10_TIME, null);
          speakOut(mDistance, time);
       } 

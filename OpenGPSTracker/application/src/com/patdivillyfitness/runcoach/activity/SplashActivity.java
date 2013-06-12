@@ -1,4 +1,4 @@
-package com.pdfrun.activity;
+package com.patdivillyfitness.runcoach.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
 
 public class SplashActivity extends Activity {
 

@@ -31,7 +31,8 @@ package nl.sogeti.android.gpstracker.actions.utils;
 import java.text.DateFormat;
 import java.util.Date;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.db.GPStracking.Segments;
 import nl.sogeti.android.gpstracker.db.GPStracking.Waypoints;
 import nl.sogeti.android.gpstracker.util.Constants;

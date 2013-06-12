@@ -30,7 +30,8 @@ package nl.sogeti.android.gpstracker.actions;
 
 import java.util.Calendar;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import android.annotation.SuppressLint;
 import android.app.Activity;

@@ -31,7 +31,8 @@ package nl.sogeti.android.gpstracker.adapter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
+
 import nl.sogeti.android.gpstracker.util.Constants;
 import android.content.Context;
 import android.database.DataSetObserver;

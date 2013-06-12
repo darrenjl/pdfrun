@@ -1,4 +1,4 @@
-<com.pdfrun.DashboardLayout
+<com.patdivillyfitness.runcoach.DashboardLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -46,4 +46,4 @@
         android:drawableTop="@drawable/btn_photos"
         android:text="Settings" />
 
-</com.pdfrun.DashboardLayout>
+</com.patdivillyfitness.runcoach.DashboardLayout>

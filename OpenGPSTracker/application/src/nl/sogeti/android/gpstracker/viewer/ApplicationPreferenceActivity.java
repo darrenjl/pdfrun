@@ -39,7 +39,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 
-import com.pdfrun.R;
+import com.patdivillyfitness.runcoach.R;
 
 /**
  * Controller for the settings dialog
