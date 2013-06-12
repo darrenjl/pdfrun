@@ -186,7 +186,7 @@ public class NameTrack extends Activity
             builder
                .setTitle( R.string.dialog_routename_title )
                .setMessage( R.string.dialog_routename_message )
-               .setIcon( android.R.drawable.ic_dialog_alert )
+//               .setIcon( android.R.drawable.ic_dialog_alert )
                .setPositiveButton( R.string.btn_okay, mTrackNameDialogListener )
                .setNeutralButton( R.string.btn_skip, mTrackNameDialogListener )
                .setNegativeButton( R.string.btn_cancel, mTrackNameDialogListener )

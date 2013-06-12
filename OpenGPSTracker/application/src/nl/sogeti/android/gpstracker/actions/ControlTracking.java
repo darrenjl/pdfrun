@@ -177,7 +177,7 @@ public class ControlTracking extends SherlockActivity
             factory = LayoutInflater.from( this );
             view = factory.inflate( R.layout.logcontrol, null );
             builder.setTitle( R.string.dialog_tracking_title ).
-            setIcon( android.R.drawable.ic_dialog_alert ).
+            //setIcon( android.R.drawable.ic_dialog_alert ).
             setNegativeButton( R.string.btn_cancel, mDialogClickListener ).
             setView( view );
             //setInverseBackgroundForced(true);
