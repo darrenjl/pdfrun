@@ -3,47 +3,47 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="1"
-    android:background="#f8f9fe" >
+    android:background="#d8d9de" >
 	<!--  News Feed Button -->
     <Button
         android:id="@+id/btn_record"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_newsfeed"
+        android:drawableTop="@drawable/btn_record"
         android:text="Record" />
     
 	<!--  Friends Button -->
     <Button
         android:id="@+id/btn_runs"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_friends"
+        android:drawableTop="@drawable/btn_record"
         android:text="Runs" />
     
 	<!--  Messages Button -->
     <Button
         android:id="@+id/btn_profile"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_messages"
+        android:drawableTop="@drawable/btn_record"
         android:text="Profile" />
 	
     <!--  Places Button -->
     <Button
         android:id="@+id/btn_groups"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_places"
+        android:drawableTop="@drawable/btn_groups"
         android:text="Groups" />
 
     <!--  Events Button -->
     <Button
         android:id="@+id/btn_academy"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_events"
+        android:drawableTop="@drawable/btn_record"
         android:text="Academy" />
 
     <!--  Photos Button -->
     <Button
         android:id="@+id/btn_settings"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_photos"
+        android:drawableTop="@drawable/btn_record"
         android:text="Settings" />
 
 </com.patdivillyfitness.runcoach.DashboardLayout>

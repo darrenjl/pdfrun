@@ -32,7 +32,7 @@
         android:allowClearUserData="true"
         android:description="@string/application_name"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/application_name"
         android:theme="@style/AppTheme" >
         <uses-library android:name="com.google.android.maps" />
