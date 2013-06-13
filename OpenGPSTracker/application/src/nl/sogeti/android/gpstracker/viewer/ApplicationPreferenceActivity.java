@@ -39,6 +39,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.patdivillyfitness.runcoach.R;
 
 /**
@@ -48,7 +49,7 @@ import com.patdivillyfitness.runcoach.R;
  *          rcgroot $
  * @author rene (c) Jan 18, 2009, Sogeti B.V.
  */
-public class ApplicationPreferenceActivity extends PreferenceActivity
+public class ApplicationPreferenceActivity extends SherlockPreferenceActivity
 {
 
    public static final String STREAMBROADCAST_PREFERENCE = "streambroadcast_distance";
