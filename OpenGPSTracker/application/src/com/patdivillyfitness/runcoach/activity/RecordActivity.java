@@ -105,6 +105,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          Log.d(TAG, "First Location Found");
          recordingTextView.setText("Recording");
          speakOut();
+         firstLocationFound=true;
       }
       super.updateTrackNumbers();
    }
