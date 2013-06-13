@@ -80,21 +80,7 @@ public class ControlTracking extends Activity
             switch( id )
             {
                case R.id.logcontrol_start:
-                  long loggerTrackId = mLoggerServiceManager.startGPSLogging( null );
-                  
-                  // Start a naming of the track
-                  Intent namingIntent = new Intent( ControlTracking.this, NameTrack.class );
-                  namingIntent.setData( ContentUris.withAppendedId( Tracks.CONTENT_URI, loggerTrackId ) );
-                  startActivity( namingIntent );
-                  
-                  // Create data for the caller that a new track has been started
-                  ComponentName caller = ControlTracking.this.getCallingActivity();
-                  if( caller != null )
-                  {
-                     intent.setData( ContentUris.withAppendedId( Tracks.CONTENT_URI, loggerTrackId ) );
-                     intent.putExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STARTED, true);
-                     setResult( RESULT_OK, intent );
-                  }                        
+                  logControlStart();           
                   break;
                case R.id.logcontrol_pause:
                   mLoggerServiceManager.pauseGPSLogging();
@@ -117,6 +103,25 @@ public class ControlTracking extends Activity
             finish();
          }
       };
+      
+   private void logControlStart(){
+      Intent intent = new Intent();
+      long loggerTrackId = mLoggerServiceManager.startGPSLogging( null );
+      
+      // Start a naming of the track
+      Intent namingIntent = new Intent( ControlTracking.this, NameTrack.class );
+      namingIntent.setData( ContentUris.withAppendedId( Tracks.CONTENT_URI, loggerTrackId ) );
+      startActivity( namingIntent );
+      
+      // Create data for the caller that a new track has been started
+      ComponentName caller = ControlTracking.this.getCallingActivity();
+      if( caller != null )
+      {
+         intent.setData( ContentUris.withAppendedId( Tracks.CONTENT_URI, loggerTrackId ) );
+         intent.putExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STARTED, true);
+         setResult( RESULT_OK, intent );
+      }     
+   }
    private OnClickListener mDialogClickListener = new OnClickListener()
       {
          @Override
@@ -135,6 +140,7 @@ public class ControlTracking extends Activity
       this.setVisible( false );
       paused = false;
       mLoggerServiceManager = new GPSLoggerServiceManager( this );
+      
    }
 
    @Override
@@ -146,8 +152,39 @@ public class ControlTracking extends Activity
             @Override
             public void run()
             {
-               showDialog( DIALOG_LOGCONTROL );
+               
                Log.d("PDFRun", "Control logging state: " + mLoggerServiceManager.getLoggingState());
+               Intent i = ControlTracking.this.getIntent();
+               Intent intent = new Intent();
+               if (i.getExtras()!=null && i.getExtras().containsKey(com.patdivillyfitness.runcoach.Constants.CONTROL_EXTRA)){
+                  int action=i.getIntExtra(com.patdivillyfitness.runcoach.Constants.CONTROL_EXTRA,0);
+                  switch(action){
+                     case com.patdivillyfitness.runcoach.Constants.START:
+                        Log.d("PDFRun", "start action");
+                        logControlStart();
+                        break;
+                     case com.patdivillyfitness.runcoach.Constants.STOP:
+                        Log.d("PDFRun", "stop action");
+                        mLoggerServiceManager.stopGPSLogging();
+                        intent.putExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STOPPED, true);
+                        setResult( RESULT_OK, intent );
+                        break;
+                     case com.patdivillyfitness.runcoach.Constants.PAUSE:
+                        Log.d("PDFRun", "pause action");
+                        mLoggerServiceManager.pauseGPSLogging();
+                        setResult( RESULT_OK, intent );
+                        break;
+                     case com.patdivillyfitness.runcoach.Constants.RESUME:
+                        Log.d("PDFRun", "resume action");
+                        mLoggerServiceManager.resumeGPSLogging();
+                        setResult( RESULT_OK, intent );
+                        break;
+                     default:
+                        Log.d("PDFRun", "unrecognised action");
+                  }
+                  finish();
+               }
+               showDialog( DIALOG_LOGCONTROL );
             }
          } );      
    }

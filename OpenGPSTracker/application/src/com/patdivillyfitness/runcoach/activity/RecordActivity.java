@@ -22,6 +22,7 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.view.Menu;
@@ -34,9 +35,13 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private LocationManager locationManager;
    private TextToSpeech tts;
    private TextView recordingTextView;
+   private Button startStopBtn;
+   private Button pauseResumeBtn;
    private static final String TAG = "PDFRun";
    private boolean firstLocationFound=false;
    private boolean started=false;
+   private boolean startBtn=true;
+   private boolean pauseBtn=true;
    private static final String INSTANCE_TIME = "time";
    private static final String INSTANCE_SPEED = "speed";
    private static final String INSTANCE_DISTANCE = "distance";
@@ -48,6 +53,8 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
       tts = new TextToSpeech(this, this);
       recordingTextView = (TextView) findViewById(R.id.recording);
+      startStopBtn = (Button)findViewById(R.id.startStopBtn);
+      pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
       super.onCreate(load);
       mServiceConnected = new Runnable()
       {
@@ -63,15 +70,41 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                case Constants.STOPPED:
                   recordingTextView.setText("Stopped");
                   RecordActivity.this.setTitle(RecordActivity.this.getString(R.string.application_name));
+                  if(pauseResumeBtn==null)
+                     pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
+                  pauseResumeBtn.setText("Pause");
+                  pauseResumeBtn.setEnabled(false);
+                  pauseBtn=true;
+                  if(startStopBtn==null)
+                     startStopBtn = (Button)findViewById(R.id.startStopBtn);               
+                  startStopBtn.setText("Start");
+                  startBtn=true;
                   break;
                case Constants.LOGGING:
                   if (started)
                      recordingTextView.setText("Waiting For Satelites");
                   else
                      recordingTextView.setText("Recording");
+                  if(startStopBtn==null)
+                     startStopBtn = (Button)findViewById(R.id.startStopBtn);               
+                  startStopBtn.setText("Stop");
+                  startBtn=false;
+                  if(pauseResumeBtn==null)
+                     pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
+                  pauseResumeBtn.setText("Pause");
+                  pauseResumeBtn.setEnabled(true);
+                  pauseBtn=true;
                   break;
                case Constants.PAUSED:
                   recordingTextView.setText("Paused");
+                  if(pauseResumeBtn==null)
+                     pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
+                  pauseResumeBtn.setText("Resume");
+                  pauseBtn=false;
+                  if(startStopBtn==null)
+                     startStopBtn = (Button)findViewById(R.id.startStopBtn);               
+                  startStopBtn.setText("Stop");
+                  startBtn=false;
                   break;
                default:
                   Log.d(TAG, "unknown logging state");
@@ -112,6 +145,22 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    public void trackRun(View view)
    {
       checkGPSAndOpenControls();
+   }
+   public void startStopRun(View view)
+   {
+      Log.d(TAG, "startStopRun");
+      if (startBtn)
+         checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.START);
+      else
+         checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.STOP);
+   }
+   public void pauseResumeRun(View view)
+   {
+      Log.d(TAG, "pauseResumeRun");
+      if(pauseBtn)
+         checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.PAUSE);
+      else
+         checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.RESUME);
    }
 
    @Override
@@ -248,32 +297,33 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
 
       if (!isGPSEnabled)
       {
-         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-         builder.setMessage("Your GPS module is disabled. Would you like to enable it ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
-            {
-               public void onClick(DialogInterface dialog, int id)
-               {
-
-                  //Sent user to GPS settings screen
-                  final Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                  startActivityForResult(intent, 100);
-
-                  dialog.dismiss();
-
-               }
-            }).setNegativeButton("No", new DialogInterface.OnClickListener()
-            {
-               public void onClick(DialogInterface dialog, int id)
-               {
-                  dialog.cancel();
-               }
-            });
-         AlertDialog alert = builder.create();
-         alert.show();
+         alertGPSDisabled();
       }
       else
       {
          Intent intent = new Intent(this, ControlTracking.class);
+         startActivityForResult(intent, MENU_TRACKING);
+      }
+   }
+   
+   private void checkGPSAndControlRecording(int action)
+   {
+      try
+      {
+         isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+      }
+      catch (Exception ex)
+      {
+      }
+
+      if (!isGPSEnabled)
+      {
+         alertGPSDisabled();
+      }
+      else
+      {
+         Intent intent = new Intent(this, ControlTracking.class);
+         intent.putExtra(com.patdivillyfitness.runcoach.Constants.CONTROL_EXTRA, action);
          startActivityForResult(intent, MENU_TRACKING);
       }
    }
@@ -300,6 +350,31 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
             mElapsedTimeView.setText(load.getString(INSTANCE_TIME));
          }
       }
+   }
+   
+   private void alertGPSDisabled(){
+      AlertDialog.Builder builder = new AlertDialog.Builder(this);
+      builder.setMessage("Your GPS module is disabled. Would you like to enable it ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
+         {
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+               //Sent user to GPS settings screen
+               final Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+               startActivityForResult(intent, 100);
+
+               dialog.dismiss();
+
+            }
+         }).setNegativeButton("No", new DialogInterface.OnClickListener()
+         {
+            public void onClick(DialogInterface dialog, int id)
+            {
+               dialog.cancel();
+            }
+         });
+      AlertDialog alert = builder.create();
+      alert.show();
    }
 
    @Override
