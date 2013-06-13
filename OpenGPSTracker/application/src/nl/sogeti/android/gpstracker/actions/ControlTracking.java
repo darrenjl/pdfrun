@@ -58,7 +58,7 @@ import android.widget.Button;
  * @version $Id$
  * @author rene (c) Jul 27, 2010, Sogeti B.V.
  */
-public class ControlTracking extends SherlockActivity
+public class ControlTracking extends Activity
 {
    private static final int DIALOG_LOGCONTROL = 26;
    private static final String TAG = "OGT.ControlTracking";
