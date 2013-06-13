@@ -101,7 +101,7 @@ public class TrackList extends ListActivity implements ProgressListener
    private static final int MENU_BREADCRUMBS = Menu.FIRST + 7;
 
    public static final int DIALOG_FILENAME = Menu.FIRST + 22;
-   private static final int DIALOG_RENAME = Menu.FIRST + 23;
+   protected static final int DIALOG_RENAME = Menu.FIRST + 23;
    private static final int DIALOG_DELETE = Menu.FIRST + 24;
    private static final int DIALOG_VACUUM = Menu.FIRST + 25;
    private static final int DIALOG_IMPORT = Menu.FIRST + 26;
@@ -112,7 +112,7 @@ public class TrackList extends ListActivity implements ProgressListener
    private static final int DESCRIBE = Menu.FIRST + 30;
 
    private BreadcrumbsAdapter mBreadcrumbAdapter;
-   private EditText mTrackNameView;
+   protected EditText mTrackNameView;
    private Uri mDialogTrackUri;
    private String mDialogCurrentName = "";
    private String mErrorDialogMessage;
@@ -779,7 +779,7 @@ public class TrackList extends ListActivity implements ProgressListener
             getContentResolver().delete(mDialogTrackUri, null, null);
          }
       };
-   private OnClickListener mRenameOnClickListener = new DialogInterface.OnClickListener()
+   protected OnClickListener mRenameOnClickListener = new DialogInterface.OnClickListener()
       {
          @Override
          public void onClick(DialogInterface dialog, int which)
