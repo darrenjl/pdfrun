@@ -28,6 +28,7 @@
  */
 package nl.sogeti.android.gpstracker.viewer;
 
+import com.actionbarsherlock.app.SherlockListActivity;
 import com.patdivillyfitness.runcoach.R;
 import com.patdivillyfitness.runcoach.activity.RecordActivity;
 
@@ -87,7 +88,7 @@ import android.widget.TextView;
  * @version $Id$
  * @author rene (c) Jan 11, 2009, Sogeti B.V.
  */
-public class TrackList extends ListActivity implements ProgressListener
+public class TrackList extends SherlockListActivity implements ProgressListener
 {
 
    private static final String TAG = "OGT.TrackList";
@@ -240,7 +241,7 @@ public class TrackList extends ListActivity implements ProgressListener
    }
 
    @Override
-   public boolean onCreateOptionsMenu(Menu menu)
+   public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu)
    {
       boolean result = super.onCreateOptionsMenu(menu);
 
@@ -252,7 +253,7 @@ public class TrackList extends ListActivity implements ProgressListener
    }
 
    @Override
-   public boolean onOptionsItemSelected(MenuItem item)
+   public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item)
    {
       boolean handled = false;
       switch (item.getItemId())

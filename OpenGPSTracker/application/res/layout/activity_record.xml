@@ -106,22 +106,22 @@
         </LinearLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/mapScreen"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+<!--     <RelativeLayout -->
+<!--         android:id="@+id/mapScreen" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="fill_parent" > -->
 
-        <com.google.android.maps.MapView
-            android:id="@+id/myMapView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:apiKey="AIzaSyA_DycAKxQr5o1IeDt1w0INsecnruA-qzE"
-            android:clickable="true"
-            android:enabled="true"
-            android:visibility="visible" />
-        <!-- Release         : 0bmdf4-ggC50QWBY1OgGRutQ9bIboIy11OczZbw -->
-        <!-- Emulator        : 0bmdf4-ggC50QJGdjml6Turq0NJdMhKFQNdhkYA -->
+<!--         <com.google.android.maps.MapView -->
+<!--             android:id="@+id/myMapView" -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="fill_parent" -->
+<!--             android:apiKey="AIzaSyA_DycAKxQr5o1IeDt1w0INsecnruA-qzE" -->
+<!--             android:clickable="true" -->
+<!--             android:enabled="true" -->
+<!--             android:visibility="visible" /> -->
+<!--         Release         : 0bmdf4-ggC50QWBY1OgGRutQ9bIboIy11OczZbw -->
+<!--         Emulator        : 0bmdf4-ggC50QJGdjml6Turq0NJdMhKFQNdhkYA -->
 
-    </RelativeLayout>
+<!--     </RelativeLayout> -->
 
 </LinearLayout>

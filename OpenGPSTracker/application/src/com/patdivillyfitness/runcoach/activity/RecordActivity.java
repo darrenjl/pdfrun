@@ -21,11 +21,11 @@ import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.patdivillyfitness.runcoach.R;
 
 public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitListener

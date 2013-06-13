@@ -5,9 +5,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.patdivillyfitness.runcoach.R;
 
-public class AcademyActivity extends Activity
+public class AcademyActivity extends SherlockActivity
 {
 
    @Override
@@ -15,14 +16,6 @@ public class AcademyActivity extends Activity
    {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_academy);
-   }
-
-   @Override
-   public boolean onCreateOptionsMenu(Menu menu)
-   {
-      // Inflate the menu; this adds items to the action bar if it is present.
-      getMenuInflater().inflate(R.menu.academy, menu);
-      return true;
    }
 
 }

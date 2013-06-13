@@ -5,6 +5,7 @@ import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.util.UnitsI18n;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.patdivillyfitness.runcoach.R;
 import com.patdivillyfitness.runcoach.R.layout;
 import com.patdivillyfitness.runcoach.R.menu;
@@ -20,7 +21,7 @@ import android.view.View;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class ProfileActivity extends Activity implements StatisticsDelegate
+public class ProfileActivity extends SherlockActivity implements StatisticsDelegate
 {
    private Cursor tracksCursor;
    private TextView numRunsView;

@@ -92,6 +92,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 
@@ -101,7 +102,7 @@ import com.google.android.maps.MapActivity;
  * @version $Id$
  * @author rene (c) Jan 18, 2009, Sogeti B.V.
  */
-public class LoggerMap extends MapActivity
+public class LoggerMap extends SherlockActivity
 {
    
    protected int layout=-1;
@@ -158,8 +159,8 @@ public class LoggerMap extends MapActivity
    private SegmentOverlay mLastSegmentOverlay;
    private BaseAdapter mMediaAdapter;
 
-   private MapViewProxy mMapView = null;
-   private MyLocationOverlayProxy mMylocation;
+//   private MapViewProxy mMapView = null;
+//   private MyLocationOverlayProxy mMylocation;
    private Handler mHandler;
 
    private ContentObserver mTrackSegmentsObserver;
@@ -190,7 +191,7 @@ public class LoggerMap extends MapActivity
          setContentView(R.layout.map);
       else
          setContentView(layout);
-      findViewById(R.id.mapScreen).setDrawingCacheEnabled(true);
+//      findViewById(R.id.mapScreen).setDrawingCacheEnabled(true);
       mUnits = new UnitsI18n(this);
       mLoggerServiceManager = new GPSLoggerServiceManager(this);
 
@@ -216,11 +217,11 @@ public class LoggerMap extends MapActivity
          Log.e(TAG, "Failed waiting for a semaphore", e);
       }
       mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-      mMapView = new MapViewProxy();
-      updateMapProvider();
-      mMylocation = new MyLocationOverlayProxy(this, mMapView);
-      mMapView.setBuiltInZoomControls(true);
-      mMapView.setClickable(true);
+//      mMapView = new MapViewProxy();
+//      updateMapProvider();
+//      mMylocation = new MyLocationOverlayProxy(this, mMapView);
+//      mMapView.setBuiltInZoomControls(true);
+//      mMapView.setClickable(true);
 
 //      TextView[] speeds = { (TextView) findViewById(R.id.speedview05), (TextView) findViewById(R.id.speedview04), (TextView) findViewById(R.id.speedview03),
 //            (TextView) findViewById(R.id.speedview02), (TextView) findViewById(R.id.speedview01), (TextView) findViewById(R.id.speedview00) };
@@ -268,7 +269,7 @@ public class LoggerMap extends MapActivity
 //      updateCompassDisplayVisibility();
 //      updateLocationDisplayVisibility();
 
-      mMapView.executePostponedActions();
+//      mMapView.executePostponedActions();
    }
 
    @Override
@@ -285,8 +286,8 @@ public class LoggerMap extends MapActivity
       resolver.unregisterContentObserver(this.mTrackMediasObserver);
       mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this.mSharedPreferenceChangeListener);
       mUnits.setUnitsChangeListener(null);
-      mMylocation.disableMyLocation();
-      mMylocation.disableCompass();
+//      mMylocation.disableMyLocation();
+//      mMylocation.disableCompass();
 
       this.mLoggerServiceManager.shutdown(this);
 
@@ -303,7 +304,7 @@ public class LoggerMap extends MapActivity
       super.onDestroy();
 
       mLastSegmentOverlay = null;
-      mMapView.clearOverlays();
+//      mMapView.clearOverlays();
       mHandler.post(new Runnable()
       {
          @Override
@@ -372,22 +373,22 @@ public class LoggerMap extends MapActivity
 
       if (load != null && load.containsKey(INSTANCE_ZOOM))
       {
-         mMapView.getController().setZoom(load.getInt(INSTANCE_ZOOM));
+//         mMapView.getController().setZoom(load.getInt(INSTANCE_ZOOM));
       }
       else
       {
-         mMapView.getController().setZoom(LoggerMap.ZOOM_LEVEL);
+//         mMapView.getController().setZoom(LoggerMap.ZOOM_LEVEL);
       }
 
       if (load != null && load.containsKey(INSTANCE_E6LAT) && load.containsKey(INSTANCE_E6LONG))
       {
          GeoPoint storedPoint = new GeoPoint(load.getInt(INSTANCE_E6LAT), load.getInt(INSTANCE_E6LONG));
-         this.mMapView.getController().animateTo(storedPoint);
+//         this.mMapView.getController().animateTo(storedPoint);
       }
       else
       {
          GeoPoint lastPoint = getLastTrackPoint();
-         this.mMapView.getController().animateTo(lastPoint);
+//         this.mMapView.getController().animateTo(lastPoint);
       }
    }
 
@@ -397,10 +398,10 @@ public class LoggerMap extends MapActivity
       super.onSaveInstanceState(save);
       save.putLong(INSTANCE_TRACK, this.mTrackId);
       save.putDouble(INSTANCE_SPEED, mAverageSpeed);
-      save.putInt(INSTANCE_ZOOM, this.mMapView.getZoomLevel());
-      GeoPoint point = this.mMapView.getMapCenter();
-      save.putInt(INSTANCE_E6LAT, point.getLatitudeE6());
-      save.putInt(INSTANCE_E6LONG, point.getLongitudeE6());
+//      save.putInt(INSTANCE_ZOOM, this.mMapView.getZoomLevel());
+//      GeoPoint point = this.mMapView.getMapCenter();
+//      save.putInt(INSTANCE_E6LAT, point.getLatitudeE6());
+//      save.putInt(INSTANCE_E6LONG, point.getLongitudeE6());
    }
 
    @Override
@@ -410,17 +411,17 @@ public class LoggerMap extends MapActivity
       switch (keyCode)
       {
          case KeyEvent.KEYCODE_T:
-            propagate = this.mMapView.getController().zoomIn();
+//            propagate = this.mMapView.getController().zoomIn();
             break;
          case KeyEvent.KEYCODE_G:
-            propagate = this.mMapView.getController().zoomOut();
+//            propagate = this.mMapView.getController().zoomOut();
             break;
          case KeyEvent.KEYCODE_S:
-            setSatelliteOverlay(!this.mMapView.isSatellite());
+//            setSatelliteOverlay(!this.mMapView.isSatellite());
             propagate = false;
             break;
          case KeyEvent.KEYCODE_A:
-            setTrafficOverlay(!this.mMapView.isTraffic());
+//            setTrafficOverlay(!this.mMapView.isTraffic());
             propagate = false;
             break;
          case KeyEvent.KEYCODE_F:
@@ -720,7 +721,7 @@ public class LoggerMap extends MapActivity
                if (mLastSegmentOverlay != null)
                {
                   mLastSegmentOverlay.calculateMedia();
-                  mMapView.postInvalidate();
+//                  mMapView.postInvalidate();
                }
             }
             else
@@ -782,7 +783,7 @@ public class LoggerMap extends MapActivity
    }
 
    @Override
-   public boolean onCreateOptionsMenu(Menu menu)
+   public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu)
    {
       boolean result = super.onCreateOptionsMenu(menu);
 
@@ -807,19 +808,19 @@ public class LoggerMap extends MapActivity
     * @see android.app.Activity#onPrepareOptionsMenu(android.view.Menu)
     */
    @Override
-   public boolean onPrepareOptionsMenu(Menu menu)
+   public boolean onPrepareOptionsMenu(com.actionbarsherlock.view.Menu menu)
    {
-      MenuItem noteMenu = menu.findItem(MENU_NOTE);
+      com.actionbarsherlock.view.MenuItem noteMenu = menu.findItem(MENU_NOTE);
       noteMenu.setEnabled(mLoggerServiceManager.isMediaPrepared());
 
-      MenuItem shareMenu = menu.findItem(MENU_SHARE);
+      com.actionbarsherlock.view.MenuItem shareMenu = menu.findItem(MENU_SHARE);
       shareMenu.setEnabled(mTrackId >= 0);
 
       return super.onPrepareOptionsMenu(menu);
    }
 
    @Override
-   public boolean onOptionsItemSelected(MenuItem item)
+   public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item)
    {
       boolean handled = false;
 
@@ -1083,27 +1084,27 @@ public class LoggerMap extends MapActivity
       }
    }
 
-   /**
-    * (non-Javadoc)
-    * 
-    * @see com.google.android.maps.MapActivity#isRouteDisplayed()
-    */
-   @Override
-   protected boolean isRouteDisplayed()
-   {
-      return true;
-   }
-
-   /**
-    * (non-Javadoc)
-    * 
-    * @see com.google.android.maps.MapActivity#isLocationDisplayed()
-    */
-   @Override
-   protected boolean isLocationDisplayed()
-   {
-      return mSharedPreferences.getBoolean(Constants.LOCATION, true) || mLoggerServiceManager.getLoggingState() == Constants.LOGGING;
-   }
+//   /**
+//    * (non-Javadoc)
+//    * 
+//    * @see com.google.android.maps.MapActivity#isRouteDisplayed()
+//    */
+//   @Override
+//   protected boolean isRouteDisplayed()
+//   {
+//      return true;
+//   }
+//
+//   /**
+//    * (non-Javadoc)
+//    * 
+//    * @see com.google.android.maps.MapActivity#isLocationDisplayed()
+//    */
+//   @Override
+//   protected boolean isLocationDisplayed()
+//   {
+//      return mSharedPreferences.getBoolean(Constants.LOCATION, true) || mLoggerServiceManager.getLoggingState() == Constants.LOGGING;
+//   }
 
    protected void updateTitleBar()
    {
@@ -1134,8 +1135,8 @@ public class LoggerMap extends MapActivity
       {
          case Constants.GOOGLE:
             //findViewById(R.id.myOsmMapView).setVisibility(View.GONE);
-            findViewById(R.id.myMapView).setVisibility(View.INVISIBLE);
-            mMapView.setMap(findViewById(R.id.myMapView));
+//            findViewById(R.id.myMapView).setVisibility(View.INVISIBLE);
+//            mMapView.setMap(findViewById(R.id.myMapView));
             updateGoogleOverlays();
             break;
 //         case Constants.OSM:
@@ -1147,8 +1148,8 @@ public class LoggerMap extends MapActivity
 //            break;
          default:
             Log.e(TAG, "Fault in value " + provider + " as MapProvider.");
-            findViewById(R.id.myMapView).setVisibility(View.INVISIBLE);
-            mMapView.setMap(findViewById(R.id.myMapView));
+//            findViewById(R.id.myMapView).setVisibility(View.INVISIBLE);
+//            mMapView.setMap(findViewById(R.id.myMapView));
             updateGoogleOverlays();
             break;
       }
@@ -1156,14 +1157,14 @@ public class LoggerMap extends MapActivity
 
    private void updateGoogleOverlays()
    {
-      LoggerMap.this.mMapView.setSatellite(mSharedPreferences.getBoolean(Constants.SATELLITE, false));
-      LoggerMap.this.mMapView.setTraffic(mSharedPreferences.getBoolean(Constants.TRAFFIC, false));
+//      LoggerMap.this.mMapView.setSatellite(mSharedPreferences.getBoolean(Constants.SATELLITE, false));
+//      LoggerMap.this.mMapView.setTraffic(mSharedPreferences.getBoolean(Constants.TRAFFIC, false));
    }
 
    private void updateOsmBaseOverlay()
    {
       int baselayer = mSharedPreferences.getInt(Constants.OSMBASEOVERLAY, 0);
-      mMapView.setOSMType(baselayer);
+//      mMapView.setOSMType(baselayer);
    }
 
    protected void updateMapProviderAdministration()
@@ -1237,14 +1238,14 @@ public class LoggerMap extends MapActivity
 //            mSpeedtexts[i].setVisibility(View.INVISIBLE);
 //         }
 //      }
-      List< ? > overlays = mMapView.getOverlays();
-      for (Object overlay : overlays)
-      {
-         if (overlay instanceof SegmentOverlay)
-         {
-            ((SegmentOverlay) overlay).setTrackColoringMethod(trackColoringMethod, mAverageSpeed);
-         }
-      }
+//      List< ? > overlays = mMapView.getOverlays();
+//      for (Object overlay : overlays)
+//      {
+//         if (overlay instanceof SegmentOverlay)
+//         {
+//            ((SegmentOverlay) overlay).setTrackColoringMethod(trackColoringMethod, mAverageSpeed);
+//         }
+//      }
    }
 
    private void updateSpeedDisplayVisibility()
@@ -1304,11 +1305,11 @@ public class LoggerMap extends MapActivity
       boolean location = mSharedPreferences.getBoolean(Constants.LOCATION, true);
       if (location)
       {
-         mMylocation.enableMyLocation();
+//         mMylocation.enableMyLocation();
       }
       else
       {
-         mMylocation.disableMyLocation();
+//         mMylocation.disableMyLocation();
       }
    }
 
@@ -1335,7 +1336,7 @@ public class LoggerMap extends MapActivity
          {
             mAverageSpeed = 0.0;
             updateSpeedColoring();
-            mMapView.postInvalidate();
+//            mMapView.postInvalidate();
          }
 
 //         //Altitude number
@@ -1367,8 +1368,8 @@ public class LoggerMap extends MapActivity
    private void createDataOverlays()
    {
       mLastSegmentOverlay = null;
-      mMapView.clearOverlays();
-      mMapView.addOverlay(mMylocation);
+//      mMapView.clearOverlays();
+//      mMapView.addOverlay(mMylocation);
 
       ContentResolver resolver = this.getContentResolver();
       Cursor segments = null;
@@ -1384,17 +1385,17 @@ public class LoggerMap extends MapActivity
             {
                long segmentsId = segments.getLong(0);
                Uri segmentUri = ContentUris.withAppendedId(segmentsUri, segmentsId);
-               SegmentOverlay segmentOverlay = new SegmentOverlay(this, segmentUri, trackColoringMethod, mAverageSpeed, this.mMapView, mHandler);
-               mMapView.addOverlay(segmentOverlay);
-               mLastSegmentOverlay = segmentOverlay;
-               if (segments.isFirst())
-               {
-                  segmentOverlay.addPlacement(SegmentOverlay.FIRST_SEGMENT);
-               }
-               if (segments.isLast())
-               {
-                  segmentOverlay.addPlacement(SegmentOverlay.LAST_SEGMENT);
-               }
+//               SegmentOverlay segmentOverlay = new SegmentOverlay(this, segmentUri, trackColoringMethod, mAverageSpeed, this.mMapView, mHandler);
+//               mMapView.addOverlay(segmentOverlay);
+//               mLastSegmentOverlay = segmentOverlay;
+//               if (segments.isFirst())
+//               {
+//                  segmentOverlay.addPlacement(SegmentOverlay.FIRST_SEGMENT);
+//               }
+//               if (segments.isLast())
+//               {
+//                  segmentOverlay.addPlacement(SegmentOverlay.LAST_SEGMENT);
+//               }
                mLastSegment = segmentsId;
             }
             while (segments.moveToNext());
@@ -1418,16 +1419,16 @@ public class LoggerMap extends MapActivity
       ContentResolver resolver = this.getContentResolver();
       Uri segmentsUri = Uri.withAppendedPath(Tracks.CONTENT_URI, this.mTrackId + "/segments");
       Cursor segmentsCursor = null;
-      List< ? > overlays = this.mMapView.getOverlays();
+//      List< ? > overlays = this.mMapView.getOverlays();
       int segmentOverlaysCount = 0;
 
-      for (Object overlay : overlays)
-      {
-         if (overlay instanceof SegmentOverlay)
-         {
-            segmentOverlaysCount++;
-         }
-      }
+//      for (Object overlay : overlays)
+//      {
+//         if (overlay instanceof SegmentOverlay)
+//         {
+//            segmentOverlaysCount++;
+//         }
+//      }
       try
       {
          segmentsCursor = resolver.query(segmentsUri, new String[] { Segments._ID }, null, null, null);
@@ -1454,32 +1455,32 @@ public class LoggerMap extends MapActivity
     */
    public void onDateOverlayChanged()
    {
-      this.mMapView.postInvalidate();
+//      this.mMapView.postInvalidate();
    }
 
    private void moveActiveViewWindow()
    {
       GeoPoint lastPoint = getLastTrackPoint();
-      if (lastPoint != null && mLoggerServiceManager.getLoggingState() == Constants.LOGGING)
-      {
-         Point out = new Point();
-         this.mMapView.getProjection().toPixels(lastPoint, out);
-         int height = this.mMapView.getHeight();
-         int width = this.mMapView.getWidth();
-         if (out.x < 0 || out.y < 0 || out.y > height || out.x > width)
-         {
-
-            this.mMapView.clearAnimation();
-            this.mMapView.getController().setCenter(lastPoint);
-            //            Log.d( TAG, "mMapView.setCenter()" );
-         }
-         else if (out.x < width / 4 || out.y < height / 4 || out.x > (width / 4) * 3 || out.y > (height / 4) * 3)
-         {
-            this.mMapView.clearAnimation();
-            this.mMapView.getController().animateTo(lastPoint);
-            //            Log.d( TAG, "mMapView.animateTo()" );
-         }
-      }
+//      if (lastPoint != null && mLoggerServiceManager.getLoggingState() == Constants.LOGGING)
+//      {
+//         Point out = new Point();
+//         this.mMapView.getProjection().toPixels(lastPoint, out);
+//         int height = this.mMapView.getHeight();
+//         int width = this.mMapView.getWidth();
+//         if (out.x < 0 || out.y < 0 || out.y > height || out.x > width)
+//         {
+//
+//            this.mMapView.clearAnimation();
+//            this.mMapView.getController().setCenter(lastPoint);
+//            //            Log.d( TAG, "mMapView.setCenter()" );
+//         }
+//         else if (out.x < width / 4 || out.y < height / 4 || out.x > (width / 4) * 3 || out.y > (height / 4) * 3)
+//         {
+//            this.mMapView.clearAnimation();
+//            this.mMapView.getController().animateTo(lastPoint);
+//            //            Log.d( TAG, "mMapView.animateTo()" );
+//         }
+//      }
    }
 
    /**
@@ -1534,7 +1535,7 @@ public class LoggerMap extends MapActivity
             resolver.registerContentObserver(tracksegmentsUri, false, this.mTrackSegmentsObserver);
             resolver.registerContentObserver(Media.CONTENT_URI, true, this.mTrackMediasObserver);
 
-            this.mMapView.clearOverlays();
+//            this.mMapView.clearOverlays();
 
             updateTitleBar();
             updateDataOverlays();
@@ -1542,7 +1543,7 @@ public class LoggerMap extends MapActivity
             if (center)
             {
                GeoPoint lastPoint = getLastTrackPoint();
-               this.mMapView.getController().animateTo(lastPoint);
+//               this.mMapView.getController().animateTo(lastPoint);
             }
          }
       }

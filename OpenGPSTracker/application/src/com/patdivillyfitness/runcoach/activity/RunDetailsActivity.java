@@ -20,9 +20,10 @@ import android.view.View;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.patdivillyfitness.runcoach.R;
 
-public class RunDetailsActivity extends Activity implements StatisticsDelegate
+public class RunDetailsActivity extends SherlockActivity implements StatisticsDelegate
    {
       private static final String TRACKURI = "TRACKURI";
       private static final String TAG = "pdfrun";

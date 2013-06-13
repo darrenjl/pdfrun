@@ -1,37 +1,25 @@
 package com.patdivillyfitness.runcoach.activity;
 
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
-import nl.sogeti.android.gpstracker.util.Constants;
-import nl.sogeti.android.gpstracker.util.Pair;
 import nl.sogeti.android.gpstracker.viewer.TrackList;
-
-import com.patdivillyfitness.runcoach.R;
-import com.patdivillyfitness.runcoach.R.layout;
-import com.patdivillyfitness.runcoach.R.menu;
-
-import android.net.Uri;
-import android.os.Bundle;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.SearchManager;
 import android.app.AlertDialog.Builder;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
+import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnShowListener;
-import android.view.ContextMenu;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.patdivillyfitness.runcoach.R;
 
 public class RunsListActivity extends TrackList
 {
