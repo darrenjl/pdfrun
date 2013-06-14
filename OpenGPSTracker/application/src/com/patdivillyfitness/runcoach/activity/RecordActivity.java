@@ -231,18 +231,18 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       }
    }
 
-   @Override
-   public boolean onKeyDown(int keycode, KeyEvent e)
-   {
-      switch (keycode)
-      {
-         case KeyEvent.KEYCODE_MENU:
-            checkGPSAndOpenControls();
-            return true;
-      }
-
-      return super.onKeyDown(keycode, e);
-   }
+//   @Override
+//   public boolean onKeyDown(int keycode, KeyEvent e)
+//   {
+//      switch (keycode)
+//      {
+//         case KeyEvent.KEYCODE_MENU:
+//            checkGPSAndOpenControls();
+//            return true;
+//      }
+//
+//      return super.onKeyDown(keycode, e);
+//   }
 
    @Override
    public void onDestroy()
