@@ -20,9 +20,9 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.actionbarsherlock.view.Menu;
@@ -38,13 +38,14 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private Button startStopBtn;
    private Button pauseResumeBtn;
    private static final String TAG = "PDFRun";
-   private boolean firstLocationFound=false;
-   private boolean started=false;
-   private boolean startBtn=true;
-   private boolean pauseBtn=true;
+   private boolean firstLocationFound = false;
+   private boolean started = false;
+   private boolean startBtn = true;
+   private boolean pauseBtn = true;
    private static final String INSTANCE_TIME = "time";
    private static final String INSTANCE_SPEED = "speed";
    private static final String INSTANCE_DISTANCE = "distance";
+   private Chronometer myChronometer;
 
    @Override
    protected void onCreate(Bundle load)
@@ -52,100 +53,97 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       this.layout = R.layout.activity_record;
       locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
       tts = new TextToSpeech(this, this);
-      recordingTextView = (TextView) findViewById(R.id.recording);
-      startStopBtn = (Button)findViewById(R.id.startStopBtn);
-      pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
       super.onCreate(load);
+      recordingTextView = (TextView) findViewById(R.id.recording);
+      startStopBtn = (Button) findViewById(R.id.startStopBtn);
+      pauseResumeBtn = (Button) findViewById(R.id.pauseResumeBtn);
+      myChronometer = (Chronometer) findViewById(R.id.chronometer);
+
       mServiceConnected = new Runnable()
-      {
-         @Override
-         public void run()
          {
-            updateBlankingBehavior();
-            loggingState=mLoggerServiceManager.getLoggingState();
-            Log.d("PDFRun", "Record logging state: " + mLoggerServiceManager.getLoggingState());
-            if (recordingTextView==null)
-               recordingTextView = (TextView) findViewById(R.id.recording);
-            switch(loggingState){
-               case Constants.STOPPED:
-                  recordingTextView.setText("Stopped");
-                  RecordActivity.this.setTitle(RecordActivity.this.getString(R.string.application_name));
-                  if(pauseResumeBtn==null)
-                     pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
-                  pauseResumeBtn.setText("Pause");
-                  pauseResumeBtn.setEnabled(false);
-                  pauseBtn=true;
-                  if(startStopBtn==null)
-                     startStopBtn = (Button)findViewById(R.id.startStopBtn);               
-                  startStopBtn.setText("Start");
-                  startBtn=true;
-                  break;
-               case Constants.LOGGING:
-                  if (started)
-                     recordingTextView.setText("Waiting For Satelites");
-                  else
-                     recordingTextView.setText("Recording");
-                  if(startStopBtn==null)
-                     startStopBtn = (Button)findViewById(R.id.startStopBtn);               
-                  startStopBtn.setText("Stop");
-                  startBtn=false;
-                  if(pauseResumeBtn==null)
-                     pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
-                  pauseResumeBtn.setText("Pause");
-                  pauseResumeBtn.setEnabled(true);
-                  pauseBtn=true;
-                  break;
-               case Constants.PAUSED:
-                  recordingTextView.setText("Paused");
-                  if(pauseResumeBtn==null)
-                     pauseResumeBtn = (Button)findViewById(R.id.pauseResumeBtn);
-                  pauseResumeBtn.setText("Resume");
-                  pauseBtn=false;
-                  if(startStopBtn==null)
-                     startStopBtn = (Button)findViewById(R.id.startStopBtn);               
-                  startStopBtn.setText("Stop");
-                  startBtn=false;
-                  break;
-               default:
-                  Log.d(TAG, "unknown logging state");
-                  recordingTextView.setText("No");
-                  break;
+            @Override
+            public void run()
+            {
+               updateBlankingBehavior();
+               loggingState = mLoggerServiceManager.getLoggingState();               
+               Log.d("PDFRun", "Record logging state: " + mLoggerServiceManager.getLoggingState());
+               switch (loggingState)
+               {
+                  case Constants.STOPPED:
+                     recordingTextView.setText("Stopped");
+                     RecordActivity.this.setTitle(RecordActivity.this.getString(R.string.application_name));
+                     pauseResumeBtn.setText("Pause");
+                     pauseResumeBtn.setEnabled(false);
+                     pauseBtn = true;
+                     startStopBtn.setText("Start");
+                     startBtn = true;
+                     myChronometer.stop();
+                     break;
+                  case Constants.LOGGING:
+                     if (started)
+                        recordingTextView.setText("Waiting For Satelites");
+                     else{
+                        recordingTextView.setText("Recording");                                              
+                     }
+                     
+                     startStopBtn.setText("Stop");
+                     startBtn = false;
+                     pauseResumeBtn.setText("Pause");
+                     pauseResumeBtn.setEnabled(true);
+                     pauseBtn = true;
+                     break;
+                  case Constants.PAUSED:
+                     recordingTextView.setText("Paused");
+                     pauseResumeBtn.setText("Resume");
+                     pauseBtn = false;
+                     startStopBtn.setText("Stop");
+                     startBtn = false;
+                     break;
+                  default:
+                     Log.d(TAG, "unknown logging state");
+                     recordingTextView.setText("No");
+                     break;
+               }
             }
-         }
-      };
+         };
       mSegmentWaypointsObserver = new ContentObserver(new Handler())
-      {
-         @Override
-         public void onChange(boolean selfUpdate)
          {
-            if (!selfUpdate)
+            @Override
+            public void onChange(boolean selfUpdate)
             {
-               Log.d(TAG, "RA update track numbers");
-               RecordActivity.this.updateTrackNumbers();            
+               if (!selfUpdate)
+               {
+                  Log.d(TAG, "RA update track numbers");
+                  RecordActivity.this.updateTrackNumbers();
+               }
+               else
+               {
+                  Log.w(TAG, "mSegmentWaypointsObserver skipping change on " + mLastSegment);
+               }
             }
-            else
-            {
-               Log.w(TAG, "mSegmentWaypointsObserver skipping change on " + mLastSegment);
-            }
-         }
-      };
+         };
    }
 
    @Override
    protected void updateTrackNumbers()
    {
-      if(started&&!firstLocationFound){
+      if (started && !firstLocationFound)
+      {
          Log.d(TAG, "First Location Found");
          recordingTextView.setText("Recording");
+         myChronometer.start();
+         //myChronometer.setBase(mLoggerServiceManager.getElapsedTime());  
          speakOut();
-         firstLocationFound=true;
+         firstLocationFound = true;
       }
       super.updateTrackNumbers();
    }
+
    public void trackRun(View view)
    {
       checkGPSAndOpenControls();
    }
+
    public void startStopRun(View view)
    {
       Log.d(TAG, "startStopRun");
@@ -154,10 +152,11 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       else
          checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.STOP);
    }
+
    public void pauseResumeRun(View view)
    {
       Log.d(TAG, "pauseResumeRun");
-      if(pauseBtn)
+      if (pauseBtn)
          checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.PAUSE);
       else
          checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.RESUME);
@@ -179,8 +178,10 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                detailsIntent.setData(trackUri);
                detailsIntent.putExtra(com.patdivillyfitness.runcoach.Constants.FROM_RECORDING_EXTRA, true);
                startActivity(detailsIntent);
-            } else if (intent.getBooleanExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STARTED, false)){
-               started=true;
+            }
+            else if (intent.getBooleanExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STARTED, false))
+            {
+               started = true;
             }
          }
       }
@@ -231,18 +232,18 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       }
    }
 
-//   @Override
-//   public boolean onKeyDown(int keycode, KeyEvent e)
-//   {
-//      switch (keycode)
-//      {
-//         case KeyEvent.KEYCODE_MENU:
-//            checkGPSAndOpenControls();
-//            return true;
-//      }
-//
-//      return super.onKeyDown(keycode, e);
-//   }
+   //   @Override
+   //   public boolean onKeyDown(int keycode, KeyEvent e)
+   //   {
+   //      switch (keycode)
+   //      {
+   //         case KeyEvent.KEYCODE_MENU:
+   //            checkGPSAndOpenControls();
+   //            return true;
+   //      }
+   //
+   //      return super.onKeyDown(keycode, e);
+   //   }
 
    @Override
    public void onDestroy()
@@ -268,10 +269,10 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          {
             Log.e("TTS", "This Language is not supported");
          }
-//         else
-//         {
-//            speakOut();
-//         }
+         //         else
+         //         {
+         //            speakOut();
+         //         }
 
       }
       else
@@ -306,7 +307,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          startActivityForResult(intent, MENU_TRACKING);
       }
    }
-   
+
    private void checkGPSAndControlRecording(int action)
    {
       try
@@ -328,7 +329,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          startActivityForResult(intent, MENU_TRACKING);
       }
    }
-   
+
    @Override
    protected void onRestoreInstanceState(Bundle load)
    {
@@ -352,8 +353,9 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          }
       }
    }
-   
-   private void alertGPSDisabled(){
+
+   private void alertGPSDisabled()
+   {
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
       builder.setMessage("Your GPS module is disabled. Would you like to enable it ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
          {
