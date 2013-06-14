@@ -177,6 +177,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
                Intent detailsIntent = new Intent(this, RunDetailsActivity.class);
                detailsIntent.setData(trackUri);
+               detailsIntent.putExtra(com.patdivillyfitness.runcoach.Constants.FROM_RECORDING_EXTRA, true);
                startActivity(detailsIntent);
             } else if (intent.getBooleanExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STARTED, false)){
                started=true;
