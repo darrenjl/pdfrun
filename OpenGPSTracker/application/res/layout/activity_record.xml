@@ -14,12 +14,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-<!--         <Button -->
-<!--             android:id="@+id/button1" -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:onClick="trackRun" -->
-<!--             android:text="Control Run Tracking" /> -->
+        <!-- <Button -->
+        <!-- android:id="@+id/button1" -->
+        <!-- android:layout_width="wrap_content" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:onClick="trackRun" -->
+        <!-- android:text="Control Run Tracking" /> -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,9 +37,9 @@
                 android:id="@+id/recording"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="-"
                 android:textColor="#ff000000"
-                android:textSize="12pt" 
-                android:text="-"/>
+                android:textSize="12pt" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,9 +58,9 @@
                 android:id="@+id/currentDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="-"
                 android:textColor="#ff000000"
-                android:textSize="12pt" 
-                android:text="-"/>
+                android:textSize="12pt" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,9 +79,9 @@
                 android:id="@+id/currentSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="-"
                 android:textColor="#ff000000"
-                android:textSize="12pt" 
-                android:text="-"/>
+                android:textSize="12pt" />
         </LinearLayout>
 
         <LinearLayout
@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time: "
+                android:text="Time from service: "
                 android:textColor="#ff000000"
                 android:textSize="12pt" />
 
@@ -100,49 +100,72 @@
                 android:id="@+id/elapsedTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="--:--"
                 android:textColor="#ff000000"
-                android:textSize="12pt" 
-                android:text="--:--"/>
+                android:textSize="12pt" />
         </LinearLayout>
-        
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity Timer: "
+                android:textColor="#ff000000"
+                android:textSize="12pt" />
+
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff000000"
+                android:textSize="12pt"/>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
             <Button
-            android:id="@+id/startStopBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="startStopRun"
-            android:text="Start" />
-            
+                android:id="@+id/startStopBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="startStopRun"
+                android:text="Start" />
+
             <Button
-            android:id="@+id/pauseResumeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="pauseResumeRun"
-            android:text="Pause" 
-            android:enabled="false"/>
+                android:id="@+id/pauseResumeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:onClick="pauseResumeRun"
+                android:text="Pause"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 
-<!--     <RelativeLayout -->
-<!--         android:id="@+id/mapScreen" -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="fill_parent" > -->
+    <!-- <RelativeLayout -->
+    <!-- android:id="@+id/mapScreen" -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="fill_parent" > -->
 
-<!--         <com.google.android.maps.MapView -->
-<!--             android:id="@+id/myMapView" -->
-<!--             android:layout_width="fill_parent" -->
-<!--             android:layout_height="fill_parent" -->
-<!--             android:apiKey="AIzaSyA_DycAKxQr5o1IeDt1w0INsecnruA-qzE" -->
-<!--             android:clickable="true" -->
-<!--             android:enabled="true" -->
-<!--             android:visibility="visible" /> -->
-<!--         Release         : 0bmdf4-ggC50QWBY1OgGRutQ9bIboIy11OczZbw -->
-<!--         Emulator        : 0bmdf4-ggC50QJGdjml6Turq0NJdMhKFQNdhkYA -->
 
-<!--     </RelativeLayout> -->
+    <!-- <com.google.android.maps.MapView -->
+    <!-- android:id="@+id/myMapView" -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="fill_parent" -->
+    <!-- android:apiKey="AIzaSyA_DycAKxQr5o1IeDt1w0INsecnruA-qzE" -->
+    <!-- android:clickable="true" -->
+    <!-- android:enabled="true" -->
+    <!-- android:visibility="visible" /> -->
+    <!-- Release         : 0bmdf4-ggC50QWBY1OgGRutQ9bIboIy11OczZbw -->
+    <!-- Emulator        : 0bmdf4-ggC50QJGdjml6Turq0NJdMhKFQNdhkYA -->
+
+
+    <!-- </RelativeLayout> -->
 
 </LinearLayout>
