@@ -570,7 +570,7 @@ public class TrackList extends SherlockListActivity implements ProgressListener
          if ("content".equals(uri.getScheme()) && GPStracking.AUTHORITY.equals(uri.getAuthority()))
          {
             // Got to VIEW a single track, instead hand it of to the LoggerMap
-            Intent notificationIntent = new Intent(this, LoggerMap.class);
+            Intent notificationIntent = new Intent(this, RecordActivity.class);
             notificationIntent.setData(uri);
             startActivity(notificationIntent);
             finish();
@@ -607,14 +607,14 @@ public class TrackList extends SherlockListActivity implements ProgressListener
 
    private void displayCursor(Cursor tracksCursor)
    {
-      SectionedListAdapter sectionedAdapter = new SectionedListAdapter(this);
+//      SectionedListAdapter sectionedAdapter = new SectionedListAdapter(this);
 
       String[] fromColumns = new String[] { Tracks.NAME, Tracks.CREATION_TIME, Tracks._ID };
       int[] toItems = new int[] { R.id.listitem_name, R.id.listitem_from, R.id.bcSyncedCheckBox };
       SimpleCursorAdapter trackAdapter = new SimpleCursorAdapter(this, R.layout.trackitem, tracksCursor, fromColumns, toItems);
 
       //mBreadcrumbAdapter = new BreadcrumbsAdapter(this, mService);
-      sectionedAdapter.addSection("", trackAdapter);
+//      sectionedAdapter.addSection("", trackAdapter);
       //sectionedAdapter.addSection("www.gobreadcrumbs.com", mBreadcrumbAdapter);
 
       // Enrich the track adapter with Breadcrumbs adapter data 
@@ -704,7 +704,7 @@ public class TrackList extends SherlockListActivity implements ProgressListener
 //            }
 //         });
 
-      setListAdapter(sectionedAdapter);
+      setListAdapter(trackAdapter);
    }
 
    private Cursor doSearchWithIntent(final Intent queryIntent)
