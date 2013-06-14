@@ -1352,7 +1352,11 @@ public class LoggerMap extends SherlockActivity
          mCurrentDistance=distanceText;
          long millis = mLoggerServiceManager.getElapsedTime();
          long s = millis / 1000;
-         String duration = String.format("%dh:%02dm:%02ds", s/3600, (s%3600)/60, (s%60));
+         String duration="";
+         if (s/3600>1)
+            duration = String.format("%dh:%02dm:%02ds", s/3600, (s%3600)/60, (s%60));
+         else
+            duration = String.format("%02dm:%02ds", (s%3600)/60, (s%60));
          mElapsedTime = duration;
          mElapsedTimeView.setText(duration);
       }

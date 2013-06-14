@@ -122,7 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="pauseResumeRun"
-            android:text="Pause" />
+            android:text="Pause" 
+            android:enabled="false"/>
         </LinearLayout>
     </LinearLayout>
 

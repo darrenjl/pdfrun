@@ -176,7 +176,6 @@
             android:id="@+id/profileBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:onClick="goToProfile"
             android:text="Profile" />
     </TableRow>

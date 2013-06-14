@@ -162,7 +162,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
          startActivity(i);
       }
       
-      public void goToProfiule(View view)
+      public void goToProfile(View view)
       {
          Intent i = new Intent(this, ProfileActivity.class);
          startActivity(i);
