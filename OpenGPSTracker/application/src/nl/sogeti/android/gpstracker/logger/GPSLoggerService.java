@@ -42,6 +42,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 import com.patdivillyfitness.runcoach.R;
+import com.patdivillyfitness.runcoach.activity.DashboardActivity;
 import com.patdivillyfitness.runcoach.activity.RecordActivity;
 
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
@@ -1736,7 +1737,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
    {
       StringBuilder strBuilder= new StringBuilder();
       strBuilder.append("You have run ");
-      strBuilder.append(String.format( "%.2f", mUnits.conversionFromMeter(distance)));
+      strBuilder.append(String.format( "%.0f", mUnits.conversionFromMeter(distance)));
       if (mUnits.getDistanceUnit().equalsIgnoreCase("km"))
          strBuilder.append(" kilometers");
       else
@@ -1758,20 +1759,41 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
          return minutes + ":" + seconds;
     }
    
-   private void playBeep(){
-      AudioManager am = (AudioManager)this.getSystemService(Context.AUDIO_SERVICE);
-      int result = am.requestAudioFocus(afChangeListener,                                 
-                                   AudioManager.STREAM_MUSIC,                                   
-                                   AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
-      Log.d("PDFRun", "In play beep");
-      if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-         Log.d("PDFRun", "am rerquest granted");
-         MediaPlayer mPlayer2;
-         mPlayer2= MediaPlayer.create(this, R.raw.success);
-         mPlayer2.start();
-         mPlayer2.release();
-         am.abandonAudioFocus(afChangeListener);
-      }
+   private void playBeep()
+   {
+
+      //mPlayer2.release();
+      Thread thread = new Thread()
+         {
+            @Override
+            public void run()
+            {
+               try
+               {
+                  AudioManager am = (AudioManager) GPSLoggerService.this.getSystemService(Context.AUDIO_SERVICE);
+                  am.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
+                  int result = am.requestAudioFocus(afChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
+                  Log.d("PDFRun", "In play beep");
+                  if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED)
+                  {
+                     Log.d("PDFRun", "am rerquest granted");
+                     sleep(1000);
+                     MediaPlayer mPlayer2;
+                     mPlayer2 = MediaPlayer.create(GPSLoggerService.this, R.raw.success);
+                     mPlayer2.start();
+                     sleep(1000);
+                     am.abandonAudioFocus(afChangeListener);
+                  }
+               }
+               catch (InterruptedException e)
+               {
+                  e.printStackTrace();
+               }
+            }
+         };
+
+      thread.start();
+
    }
    private OnAudioFocusChangeListener afChangeListener = new OnAudioFocusChangeListener(){
       public void onAudioFocusChange(int focusChange) {Log.d(TAG, "Audio focus change");}
