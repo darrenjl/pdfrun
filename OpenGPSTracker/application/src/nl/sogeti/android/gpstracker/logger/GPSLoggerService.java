@@ -71,6 +71,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
@@ -392,6 +393,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       public long startLogging() throws RemoteException
       {
          GPSLoggerService.this.startLogging();
+         playBeep();
          return mTrackId;
       }
 
@@ -1755,4 +1757,23 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       else
          return minutes + ":" + seconds;
     }
+   
+   private void playBeep(){
+      AudioManager am = (AudioManager)this.getSystemService(Context.AUDIO_SERVICE);
+      int result = am.requestAudioFocus(afChangeListener,                                 
+                                   AudioManager.STREAM_MUSIC,                                   
+                                   AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
+      Log.d("PDFRun", "In play beep");
+      if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+         Log.d("PDFRun", "am rerquest granted");
+         MediaPlayer mPlayer2;
+         mPlayer2= MediaPlayer.create(this, R.raw.success);
+         mPlayer2.start();
+         mPlayer2.release();
+         am.abandonAudioFocus(afChangeListener);
+      }
+   }
+   private OnAudioFocusChangeListener afChangeListener = new OnAudioFocusChangeListener(){
+      public void onAudioFocusChange(int focusChange) {Log.d(TAG, "Audio focus change");}
+   };
 }
