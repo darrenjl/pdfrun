@@ -39,11 +39,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
-
-import com.patdivillyfitness.runcoach.R;
-import com.patdivillyfitness.runcoach.activity.DashboardActivity;
-import com.patdivillyfitness.runcoach.activity.RecordActivity;
 
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
 import nl.sogeti.android.gpstracker.db.GPStracking.MetaData;
@@ -86,11 +81,14 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
 import android.os.RemoteException;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.patdivillyfitness.runcoach.R;
+import com.patdivillyfitness.runcoach.activity.RecordActivity;
 
 /**
  * A system service as controlling the background logging of gps locations.
@@ -394,7 +392,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       public long startLogging() throws RemoteException
       {
          GPSLoggerService.this.startLogging();
-         playBeep();
+         playBeepAndVibrate();
          return mTrackId;
       }
 
@@ -1519,7 +1517,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
             trackCursor.close();
          }
       }
-      ContentValues values = new ContentValues();
+      ContentValues values = new ContentValues();      
       if(mDistance>1000&&km1Time==0){
          values.put( com.patdivillyfitness.runcoach.Constants.SIGNIFICANT_DISTANCE_TIME, time );      
          this.getContentResolver().update(trackUri, values, Tracks.KM_1_TIME, null);
@@ -1541,6 +1539,8 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
          this.getContentResolver().update(trackUri, values, Tracks.KM_10_TIME, null);
          speakOut(mDistance, time);
       } 
+      double distance = mUnits.conversionFromMeter(mDistance);
+      int counter = (int)distance;
    }
 
    /**
@@ -1759,7 +1759,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
          return minutes + ":" + seconds;
     }
    
-   private void playBeep()
+   private void playBeepAndVibrate()
    {
 
       //mPlayer2.release();
@@ -1771,9 +1771,10 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
                try
                {
                   AudioManager am = (AudioManager) GPSLoggerService.this.getSystemService(Context.AUDIO_SERVICE);
-                  am.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
+//                  am.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
                   int result = am.requestAudioFocus(afChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
                   Log.d("PDFRun", "In play beep");
+                  Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                   if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED)
                   {
                      Log.d("PDFRun", "am rerquest granted");
@@ -1781,9 +1782,14 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
                      MediaPlayer mPlayer2;
                      mPlayer2 = MediaPlayer.create(GPSLoggerService.this, R.raw.success);
                      mPlayer2.start();
+                     v.vibrate(500);
                      sleep(1000);
                      am.abandonAudioFocus(afChangeListener);
                   }
+                  else{
+                     v.vibrate(1000);
+                  }
+                  
                }
                catch (InterruptedException e)
                {
