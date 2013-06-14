@@ -162,8 +162,8 @@ public class TrackList extends SherlockListActivity implements ProgressListener
    protected void onStart()
    {
       super.onStart();
-      Intent intent = new Intent(this, BreadcrumbsService.class);
-      bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+//      Intent intent = new Intent(this, BreadcrumbsService.class);
+//      bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
    }
 
    @Override
@@ -186,12 +186,12 @@ public class TrackList extends SherlockListActivity implements ProgressListener
    @Override
    protected void onStop()
    {
-      if (mBound)
-      {
-         unbindService(mConnection);
-         mBound = false;
-         mService = null;
-      }
+//      if (mBound)
+//      {
+//         unbindService(mConnection);
+//         mBound = false;
+//         mService = null;
+//      }
       super.onStop();
    }
 
@@ -200,8 +200,8 @@ public class TrackList extends SherlockListActivity implements ProgressListener
    {
       if (isFinishing())
       {
-         Intent service = new Intent(this, BreadcrumbsService.class);
-         stopService(service);
+//         Intent service = new Intent(this, BreadcrumbsService.class);
+//         stopService(service);
       }
 //      unregisterReceiver(mReceiver);
       super.onDestroy();
