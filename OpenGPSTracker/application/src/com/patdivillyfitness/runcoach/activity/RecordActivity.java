@@ -17,6 +17,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -132,7 +133,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          Log.d(TAG, "First Location Found");
          recordingTextView.setText("Recording");
          myChronometer.start();
-         //myChronometer.setBase(mLoggerServiceManager.getElapsedTime());  
+         myChronometer.setBase(SystemClock.elapsedRealtime());  
          speakOut();
          firstLocationFound = true;
       }
