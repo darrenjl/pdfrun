@@ -213,6 +213,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
    
    private TextToSpeech tts;
    private UnitsI18n mUnits;
+   private int progressCounter=0;
 
    /**
     * Listens to changes in preference to precision and sanity checks
@@ -287,6 +288,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
             mElapsedTime = filteredLocation.getTime()- mStartTime;
             updateNotification();
          }
+         beepIfRequired();
          storeDistanceTimeIfSignificant(mElapsedTime);
          storeLocation(filteredLocation);
          broadcastLocation(filteredLocation);
@@ -392,7 +394,6 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       public long startLogging() throws RemoteException
       {
          GPSLoggerService.this.startLogging();
-         playBeepAndVibrate();
          return mTrackId;
       }
 
@@ -1490,6 +1491,15 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       mWaypointId = Long.parseLong(inserted.getLastPathSegment());
    }
    
+   private void beepIfRequired(){
+      double distance = mUnits.conversionFromMeter(mDistance);
+      int counter = (int)distance;
+      if(counter>progressCounter){
+         playBeepAndVibrate();
+         progressCounter++;
+      }
+   }
+   
    public void storeDistanceTimeIfSignificant(long time){      
       Cursor trackCursor = null;
       Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
@@ -1539,8 +1549,6 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
          this.getContentResolver().update(trackUri, values, Tracks.KM_10_TIME, null);
          speakOut(mDistance, time);
       } 
-      double distance = mUnits.conversionFromMeter(mDistance);
-      int counter = (int)distance;
    }
 
    /**
