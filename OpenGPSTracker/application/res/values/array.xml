@@ -34,14 +34,14 @@
 
    <string-array
       name="units_choices">
-      <item>Device locale</item>
+<!--       <item>Device locale</item> -->
       <item>Imperial (miles)</item>
       <item>Metric (meters)</item>
-      <item>Nautical (knots)</item>
-      <item>Pace (minutes per kilometer)</item>
-      <item>Pace (minutes per mile)</item>
-      <item>Acres/hour (Imperial)</item>
-      <item>Hectares/hour (Metric)</item>
+<!--       <item>Nautical (knots)</item> -->
+<!--       <item>Pace (minutes per kilometer)</item> -->
+<!--       <item>Pace (minutes per mile)</item> -->
+<!--       <item>Acres/hour (Imperial)</item> -->
+<!--       <item>Hectares/hour (Metric)</item> -->
    </string-array>
 
    <string-array

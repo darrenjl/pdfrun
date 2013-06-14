@@ -44,7 +44,7 @@
 <!--         </PreferenceCategory> -->
 <!--     </PreferenceScreen> -->
 
-    <PreferenceScreen android:title="@string/preference_behavior" >
+<!--     <PreferenceScreen android:title="@string/preference_behavior" > -->
 
         <PreferenceCategory android:title="@string/preference_behavior" >
 
@@ -97,9 +97,9 @@
 <!--                 android:summary="@string/stopatpowerdisconnected_summary" -->
 <!--                 android:title="@string/stopatpowerdisconnected" /> -->
         </PreferenceCategory>
-    </PreferenceScreen>
+<!--     </PreferenceScreen> -->
 
-    <PreferenceScreen android:title="@string/preference_display" >
+<!--     <PreferenceScreen android:title="@string/preference_display" > -->
 
         <PreferenceCategory android:title="@string/preference_display" >
 
@@ -165,9 +165,9 @@
 <!--                 android:summary="@string/showlocation_summary" -->
 <!--                 android:title="@string/showlocation_title" /> -->
         </PreferenceCategory>
-    </PreferenceScreen>
+<!--     </PreferenceScreen> -->
 
-    <PreferenceScreen android:title="@string/preference_sharing" >
+<!--     <PreferenceScreen android:title="@string/preference_sharing" > -->
 
         <PreferenceCategory android:title="@string/preference_sharing" >
 
@@ -256,6 +256,6 @@
 <!--                 android:summary="@string/customupload_backlog_summary" -->
 <!--                 android:title="@string/customupload_backlog_title" /> -->
 <!--         </PreferenceCategory> -->
-    </PreferenceScreen>
+<!--     </PreferenceScreen> -->
 
 </PreferenceScreen>
