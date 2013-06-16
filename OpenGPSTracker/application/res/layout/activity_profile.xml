@@ -58,11 +58,11 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Best"/>
+                    android:text="Best Time"/>
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Avg." />
+                    android:text="Avg. Time" />
                 
                 <TextView
                     style="@style/TableHeaderRowTextView"
