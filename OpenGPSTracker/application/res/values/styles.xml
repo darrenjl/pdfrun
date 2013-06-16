@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
     <style name="Theme.NoBackground" parent="android:Theme">
         <item name="android:windowBackground">@null</item>
-    </style> 
+    </style>
+
     <style name="AppBaseTheme" parent="Theme.Sherlock.Light"></style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
+
     <!-- Application theme. -->
     <style name="AppNoTitleTheme" parent="Theme.Sherlock.Light.NoActionBar">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-        
+
     <style name="DashboardButton">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_width">wrap_content</item>
@@ -25,13 +27,35 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ff29549f</item>
         <item name="android:background">@null</item>
-    </style>    
-     
-   <style name="FooterBar">
+    </style>
+
+    <style name="FooterBar">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">#dedede</item>
     </style>
-    
+
+    <style name="Table">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:stretchColumns">*</item>
+        <item name="android:background">#AAAAAA</item>
+    </style>
+
+    <style name="TableRow">
+        <item name="android:layout_margin">1dip</item>
+        <item name="android:background">#AAAAAA</item>
+    </style>
+
+    <style name="TableHeaderRow" parent="TableRow"></style>
+
+    <style name="TableRowTextView">
+        <item name="android:layout_margin">1dip</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:padding">2dip</item>
+    </style>
+
+    <style name="TableHeaderRowTextView" parent="TableRowTextView"></style>
+
 </resources>

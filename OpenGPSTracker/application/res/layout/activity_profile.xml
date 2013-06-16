@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:gravity="top" 
+    android:gravity="top"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity" >
 
     <TableRow
         android:layout_width="fill_parent"
@@ -27,10 +27,10 @@
         <TextView
             android:paddingRight="15dp"
             android:text="Total distance run" />
-        
+
         <TextView android:id="@+id/totalDistance" />
     </TableRow>
-    
+
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
@@ -38,72 +38,148 @@
         <TextView
             android:paddingRight="15dp"
             android:text="Max speed" />
-        
+
         <TextView android:id="@+id/maxSpeed" />
     </TableRow>
-    
     <TableRow
-        android:id="@+id/km_1_table_row"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:visibility="gone">
+        android:id="@+id/profile_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible" >
 
-        <TextView
-            android:paddingRight="15dp"
-            android:text="Best time for 1km" />
+        <TableLayout style="@style/Table">
 
-        <TextView android:id="@+id/km_1_time" />
+            <TableRow
+                style="@style/TableHeaderRow" >
+
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="" />
+
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="Best"/>
+
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="Avg." />
+                
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="" />
+            </TableRow> 
+            <TableRow
+                style="@style/TableRow"
+                android:id="@+id/km_1_table_row"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_margin="1dip"
+                    android:background="#ffffff"
+                    android:text="1km" />
+
+                <TextView
+                    android:id="@+id/km_1_time"
+                    style="@style/TableRowTextView"
+                    android:text="" />
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+                
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+            </TableRow> 
+            <TableRow
+                style="@style/TableRow" 
+                android:id="@+id/km_3_table_row"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="3km" />
+
+                <TextView
+                    android:id="@+id/km_3_time"
+                    style="@style/TableRowTextView"
+                    android:text="" />
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+                
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+            </TableRow>
+            <TableRow
+                style="@style/TableRow" 
+                android:id="@+id/km_5_table_row"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="5km" />
+
+                <TextView
+                    android:id="@+id/km_5_time"
+                    style="@style/TableRowTextView"
+                    android:text="" />
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+                
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+            </TableRow>  
+            <TableRow
+                style="@style/TableRow"
+                android:id="@+id/km_8_table_row"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="8km" />
+
+                <TextView
+                    android:id="@+id/km_8_time"
+                    style="@style/TableRowTextView"
+                    android:text="" />
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+                
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+            </TableRow>  
+            <TableRow
+                style="@style/TableRow" 
+                android:id="@+id/km_10_table_row"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="10km" />
+
+                <TextView
+                    android:id="@+id/km_10_time"
+                    style="@style/TableRowTextView"
+                    android:text="" />
+
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+                
+                <TextView
+                    style="@style/TableRowTextView"
+                    android:text="" />
+            </TableRow>           
+        </TableLayout>
     </TableRow>
-    
-    <TableRow
-        android:id="@+id/km_3_table_row"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:visibility="gone">
 
-        <TextView
-            android:paddingRight="15dp"
-            android:text="Best time for 3km" />
-
-        <TextView android:id="@+id/km_3_time" />
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/km_5_table_row"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:visibility="gone">
-
-        <TextView
-            android:paddingRight="15dp"
-            android:text="Best time for 5km" />
-
-        <TextView android:id="@+id/km_5_time" />
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/km_8_table_row"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:visibility="gone">
-
-        <TextView
-            android:paddingRight="15dp"
-            android:text="Best time for 8km" />
-
-        <TextView android:id="@+id/km_8_time" />
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/km_10_table_row"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:visibility="gone">
-
-        <TextView
-            android:paddingRight="15dp"
-            android:text="Best time for 10km" />
-
-        <TextView android:id="@+id/km_10_time" />
-    </TableRow>
 </TableLayout>
