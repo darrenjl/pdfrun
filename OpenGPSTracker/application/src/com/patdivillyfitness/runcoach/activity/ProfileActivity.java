@@ -35,11 +35,26 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
    private long best5kmTime=0;
    private long best8kmTime=0;
    private long best10kmTime=0;
+   private long sum1kmTime=0;
+   private long sum3kmTime=0;
+   private long sum5kmTime=0;
+   private long sum8kmTime=0;
+   private long sum10kmTime=0;
+   private int avg1kmTimeCounter=0;
+   private int avg3kmTimeCounter=0;
+   private int avg5kmTimeCounter=0;
+   private int avg8kmTimeCounter=0;
+   private int avg10kmTimeCounter=0;
    private TextView km1TimeView;
    private TextView km3TimeView;
    private TextView km5TimeView;
    private TextView km8TimeView;
    private TextView km10TimeView;
+   private TextView avgKm1TimeView;
+   private TextView avgKm3TimeView;
+   private TextView avgKm5TimeView;
+   private TextView avgKm8TimeView;
+   private TextView avgKm10TimeView;
    private TableRow km1TimeTableRow;
    private TableRow km3TimeTableRow;
    private TableRow km5TimeTableRow;
@@ -59,6 +74,11 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
       km5TimeView = (TextView) findViewById(R.id.km_5_time);
       km8TimeView = (TextView) findViewById(R.id.km_8_time);
       km10TimeView = (TextView) findViewById(R.id.km_10_time);
+      avgKm1TimeView = (TextView) findViewById(R.id.avg_km_1_time);
+      avgKm3TimeView = (TextView) findViewById(R.id.avg_km_3_time);
+      avgKm5TimeView = (TextView) findViewById(R.id.avg_km_5_time);
+      avgKm8TimeView = (TextView) findViewById(R.id.avg_km_8_time);
+      avgKm10TimeView = (TextView) findViewById(R.id.avg_km_10_time);
       km1TimeTableRow   = (TableRow) findViewById(R.id.km_1_table_row);
       km3TimeTableRow   = (TableRow) findViewById(R.id.km_3_table_row);
       km5TimeTableRow   = (TableRow) findViewById(R.id.km_5_table_row);
@@ -117,6 +137,9 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
             best1kmTime=calculated.getKm1Time();
             km1TimeView.setText(calculated.getKm1TimeText());
          }
+         ++avg1kmTimeCounter;
+         sum1kmTime=(sum1kmTime+calculated.getKm1Time());
+         avgKm1TimeView.setText(calculated.getTimeText(sum1kmTime/avg1kmTimeCounter));
          km1TimeTableRow.setVisibility(View.VISIBLE);
       }
       if(calculated.getKm3Time()>0){
@@ -124,6 +147,9 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
             best3kmTime=calculated.getKm3Time();
             km3TimeView.setText(calculated.getKm3TimeText());
          }
+         ++avg3kmTimeCounter;
+         sum3kmTime=(sum3kmTime+calculated.getKm3Time());
+         avgKm3TimeView.setText(calculated.getTimeText(sum3kmTime/avg3kmTimeCounter));
          km3TimeTableRow.setVisibility(View.VISIBLE);
       }
       if(calculated.getKm5Time()>0){
@@ -131,6 +157,9 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
             best5kmTime=calculated.getKm5Time();
             km5TimeView.setText(calculated.getKm5TimeText());
          }
+         ++avg5kmTimeCounter;
+         sum5kmTime=(sum5kmTime+calculated.getKm5Time());
+         avgKm5TimeView.setText(calculated.getTimeText(sum5kmTime/avg5kmTimeCounter));
          km5TimeTableRow.setVisibility(View.VISIBLE);
       }
       if(calculated.getKm8Time()>0){
@@ -138,6 +167,9 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
             best8kmTime=calculated.getKm8Time();
             km8TimeView.setText(calculated.getKm8TimeText());
          }
+         ++avg8kmTimeCounter;
+         sum8kmTime=(sum8kmTime+calculated.getKm8Time());
+         avgKm8TimeView.setText(calculated.getTimeText(sum8kmTime/avg8kmTimeCounter));
          km8TimeTableRow.setVisibility(View.VISIBLE);
       }
       if(calculated.getKm10Time()>0){
@@ -145,6 +177,9 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
             best10kmTime=calculated.getKm10Time();
             km10TimeView.setText(calculated.getKm10TimeText());
          }
+         ++avg10kmTimeCounter;
+         sum10kmTime=(sum10kmTime+calculated.getKm10Time());
+         avgKm10TimeView.setText(calculated.getTimeText(sum10kmTime/avg10kmTimeCounter));
          km10TimeTableRow.setVisibility(View.VISIBLE);
       }
    }
