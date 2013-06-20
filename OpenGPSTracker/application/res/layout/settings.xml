@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/opengpstracker_title" >
+    android:title="@string/application_name" >
 
 <!--     <PreferenceScreen android:title="@string/preference_logging" > -->
 
@@ -169,7 +169,7 @@
 
 <!--     <PreferenceScreen android:title="@string/preference_sharing" > -->
 
-        <PreferenceCategory android:title="@string/preference_sharing" >
+<!--         <PreferenceCategory android:title="@string/preference_sharing" > -->
 
 <!--             <EditTextPreference -->
 <!--                 android:defaultValue="" -->
@@ -186,13 +186,13 @@
 <!--                 android:summary="@string/osmvisibility_summary" -->
 <!--                 android:title="@string/osmvisibility_title" /> -->
 
-            <EditTextPreference
-                android:defaultValue="/OpenGPSTracker/"
-                android:dialogMessage="@string/sddirectory_message"
-                android:key="SDDIR_DIR"
-                android:summary="@string/sddirectory_summary"
-                android:title="@string/sddirectory_title" />
-        </PreferenceCategory>
+<!--             <EditTextPreference -->
+<!--                 android:defaultValue="/OpenGPSTracker/" -->
+<!--                 android:dialogMessage="@string/sddirectory_message" -->
+<!--                 android:key="SDDIR_DIR" -->
+<!--                 android:summary="@string/sddirectory_summary" -->
+<!--                 android:title="@string/sddirectory_title" /> -->
+<!--         </PreferenceCategory> -->
 
 <!--         <PreferenceCategory android:title="@string/preference_stream" > -->
 

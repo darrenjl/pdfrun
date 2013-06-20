@@ -101,7 +101,7 @@
         </activity>
         <activity
             android:name="nl.sogeti.android.gpstracker.viewer.ApplicationPreferenceActivity"
-            android:label="@string/menu_settings" />
+            android:label="@string/application_name" />
         <activity
             android:name="nl.sogeti.android.gpstracker.actions.NameTrack"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
