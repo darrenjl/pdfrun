@@ -82,7 +82,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                      break;
                   case Constants.LOGGING:
                      if (started)
-                        recordingTextView.setText("Waiting For Satelites");
+                        recordingTextView.setText("Searching, walk slowly until recording starts.");
                      else{
                         recordingTextView.setText("Recording");                                              
                      }
