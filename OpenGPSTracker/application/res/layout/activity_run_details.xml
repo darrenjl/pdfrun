@@ -1,165 +1,159 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:gravity="top"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+     android:gravity="top"
     tools:context=".RunDetailsActivity" >
-<TableLayout  style="@style/Table">
 
-    <TableRow
-        style="@style/TableRow" >
+        <TableLayout style="@style/Table" >
 
-        <TextView
-            android:text="@string/stat_distance"
-           style="@style/TableHeaderRowTextView" />
+            <TableRow style="@style/TableRow" >
 
-        <TextView
-            android:id="@+id/stat_distance"
-            style="@style/TableRowTextView" />
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="@string/stat_distance" />
 
-    <TableRow
-        style="@style/TableRow" >
+                <TextView
+                    android:id="@+id/stat_distance"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="@string/stat_averagespeed"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow style="@style/TableRow" >
 
-        <TextView
-            android:id="@+id/stat_averagespeed"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="@string/stat_averagespeed" />
 
-    <TableRow
-        style="@style/TableRow" >
+                <TextView
+                    android:id="@+id/stat_averagespeed"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="@string/stat_maximumspeed"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow style="@style/TableRow" >
 
-        <TextView
-            android:id="@+id/stat_maximumspeed"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="@string/stat_maximumspeed" />
 
-    <TableRow
-        style="@style/TableRow" >
+                <TextView
+                    android:id="@+id/stat_maximumspeed"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="@string/stat_elapsedtime"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow style="@style/TableRow" >
 
-        <TextView
-            android:id="@+id/stat_elapsedtime"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="@string/stat_elapsedtime" />
 
-    <TableRow
-        android:id="@+id/km_1_table_row"
-        style="@style/TableRow"
-        android:visibility="gone" >
+                <TextView
+                    android:id="@+id/stat_elapsedtime"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="Time for 1km"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow
+                android:id="@+id/km_1_table_row"
+                style="@style/TableRow"
+                android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/km_1_time"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="Time for 1km" />
 
-    <TableRow
-        android:id="@+id/km_3_table_row"
-        style="@style/TableRow"
-        android:visibility="gone" >
+                <TextView
+                    android:id="@+id/km_1_time"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="Time for 3km"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow
+                android:id="@+id/km_3_table_row"
+                style="@style/TableRow"
+                android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/km_3_time"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="Time for 3km" />
 
-    <TableRow
-        android:id="@+id/km_5_table_row"
-        style="@style/TableRow"
-        android:visibility="gone" >
+                <TextView
+                    android:id="@+id/km_3_time"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="Time for 5km"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow
+                android:id="@+id/km_5_table_row"
+                style="@style/TableRow"
+                android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/km_5_time"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="Time for 5km" />
 
-    <TableRow
-        android:id="@+id/km_8_table_row"
-        style="@style/TableRow"
-        android:visibility="gone" >
+                <TextView
+                    android:id="@+id/km_5_time"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="Time for 8km"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow
+                android:id="@+id/km_8_table_row"
+                style="@style/TableRow"
+                android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/km_8_time"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="Time for 8km" />
 
-    <TableRow
-        android:id="@+id/km_10_table_row"
-        style="@style/TableRow"
-        android:visibility="gone" >
+                <TextView
+                    android:id="@+id/km_8_time"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="Time for 10km"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow
+                android:id="@+id/km_10_table_row"
+                style="@style/TableRow"
+                android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/km_10_time"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="Time for 10km" />
 
-    <TableRow
-        style="@style/TableRow" >
+                <TextView
+                    android:id="@+id/km_10_time"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <TextView
-            android:text="@string/stat_ascension"
-            style="@style/TableHeaderRowTextView"/>
+            <TableRow style="@style/TableRow" >
 
-        <TextView
-            android:id="@+id/stat_ascension"
-            style="@style/TableRowTextView"/>
-    </TableRow>
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="@string/stat_ascension" />
 
-    <TableRow
-        android:id="@+id/fromRecording"
-        style="@style/TableRow"
-        android:visibility="gone" >
+                <TextView
+                    android:id="@+id/stat_ascension"
+                    style="@style/TableRowTextView" />
+            </TableRow>
 
-        <Button
-            android:id="@+id/homeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goToDashboard"
-            android:text="Home" />
+            <TableRow
+                android:id="@+id/fromRecording"
+                style="@style/TableRow"
+                android:visibility="gone" >
 
-        <Button
-            android:id="@+id/profileBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goToProfile"
-            android:text="Profile" />
-    </TableRow>
+                <Button
+                    android:id="@+id/homeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="goToDashboard"
+                    android:text="Home" />
 
-</TableLayout>
-</LinearLayout>
+                <Button
+                    android:id="@+id/profileBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="goToProfile"
+                    android:text="Profile" />
+            </TableRow>
+        </TableLayout>
+</ScrollView>
