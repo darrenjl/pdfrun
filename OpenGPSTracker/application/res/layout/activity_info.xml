@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="This app tracks your progress compared to others in a group of a similar level and helps to improve your running ability with guidance from Pat Divilly" />
+        android:text="This app records a user\'s runs with GPS and uses this information to class their ability and give them the necessary information to improve their running ability. Information is provided by Pat Divilly, a professional fitness instructor from Galway." />
 
     <TextView
         android:layout_width="wrap_content"
