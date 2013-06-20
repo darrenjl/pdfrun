@@ -26,10 +26,10 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
    private Cursor tracksCursor;
    private TextView numRunsView;
    private TextView totalDistanceView;
-   private TextView maxSpeedView;
+//   private TextView maxSpeedView;
    private UnitsI18n mUnits;
    private float totalDistance=0;
-   private double maxSpeed=0;
+//   private double maxSpeed=0;
    private long best1kmTime=0;
    private long best3kmTime=0;
    private long best5kmTime=0;
@@ -55,6 +55,7 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
    private TextView avgKm5TimeView;
    private TextView avgKm8TimeView;
    private TextView avgKm10TimeView;
+   private TableRow profileHeaderTableRow;
    private TableRow km1TimeTableRow;
    private TableRow km3TimeTableRow;
    private TableRow km5TimeTableRow;
@@ -68,7 +69,7 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
       setContentView(R.layout.activity_profile);
       numRunsView = (TextView)findViewById(R.id.numRuns);
       totalDistanceView = (TextView)findViewById(R.id.totalDistance);
-      maxSpeedView = (TextView)findViewById(R.id.maxSpeed);
+//      maxSpeedView = (TextView)findViewById(R.id.maxSpeed);
       km1TimeView = (TextView) findViewById(R.id.km_1_time);
       km3TimeView = (TextView) findViewById(R.id.km_3_time);
       km5TimeView = (TextView) findViewById(R.id.km_5_time);
@@ -78,7 +79,8 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
       avgKm3TimeView = (TextView) findViewById(R.id.avg_km_3_time);
       avgKm5TimeView = (TextView) findViewById(R.id.avg_km_5_time);
       avgKm8TimeView = (TextView) findViewById(R.id.avg_km_8_time);
-      avgKm10TimeView = (TextView) findViewById(R.id.avg_km_10_time);
+      avgKm10TimeView = (TextView) findViewById(R.id.avg_km_10_time);     
+      profileHeaderTableRow   = (TableRow) findViewById(R.id.profile_header_table_row);
       km1TimeTableRow   = (TableRow) findViewById(R.id.km_1_table_row);
       km3TimeTableRow   = (TableRow) findViewById(R.id.km_3_table_row);
       km5TimeTableRow   = (TableRow) findViewById(R.id.km_5_table_row);
@@ -128,10 +130,10 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
       Log.d("runpdf", "finishedCalculations: distance " + calculated.getDistanceText());
       totalDistance+=calculated.getDistanceTraveled();
       totalDistanceView.setText(String.format( "%.2f %s", mUnits.conversionFromMeter( totalDistance ),mUnits.getDistanceUnit()));
-      if(calculated.getMaxSpeed()>maxSpeed){
-         maxSpeed=calculated.getMaxSpeed();
-         maxSpeedView.setText(calculated.getMaxSpeedText());
-      }
+//      if(calculated.getMaxSpeed()>maxSpeed){
+//         maxSpeed=calculated.getMaxSpeed();
+//         maxSpeedView.setText(calculated.getMaxSpeedText());
+//      }
       if(calculated.getKm1Time()>0){
          if(calculated.getKm1Time()<best1kmTime||best1kmTime==0){
             best1kmTime=calculated.getKm1Time();
@@ -141,6 +143,7 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
          sum1kmTime=(sum1kmTime+calculated.getKm1Time());
          avgKm1TimeView.setText(calculated.getTimeText(sum1kmTime/avg1kmTimeCounter));
          km1TimeTableRow.setVisibility(View.VISIBLE);
+         profileHeaderTableRow.setVisibility(View.VISIBLE);
       }
       if(calculated.getKm3Time()>0){
          if(calculated.getKm3Time()<best3kmTime||best3kmTime==0){

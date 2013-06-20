@@ -13,7 +13,9 @@
         android:id="@+id/profile_table"
         style="@style/Table">
 
-        <TableRow style="@style/TableHeaderRow" >
+        <TableRow style="@style/TableHeaderRow" 
+            android:id="@+id/profile_header_table_row"
+            android:visibility="gone" >
 
             <TextView
                 style="@style/TableHeaderRowTextView"
@@ -157,8 +159,7 @@
 
             <TextView
                 android:text="Number of Runs" 
-                style="@style/TableRowTextViewFooter"
-/>
+                style="@style/TableRowTextViewFooter"/>
 
             <TextView android:id="@+id/numRuns" 
                 style="@style/TableRowTextViewFooter"/>
@@ -169,29 +170,28 @@
 
             <TextView
                 android:text="Total distance run" 
-                style="@style/TableRowTextViewFooter"
-/>
+                style="@style/TableRowTextViewFooter"/>
 
             <TextView android:id="@+id/totalDistance" 
                 style="@style/TableRowTextViewFooter"/>
         </TableRow>
     </TableLayout>
     
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:visibility="gone">        
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" 
-            >
+<!--     <TableLayout -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content"  -->
+<!--         android:visibility="gone">         -->
+<!--         <TableRow -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="wrap_content"  -->
+<!--             > -->
 
-            <TextView
-                android:paddingRight="15dp"
-                android:text="Max speed" />
+<!--             <TextView -->
+<!--                 android:paddingRight="15dp" -->
+<!--                 android:text="Max speed" /> -->
 
-            <TextView android:id="@+id/maxSpeed" />
-        </TableRow>
-    </TableLayout>
+<!--             <TextView android:id="@+id/maxSpeed" /> -->
+<!--         </TableRow> -->
+<!--     </TableLayout> -->
 
 </LinearLayout>
