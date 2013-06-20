@@ -63,18 +63,22 @@
 
     <style name="TableRow">
         <item name="android:layout_margin">1dip</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:background">@color/logo_dark</item>
     </style>
 
     <style name="TableHeaderRow" parent="TableRow"></style>
-
-    <style name="TableRowTextView">
+    
+    <style name="TableRowView">
         <item name="android:layout_margin">1dip</item>
         <item name="android:padding">10dip</item>
         <item name="android:layout_width">0dip</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="TableRowTextView" parent="TableRowView">
     </style>
 
     <style name="TableRowTextViewFooter" parent="TableRowTextView">
@@ -85,6 +89,13 @@
     <style name="TableHeaderRowTextView" parent="TableRowTextView">
         <item name="android:background">@color/logo_color</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+    
+    <style name="TableRowImageView" parent="TableRowView">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:maxHeight">55dip</item>
+        <item name="android:maxWidth">55dip</item>
+        <item name="android:scaleType">fitCenter</item>
     </style>
 
 </resources>

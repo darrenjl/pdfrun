@@ -11,7 +11,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Note: Long press run for more options" />
+            android:text="Note: Long press run for more options" 
+            android:padding="10dip"
+            android:textColor="@color/red"/>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -28,7 +30,9 @@
                 android:id="@+id/android:empty"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:text="@string/no_tracks" />
+                android:text="@string/no_tracks" 
+                android:padding="10dip"
+            android:textColor="@color/red"/>
         </LinearLayout>
 
     </LinearLayout>
