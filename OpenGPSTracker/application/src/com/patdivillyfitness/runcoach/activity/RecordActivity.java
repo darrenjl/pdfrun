@@ -46,7 +46,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private static final String INSTANCE_TIME = "time";
    private static final String INSTANCE_SPEED = "speed";
    private static final String INSTANCE_DISTANCE = "distance";
-   private Chronometer myChronometer;
+//   private Chronometer myChronometer;
 
    @Override
    protected void onCreate(Bundle load)
@@ -58,7 +58,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       recordingTextView = (TextView) findViewById(R.id.recording);
       startStopBtn = (Button) findViewById(R.id.startStopBtn);
       pauseResumeBtn = (Button) findViewById(R.id.pauseResumeBtn);
-      myChronometer = (Chronometer) findViewById(R.id.chronometer);
+//      myChronometer = (Chronometer) findViewById(R.id.chronometer);
 
       mServiceConnected = new Runnable()
          {
@@ -78,7 +78,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                      pauseBtn = true;
                      startStopBtn.setText("Start");
                      startBtn = true;
-                     myChronometer.stop();
+//                     myChronometer.stop();
                      break;
                   case Constants.LOGGING:
                      if (started)
@@ -132,8 +132,8 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       {
          Log.d(TAG, "First Location Found");
          recordingTextView.setText("Recording");
-         myChronometer.start();
-         myChronometer.setBase(SystemClock.elapsedRealtime());  
+//         myChronometer.start();
+//         myChronometer.setBase(SystemClock.elapsedRealtime());  
          speakOut();
          firstLocationFound = true;
       }
