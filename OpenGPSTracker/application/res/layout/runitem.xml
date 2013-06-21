@@ -30,32 +30,20 @@
         android:layout_toRightOf="@+id/run_image_layout"
         android:text="MyTackNameHere"
         android:textColor="@color/logo_dark"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginTop="15dip"  />
  
     <nl.sogeti.android.gpstracker.util.DateView
         android:id="@+id/listitem_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/listitem_name"
-        android:gravity="right"
-        android:textColor="@color/logo_dark"
-        android:textSize="10dip"
-        android:layout_marginTop="1dip"
-        
-        android:text="" />
- 
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"        
         android:layout_below="@id/listitem_name"
-        android:text="5:45"
-        android:layout_marginRight="5dip"
-        android:textSize="10dip"
+        android:layout_toRightOf="@+id/run_image_layout"
+        android:gravity="right"
         android:textColor="@color/logo_color"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/run_image_layout"/>
+        android:textSize="10dip"
+        android:layout_marginTop="1dip"        
+        android:text="Date" />
  
      <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content"

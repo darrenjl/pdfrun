@@ -81,8 +81,8 @@ public class RunsListActivity extends TrackList
    @Override
    protected void displayCursor(Cursor tracksCursor)
    {
-      String[] fromColumns = new String[] { Tracks.NAME, Tracks.CREATION_TIME, Tracks._ID };
-      int[] toItems = new int[] { R.id.listitem_name, R.id.listitem_from, R.id.bcSyncedCheckBox };
+      String[] fromColumns = new String[] { Tracks.NAME, Tracks.CREATION_TIME };
+      int[] toItems = new int[] { R.id.listitem_name, R.id.listitem_from};
       SimpleCursorAdapter trackAdapter = new SimpleCursorAdapter(this, R.layout.runitem, tracksCursor, fromColumns, toItems);
       setListAdapter(trackAdapter);
    }
