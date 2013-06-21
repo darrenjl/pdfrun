@@ -301,5 +301,6 @@ Enter number of feet for acres/hour or meters for use in hectares/hour.\n </stri
     <string name="title_activity_splash">SplashActivity</string>
     <string name="default_run_name">Run</string>
     <string name="title_activity_group_details">Distance Goals</string>
+    <string name="academy_content">Academy content goes here</string>
 
 </resources>
