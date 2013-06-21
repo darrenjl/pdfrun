@@ -1,33 +1,29 @@
 package com.patdivillyfitness.runcoach.activity;
 
 import nl.sogeti.android.gpstracker.viewer.ApplicationPreferenceActivity;
-import nl.sogeti.android.gpstracker.viewer.TrackList;
-
-import com.patdivillyfitness.runcoach.R;
-import com.patdivillyfitness.runcoach.R.id;
-import com.patdivillyfitness.runcoach.R.layout;
-import com.patdivillyfitness.runcoach.R.menu;
-
 import android.app.Activity;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.provider.Settings;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.patdivillyfitness.runcoach.R;
+
 public class DashboardActivity extends Activity
 {
+   private boolean isGPSEnabled;
+   private LocationManager locationManager;
 
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
       super.onCreate(savedInstanceState);
+      locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
       setContentView(R.layout.dashboard_layout);
       /**
        * Creating all buttons instances
@@ -53,8 +49,7 @@ public class DashboardActivity extends Activity
             @Override
             public void onClick(View view)
             {
-               Intent i = new Intent(getApplicationContext(), RecordActivity.class);
-               startActivity(i);
+               checkGPSAndGoToRecordingPage();
             }
          });
 
@@ -114,24 +109,81 @@ public class DashboardActivity extends Activity
          });
    }
 
+   private void checkGPSAndGoToRecordingPage()
+   {
+      try
+      {
+         isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+      }
+      catch (Exception ex)
+      {
+      }
+
+      if (!isGPSEnabled)
+      {
+         alertGPSDisabled();
+      }
+      else
+      {
+         Intent i = new Intent(getApplicationContext(), RecordActivity.class);
+         startActivity(i);
+      }
+   }
+
+   private void alertGPSDisabled()
+   {
+      AlertDialog.Builder builder = new AlertDialog.Builder(this);
+      builder.setMessage("Your GPS module is disabled. Would you like to enable it ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
+         {
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+               //Sent user to GPS settings screen
+               final Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+               startActivityForResult(intent, 100);
+
+               dialog.dismiss();
+
+            }
+         }).setNegativeButton("No", new DialogInterface.OnClickListener()
+         {
+            public void onClick(DialogInterface dialog, int id)
+            {
+               dialog.cancel();
+            }
+         });
+      AlertDialog alert = builder.create();
+      alert.show();
+   }
+
+   @Override
+   protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+   {
+      super.onActivityResult(requestCode, resultCode, intent);
+      if (requestCode == 100)
+      {
+         checkGPSAndGoToRecordingPage();
+      }
+   }
+
    @Override
    public boolean onCreateOptionsMenu(Menu menu)
    {
       // Inflate the menu; this adds items to the action bar if it is present.
-//      getMenuInflater().inflate(R.menu.dashboard, menu);
+      //      getMenuInflater().inflate(R.menu.dashboard, menu);
       return true;
    }
-//
-//   @Override
-//   public boolean onOptionsItemSelected(MenuItem item)
-//   {
-//      switch (item.getItemId())
-//      {
-//         case R.id.action_info:
-//            Intent intent = new Intent(this, InfoActivity.class);
-//            startActivity(intent);
-//            break;
-//      }
-//      return super.onOptionsItemSelected(item);
-//   }
+   //
+   //   @Override
+   //   public boolean onOptionsItemSelected(MenuItem item)
+   //   {
+   //      switch (item.getItemId())
+   //      {
+   //         case R.id.action_info:
+   //            Intent intent = new Intent(this, InfoActivity.class);
+   //            startActivity(intent);
+   //            break;
+   //      }
+   //      return super.onOptionsItemSelected(item);
+   //   }
 }
