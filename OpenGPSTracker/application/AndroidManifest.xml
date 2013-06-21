@@ -325,7 +325,9 @@
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.WarmUpActivity"
-            android:label="@string/title_activity_warm_up" >
+            android:label="@string/title_activity_warm_up" 
+            android:screenOrientation="nosensor"
+        android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
     </application>
 
