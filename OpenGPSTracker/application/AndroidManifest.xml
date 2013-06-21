@@ -23,7 +23,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature
         android:name="android.hardware.location.gps"
@@ -267,9 +267,9 @@
 
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.RecordActivity"
-            android:label="@string/title_activity_record" 
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask">
+            android:label="@string/title_activity_record"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
             <intent-filter android:label="Show track on map" >
                 <action android:name="android.intent.action.VIEW" />
 
@@ -282,8 +282,8 @@
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.DashboardActivity"
-            android:label="@string/application_name" 
-            android:theme="@style/AppNoTitleTheme">
+            android:label="@string/application_name"
+            android:theme="@style/AppNoTitleTheme" >
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.InfoActivity"
@@ -311,13 +311,17 @@
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.SplashActivity"
-            android:label="@string/application_name" 
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:label="@string/application_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.GroupDetailsActivity"
+            android:label="@string/title_activity_group_details" >
         </activity>
     </application>
 

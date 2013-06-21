@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="goals_1km">
+        <item>1 km</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+    </array>
+    
+    <array name="goals_3km">
+        <item>3 km</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+    </array>
+    
+    <array name="goals_5km">
+        <item>5 km</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+    </array>
+    
+    <array name="goals_8km">
+        <item>8 km</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+    </array>
+    
+    <array name="goals_10km">
+        <item>10 km</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+    </array>
+
+</resources>
