@@ -7,12 +7,12 @@
     android:padding="5dip" >
 
     <TextView
-        android:id="@+id/goal_name"
+        android:id="@+id/option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:text="Distance"
+        android:text="Option"
         android:textColor="@color/logo_dark"
         android:textStyle="bold"
         android:padding="10dip"  />
