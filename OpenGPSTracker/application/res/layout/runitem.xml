@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/lv_selector"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+    
+    <LinearLayout
+        android:id="@+id/run_image_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dip">
+ 
+        <ImageView
+            android:id="@+id/run_image"
+            android:layout_width="55dip"
+            android:layout_height="55dip"
+            android:src="@drawable/medal"/>
+ 
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/listitem_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/run_image_layout"
+        android:layout_toRightOf="@+id/run_image_layout"
+        android:text="MyTackNameHere"
+        android:textColor="@color/logo_dark"
+        android:textStyle="bold"/>
+ 
+    <nl.sogeti.android.gpstracker.util.DateView
+        android:id="@+id/listitem_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/listitem_name"
+        android:gravity="right"
+        android:textColor="@color/logo_dark"
+        android:textSize="10dip"
+        android:layout_marginTop="1dip"
+        
+        android:text="" />
+ 
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        android:layout_below="@id/listitem_name"
+        android:text="5:45"
+        android:layout_marginRight="5dip"
+        android:textSize="10dip"
+        android:textColor="@color/logo_color"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/run_image_layout"/>
+ 
+     <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
