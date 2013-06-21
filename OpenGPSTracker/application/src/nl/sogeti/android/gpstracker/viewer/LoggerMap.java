@@ -334,6 +334,7 @@ public class LoggerMap extends SherlockActivity
    @Override
    public void onNewIntent(Intent newIntent)
    {
+      Log.d(TAG, "new intent");
       Uri data = newIntent.getData();
       if (data != null)
       {

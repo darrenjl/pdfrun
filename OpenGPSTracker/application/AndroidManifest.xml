@@ -268,7 +268,8 @@
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.RecordActivity"
             android:label="@string/title_activity_record" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
             <intent-filter android:label="Show track on map" >
                 <action android:name="android.intent.action.VIEW" />
 

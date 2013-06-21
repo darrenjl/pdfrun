@@ -338,7 +338,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       {
          super.onRestoreInstanceState(load);
       }
-      if (load != null) // 1st method: track from a previous instance of this activity
+      if (load != null)
       {
          if (load.containsKey(INSTANCE_SPEED))
          {
