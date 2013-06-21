@@ -323,6 +323,10 @@
             android:name="com.patdivillyfitness.runcoach.activity.GroupDetailsActivity"
             android:label="@string/title_activity_group_details" >
         </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.WarmUpActivity"
+            android:label="@string/title_activity_warm_up" >
+        </activity>
     </application>
 
 </manifest>
