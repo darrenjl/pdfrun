@@ -2,12 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:gravity="top"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-     android:gravity="top"
     tools:context=".RunDetailsActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
 
         <TableLayout style="@style/Table" >
 
@@ -135,25 +140,32 @@
                     android:id="@+id/stat_ascension"
                     style="@style/TableRowTextView" />
             </TableRow>
-
-            <TableRow
-                android:id="@+id/fromRecording"
-                style="@style/TableRow"
-                android:visibility="gone" >
-
-                <Button
-                    android:id="@+id/homeBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="goToDashboard"
-                    android:text="Home" />
-
-                <Button
-                    android:id="@+id/profileBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="goToProfile"
-                    android:text="Profile" />
-            </TableRow>
         </TableLayout>
+
+        <LinearLayout
+            android:id="@+id/fromRecording"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:visibility="gone" 
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/homeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToDashboard"
+                android:text="Home" 
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/profileBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToProfile"
+                android:text="Profile" 
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
 </ScrollView>

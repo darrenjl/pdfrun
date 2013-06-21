@@ -19,6 +19,7 @@ import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -48,7 +49,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
       private TableRow km5TimeTableRow;
       private TableRow km8TimeTableRow;
       private TableRow km10TimeTableRow;
-      private TableRow fromRecordingTableRow;
+      private LinearLayout fromRecordingLayout;
 
       private UnitsI18n mUnits;
 
@@ -98,7 +99,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
          km5TimeTableRow   = (TableRow) findViewById(R.id.km_5_table_row);
          km8TimeTableRow   = (TableRow) findViewById(R.id.km_8_table_row);
          km10TimeTableRow   = (TableRow) findViewById(R.id.km_10_table_row);
-         fromRecordingTableRow = (TableRow) findViewById(R.id.fromRecording);
+         fromRecordingLayout = (LinearLayout) findViewById(R.id.fromRecording);
          if( load != null && load.containsKey( TRACKURI ) )
          {
             mTrackUri = Uri.withAppendedPath( Tracks.CONTENT_URI, load.getString( TRACKURI ) );
@@ -151,7 +152,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
          super.onResume();
          drawTrackingStatistics();
          if (this.getIntent().getBooleanExtra(Constants.FROM_RECORDING_EXTRA, false))
-            fromRecordingTableRow.setVisibility(View.VISIBLE);
+            fromRecordingLayout.setVisibility(View.VISIBLE);
          ContentResolver resolver = this.getContentResolver();
          resolver.registerContentObserver( mTrackUri, true, this.mTrackObserver );
       }
