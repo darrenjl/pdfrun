@@ -1,5 +1,8 @@
 package com.patdivillyfitness.runcoach.activity;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -53,4 +56,30 @@ public class WarmUpActivity extends SherlockFragmentActivity
          });
    }
 
+   public boolean isNetworkOnline()
+   {
+      boolean status = false;
+      try
+      {
+         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+         NetworkInfo netInfo = cm.getNetworkInfo(0);
+         if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
+         {
+            status = true;
+         }
+         else
+         {
+            netInfo = cm.getNetworkInfo(1);
+            if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
+               status = true;
+         }
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+         return false;
+      }
+      return status;
+
+   }
 }
