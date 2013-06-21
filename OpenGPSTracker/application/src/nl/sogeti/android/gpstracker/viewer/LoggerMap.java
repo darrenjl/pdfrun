@@ -238,6 +238,7 @@ public class LoggerMap extends SherlockActivity
    protected void onResume()
    {
       super.onResume();
+      Log.d(TAG, "onResume");
       mLoggerServiceManager.startup(this, mServiceConnected);
 
       mSharedPreferences.registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
@@ -334,7 +335,7 @@ public class LoggerMap extends SherlockActivity
    @Override
    public void onNewIntent(Intent newIntent)
    {
-      Log.d(TAG, "new intent");
+      Log.d(TAG, "onNewIntent");
       Uri data = newIntent.getData();
       if (data != null)
       {

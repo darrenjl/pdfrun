@@ -334,6 +334,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    @Override
    protected void onRestoreInstanceState(Bundle load)
    {
+      Log.d(TAG, "onRestoreInstanceState");
       if (load != null)
       {
          super.onRestoreInstanceState(load);
