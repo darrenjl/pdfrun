@@ -38,7 +38,7 @@ public class DashboardActivity extends Activity
 
       Button btn_profile = (Button) findViewById(R.id.btn_profile);
 
-      Button btn_groups = (Button) findViewById(R.id.btn_groups);
+      Button btn_about = (Button) findViewById(R.id.btn_about);
 
       Button btn_academy = (Button) findViewById(R.id.btn_academy);
 
@@ -80,13 +80,13 @@ public class DashboardActivity extends Activity
             }
          });
 
-      btn_groups.setOnClickListener(new View.OnClickListener()
+      btn_about.setOnClickListener(new View.OnClickListener()
          {
 
             @Override
             public void onClick(View view)
             {
-               Intent i = new Intent(getApplicationContext(), GroupsActivity.class);
+               Intent i = new Intent(getApplicationContext(), InfoActivity.class);
                startActivity(i);
             }
          });
@@ -118,20 +118,20 @@ public class DashboardActivity extends Activity
    public boolean onCreateOptionsMenu(Menu menu)
    {
       // Inflate the menu; this adds items to the action bar if it is present.
-      getMenuInflater().inflate(R.menu.dashboard, menu);
+//      getMenuInflater().inflate(R.menu.dashboard, menu);
       return true;
    }
-
-   @Override
-   public boolean onOptionsItemSelected(MenuItem item)
-   {
-      switch (item.getItemId())
-      {
-         case R.id.action_info:
-            Intent intent = new Intent(this, InfoActivity.class);
-            startActivity(intent);
-            break;
-      }
-      return super.onOptionsItemSelected(item);
-   }
+//
+//   @Override
+//   public boolean onOptionsItemSelected(MenuItem item)
+//   {
+//      switch (item.getItemId())
+//      {
+//         case R.id.action_info:
+//            Intent intent = new Intent(this, InfoActivity.class);
+//            startActivity(intent);
+//            break;
+//      }
+//      return super.onOptionsItemSelected(item);
+//   }
 }
