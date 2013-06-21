@@ -325,9 +325,16 @@
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.WarmUpActivity"
-            android:label="@string/title_activity_warm_up" 
-            android:screenOrientation="nosensor"
-        android:configChanges="orientation|screenSize|keyboardHidden">
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/title_activity_warm_up"
+            android:screenOrientation="nosensor" >
+        </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.activity.GettingStartedActivity"
+            android:label="@string/title_activity_getting_started" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.AcademyActivity" />
         </activity>
     </application>
 
