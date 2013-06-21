@@ -320,7 +320,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.patdivillyfitness.runcoach.GroupDetailsActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.GroupDetailsActivity"
             android:label="@string/title_activity_group_details" >
         </activity>
     </application>

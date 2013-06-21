@@ -36,4 +36,5 @@ public class MySimpleArrayAdapter extends ArrayAdapter<TypedArray> {
 	    textView.setText(values.get(position).getString(0));
 	    return rowView;
 	  }
+	  
 	} 
