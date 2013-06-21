@@ -1,8 +1,7 @@
 package com.patdivillyfitness.runcoach.activity;
 
 
-import java.util.ArrayList;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,7 +29,15 @@ public class AcademyActivity extends SherlockListActivity
    
    @Override
    protected void onListItemClick(ListView l, View v, int position, long id) {
-      Log.d(TAG, "onListItemClick");
+      Intent intent;
+      switch(position){
+         case 3:
+            intent = new Intent(this, GroupsActivity.class);
+            break;
+         default:
+            intent = new Intent(this, DashboardActivity.class);         
+      }            
+      startActivity(intent);
    }
    
    private void initialiseData(){
