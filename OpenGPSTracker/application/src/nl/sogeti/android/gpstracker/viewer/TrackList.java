@@ -605,7 +605,7 @@ public class TrackList extends SherlockListActivity implements ProgressListener
 
    }
 
-   private void displayCursor(Cursor tracksCursor)
+   protected void displayCursor(Cursor tracksCursor)
    {
 //      SectionedListAdapter sectionedAdapter = new SectionedListAdapter(this);
 

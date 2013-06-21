@@ -10,12 +10,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -74,5 +76,14 @@ public class RunsListActivity extends TrackList
          return dialog;
    }
    return super.onCreateDialog(id);
+   }
+   
+   @Override
+   protected void displayCursor(Cursor tracksCursor)
+   {
+      String[] fromColumns = new String[] { Tracks.NAME, Tracks.CREATION_TIME, Tracks._ID };
+      int[] toItems = new int[] { R.id.listitem_name, R.id.listitem_from, R.id.bcSyncedCheckBox };
+      SimpleCursorAdapter trackAdapter = new SimpleCursorAdapter(this, R.layout.runitem, tracksCursor, fromColumns, toItems);
+      setListAdapter(trackAdapter);
    }
 }

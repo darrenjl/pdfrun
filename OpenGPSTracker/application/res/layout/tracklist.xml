@@ -7,34 +7,37 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical" >
-		<TextView
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Note: Long press run for more options" 
             android:padding="10dip"
-            android:textColor="@color/red"/>
+            android:text="Note: Long press run for more options"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/red" />
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal" >
 
             <ListView
                 android:id="@+id/android:list"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:choiceMode="multipleChoice"
-                android:drawSelectorOnTop="true" />
+                android:divider="#b5b5b5"
+                android:dividerHeight="1dp"
+                android:listSelector="@drawable/lv_selector" />
 
             <TextView
                 android:id="@+id/android:empty"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:text="@string/no_tracks" 
                 android:padding="10dip"
-            android:textColor="@color/red"/>
+                android:text="@string/no_tracks"
+                android:textColor="@color/red" />
         </LinearLayout>
-
     </LinearLayout>
 
 </FrameLayout>
