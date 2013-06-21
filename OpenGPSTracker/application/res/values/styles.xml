@@ -11,6 +11,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:actionBarStyle">@style/MYTHEME.ActionBarStyle</item>
         <item name="actionBarStyle">@style/MYTHEME.ActionBarStyle</item>
+        <item name="android:buttonStyle">@style/AppButtonTheme</item>
     </style>
 
     <!-- Application theme. -->
@@ -22,7 +23,20 @@
         <item name="android:titleTextStyle">@style/MYTHEME.ActionBar.TitleTextStyle</item>
         <item name="titleTextStyle">@style/MYTHEME.ActionBar.TitleTextStyle</item>
     </style>
-
+    
+    <style name="AppButtonTheme" parent="@android:style/Widget.Button">
+       <item name="android:textSize">15sp</item>
+       <item name="android:textStyle">bold</item>
+       <item name="android:textColor">@color/logo_dark</item>
+       <item name="android:gravity">center</item>
+       <item name="android:shadowColor">#000000</item>
+       <item name="android:shadowDx">1</item>
+       <item name="android:shadowDy">1</item>
+       <item name="android:shadowRadius">0.6</item>
+       <item name="android:background">@drawable/custom_button</item>
+       <item name="android:padding">10dip</item>
+   </style>
+    
     <style name="MYTHEME.ActionBar.TitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
         <item name="android:textColor">@color/logo_color</item>
     </style>
