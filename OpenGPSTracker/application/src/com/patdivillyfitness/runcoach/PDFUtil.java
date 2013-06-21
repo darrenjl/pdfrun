@@ -18,7 +18,7 @@ public class PDFUtil
       return duration;
    }
    
-   public static boolean isConnectingToInternet(Context context){
+   public static boolean isConnected(Context context){
       ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) 
         {
