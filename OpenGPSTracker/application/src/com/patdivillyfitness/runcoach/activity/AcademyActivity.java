@@ -3,11 +3,11 @@ package com.patdivillyfitness.runcoach.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockListActivity;
+import com.patdivillyfitness.runcoach.activity.WarmUpActivity;
 import com.patdivillyfitness.runcoach.R;
 import com.patdivillyfitness.runcoach.adapter.MySimpleArrayAdapter;
 
@@ -31,6 +31,9 @@ public class AcademyActivity extends SherlockListActivity
    protected void onListItemClick(ListView l, View v, int position, long id) {
       Intent intent;
       switch(position){
+         case 1:
+            intent = new Intent(this, WarmUpActivity.class);
+            break;
          case 3:
             intent = new Intent(this, GroupsActivity.class);
             break;

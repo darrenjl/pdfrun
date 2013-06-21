@@ -324,7 +324,7 @@
             android:label="@string/title_activity_group_details" >
         </activity>
         <activity
-            android:name="com.patdivillyfitness.runcoach.WarmUpActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.WarmUpActivity"
             android:label="@string/title_activity_warm_up" >
         </activity>
     </application>
