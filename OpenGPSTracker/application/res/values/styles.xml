@@ -111,5 +111,9 @@
         <item name="android:maxWidth">55dip</item>
         <item name="android:scaleType">fitCenter</item>
     </style>
+    
+    <style name="TableHeaderRowImageView" parent="TableRowImageView">
+        <item name="android:background">@color/logo_color</item>
+    </style>
 
 </resources>
