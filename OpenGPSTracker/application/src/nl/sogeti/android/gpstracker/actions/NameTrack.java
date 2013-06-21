@@ -228,7 +228,7 @@ public class NameTrack extends Activity
          case DIALOG_TRACKNAME:
             String trackName;
             Calendar c = Calendar.getInstance();
-            trackName = String.format( getString( R.string.dialog_routename_default ), c, c, c, c, c );
+            trackName = String.format( getString( R.string.default_run_name ));
             mTrackNameView.setText( trackName );
             mTrackNameView.setSelection( 0, trackName.length() );
             break;
