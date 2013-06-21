@@ -293,7 +293,7 @@ Enter number of feet for acres/hour or meters for use in hectares/hour.\n </stri
     <string name="title_activity_info">About</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_profile">Profile</string>
-    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_groups">Goals</string>
     <string name="title_activity_academy">Academy</string>
     <string name="title_activity_run_details">Run Details</string>
     <string name="title_activity_runs_list">Runs</string>

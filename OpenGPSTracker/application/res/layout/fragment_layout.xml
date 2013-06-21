@@ -27,7 +27,7 @@
         android:id="@+id/btn_groups"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_groups"
-        android:text="Groups" />
+        android:text="Goals" />
 
     <!--  Events Button -->
     <Button
