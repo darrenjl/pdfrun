@@ -350,6 +350,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.patdivillyfitness.runcoach.activity.PlanActivity" />
         </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.activity.PlanWk2Activity"
+            android:label="@string/title_activity_plan_wk2" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.PlanActivity" />
+        </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.activity.PlanWk3Activity"
+            android:label="@string/title_activity_plan_wk3" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.PlanActivity" />
+        </activity>
     </application>
 
 </manifest>

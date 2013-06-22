@@ -80,7 +80,13 @@ public class PlanActivity extends SherlockListActivity
       switch(position){
          case 0:
             intent = new Intent(this, PlanWk1Activity.class);
-            break;         
+            break;
+         case 1:
+            intent = new Intent(this, PlanWk2Activity.class);
+            break;
+         case 2:
+            intent = new Intent(this, PlanWk3Activity.class);
+            break;
          default:
             intent = new Intent(this, DashboardActivity.class);         
       }            
