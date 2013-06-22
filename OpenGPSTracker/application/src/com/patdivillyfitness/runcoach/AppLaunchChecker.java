@@ -14,21 +14,21 @@ public class AppLaunchChecker {
    private final static String APP_TITLE = Constants.APP_NAME;
    private final static String APP_PNAME = Constants.APP_PACKAGE;
    
-   private final static int DAYS_UNTIL_PROMPT = 5;
-   private final static int LAUNCHES_UNTIL_PROMPT = 4;
+   private final static int DAYS_UNTIL_PROMPT = 0;
+   private final static int LAUNCHES_UNTIL_PROMPT = 0;
    
    public static boolean checkFirstOrRateLaunch(Context mContext) {
-       SharedPreferences prefs = mContext.getSharedPreferences("apprater", 0);
-       if (prefs.getBoolean("dontshowagain", false)) { return true; }
+       SharedPreferences prefs = mContext.getSharedPreferences(Constants.APP_LAUNCHER_CHECKER_PREF, 0);
+       if (prefs.getBoolean(Constants.DONT_ASK_AGAIN, false)) { return true; }
        
        SharedPreferences.Editor editor = prefs.edit();       
-       long launch_count = prefs.getLong("launch_count", 0) + 1;
-       editor.putLong("launch_count", launch_count);
+       long launch_count = prefs.getLong(Constants.LAUNCH_COUNT, 0) + 1;
+       editor.putLong(Constants.LAUNCH_COUNT, launch_count);
 
-       Long date_firstLaunch = prefs.getLong("date_firstlaunch", 0);
+       Long date_firstLaunch = prefs.getLong(Constants.FIRST_LAUNCH_DATE, 0);
        if (date_firstLaunch == 0) {
            date_firstLaunch = System.currentTimeMillis();
-           editor.putLong("date_firstlaunch", date_firstLaunch);
+           editor.putLong(Constants.FIRST_LAUNCH_DATE, date_firstLaunch);
        }
        
        if (launch_count >= LAUNCHES_UNTIL_PROMPT) {
@@ -53,7 +53,7 @@ public class AppLaunchChecker {
       alertDialog.setTitle(String.format(mContext.getString(R.string.rate_app), APP_TITLE));
       alertDialog.setMessage(String.format(mContext.getString(R.string.rate_app_text), APP_TITLE));
 
-      alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, mContext.getString(R.string.rate_app), new DialogInterface.OnClickListener()
+      alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, mContext.getString(R.string.rate), new DialogInterface.OnClickListener()
          {
 
             public void onClick(DialogInterface dialog, int id)
@@ -83,7 +83,7 @@ public class AppLaunchChecker {
 
                if (editor != null)
                {
-                  editor.putBoolean("dontshowagain", true);
+                  editor.putBoolean(Constants.DONT_ASK_AGAIN, true);
                   editor.commit();
                }
                dialog.dismiss();

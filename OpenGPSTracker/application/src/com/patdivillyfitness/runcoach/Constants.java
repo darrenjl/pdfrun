@@ -16,5 +16,8 @@ public class Constants
    public static final String BRONZE_GOAL = "bronzegoal";
    public static final String SILVER_GOAL = "silvergoal";
    public static final String GOLD_GOAL = "goldgoal";
-   
+   public static final String DONT_ASK_AGAIN = "dontaskagain";
+   public static final String APP_LAUNCHER_CHECKER_PREF = "applaunchercheckerpref";
+   public static final String LAUNCH_COUNT = "launchcount";
+   public static final String FIRST_LAUNCH_DATE = "firstlaunchdate";
 }
