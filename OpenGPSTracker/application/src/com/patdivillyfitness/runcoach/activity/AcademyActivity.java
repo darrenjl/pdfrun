@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.patdivillyfitness.runcoach.activity.WarmUpActivity;
 import com.patdivillyfitness.runcoach.PDFUtil;
+import com.patdivillyfitness.runcoach.PlanActivity;
 import com.patdivillyfitness.runcoach.R;
 import com.patdivillyfitness.runcoach.adapter.MySimpleArrayAdapter;
 
@@ -50,6 +51,9 @@ public class AcademyActivity extends SherlockListActivity
                intent = new Intent(this, WarmUpActivity.class);
             }
             
+            break;
+         case 2:
+            intent = new Intent(this, PlanActivity.class);
             break;
          case 3:
             intent = new Intent(this, GroupsActivity.class);
