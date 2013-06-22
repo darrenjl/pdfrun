@@ -40,8 +40,8 @@ public class AcademyActivity extends SherlockListActivity
 
             // check for Internet status
             if (!connected) {
-                showAlertDialog(AcademyActivity.this, "Internet Connection",
-                        "This feature requires that you have internet connectivity enabled.", true);
+                showAlertDialog(AcademyActivity.this, getString(R.string.int_conn_title),
+                        getString(R.string.int_conn_text), true);
                 intent = null;
             } else {
                intent = new Intent(this, WarmUpActivity.class);
@@ -60,17 +60,17 @@ public class AcademyActivity extends SherlockListActivity
    
    private void initialiseData(){
       values = new String[4];      
-      values[0]="Getting Started";
-      values[1]="Warm Up";
-      values[2]="Training Plan";
-      values[3]="Goals";
+      values[0]=getString(R.string.getting_started_menu);
+      values[1]=getString(R.string.warm_up_menu);
+      values[2]=getString(R.string.training_plan_menu);
+      values[3]=getString(R.string.goals_menu);
    }
    
    public void showAlertDialog(Context context, String title, String message, Boolean status) {
       AlertDialog alertDialog = new AlertDialog.Builder(context).create();
       alertDialog.setTitle(title);
       alertDialog.setMessage(message);     
-      alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+      alertDialog.setButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int which) {
           }
       });

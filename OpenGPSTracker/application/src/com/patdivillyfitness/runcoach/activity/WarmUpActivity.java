@@ -11,12 +11,13 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.patdivillyfitness.runcoach.DeveloperKey;
 import com.patdivillyfitness.runcoach.R;
 
 public class WarmUpActivity extends SherlockFragmentActivity
 {
 
-   static private final String DEVELOPER_KEY = "AIzaSyA_DycAKxQr5o1IeDt1w0INsecnruA-qzE";
+   static private final String DEVELOPER_KEY = DeveloperKey.DEVELOPER_KEY;
    static private final String VIDEO = "BQRhZdRgAs4";
 
    @Override

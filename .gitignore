@@ -1,5 +1,6 @@
 #custom
 OpenGPSTracker/application/res/values/keys.xml
+*DeveloperKey*
 # built application files
 *.apk
 *.ap_

@@ -133,7 +133,7 @@ public class DashboardActivity extends Activity
    private void alertGPSDisabled()
    {
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
-      builder.setMessage("Your GPS module is disabled. Would you like to enable it ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
+      builder.setMessage(getString(R.string.gps_disabled_text)).setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
          {
             public void onClick(DialogInterface dialog, int id)
             {
@@ -145,7 +145,7 @@ public class DashboardActivity extends Activity
                dialog.dismiss();
 
             }
-         }).setNegativeButton("No", new DialogInterface.OnClickListener()
+         }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener()
          {
             public void onClick(DialogInterface dialog, int id)
             {

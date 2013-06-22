@@ -71,38 +71,38 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                switch (loggingState)
                {
                   case Constants.STOPPED:
-                     recordingTextView.setText("Stopped");
+                     recordingTextView.setText(RecordActivity.this.getString(R.string.recording_stopped));
                      RecordActivity.this.setTitle(RecordActivity.this.getString(R.string.application_name));
-                     pauseResumeBtn.setText("Pause");
+                     pauseResumeBtn.setText(RecordActivity.this.getString(R.string.pause));
                      pauseResumeBtn.setEnabled(false);
                      pauseBtn = true;
-                     startStopBtn.setText("Start");
+                     startStopBtn.setText(RecordActivity.this.getString(R.string.start));
                      startBtn = true;
 //                     myChronometer.stop();
                      break;
                   case Constants.LOGGING:
                      if (started)
-                        recordingTextView.setText("Searching, walk slowly until recording starts.");
+                        recordingTextView.setText(RecordActivity.this.getString(R.string.recording_searching));
                      else{
-                        recordingTextView.setText("Recording");                                              
+                        recordingTextView.setText(RecordActivity.this.getString(R.string.recording));                                              
                      }
                      
-                     startStopBtn.setText("Stop");
+                     startStopBtn.setText(RecordActivity.this.getString(R.string.stop));
                      startBtn = false;
-                     pauseResumeBtn.setText("Pause");
+                     pauseResumeBtn.setText(RecordActivity.this.getString(R.string.pause));
                      pauseResumeBtn.setEnabled(true);
                      pauseBtn = true;
                      break;
                   case Constants.PAUSED:
-                     recordingTextView.setText("Paused");
-                     pauseResumeBtn.setText("Resume");
+                     recordingTextView.setText(RecordActivity.this.getString(R.string.recording_paused));
+                     pauseResumeBtn.setText(RecordActivity.this.getString(R.string.resume));
                      pauseBtn = false;
-                     startStopBtn.setText("Stop");
+                     startStopBtn.setText(RecordActivity.this.getString(R.string.stop));
                      startBtn = false;
                      break;
                   default:
                      Log.d(TAG, "unknown logging state");
-                     recordingTextView.setText("No");
+                     recordingTextView.setText(RecordActivity.this.getString(R.string.no));
                      break;
                }
             }
@@ -131,7 +131,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       if (started && !firstLocationFound)
       {
          Log.d(TAG, "First Location Found");
-         recordingTextView.setText("Recording");
+         recordingTextView.setText(RecordActivity.this.getString(R.string.recording));
 //         myChronometer.start();
 //         myChronometer.setBase(SystemClock.elapsedRealtime());  
          speakOut();
@@ -359,7 +359,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private void alertGPSDisabled()
    {
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
-      builder.setMessage("Your GPS module is disabled. Would you like to enable it ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
+      builder.setMessage(RecordActivity.this.getString(R.string.gps_disabled_text)).setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener()
          {
             public void onClick(DialogInterface dialog, int id)
             {
@@ -371,7 +371,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                dialog.dismiss();
 
             }
-         }).setNegativeButton("No", new DialogInterface.OnClickListener()
+         }).setNegativeButton(RecordActivity.this.getString(R.string.no), new DialogInterface.OnClickListener()
          {
             public void onClick(DialogInterface dialog, int id)
             {
