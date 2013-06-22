@@ -70,6 +70,12 @@ public class PDFUtil
    
    public static int getLevelDrawable(long time, int[] goals){
       Log.d(TAG, "getLevelDrawable");
+      if(time<goals[2])
+         return R.drawable.medal_gold;
+      else if (time<goals[1])
+         return R.drawable.medal_silver;
+      else if (time<goals[0])
+         return R.drawable.medal_bronze;
       return R.drawable.ic_launcher;
    }
 }

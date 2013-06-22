@@ -2,15 +2,15 @@
 <resources>
 
     <integer-array name="goals_1km">
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
+        <item>300000</item>
+        <item>200000</item>
+        <item>100000</item>
     </integer-array>        
     
     <integer-array name="goals_3km">
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
+        <item>780000</item>
+        <item>720000</item>
+        <item>660000</item>
     </integer-array>   
     
     <integer-array name="goals_5km">
