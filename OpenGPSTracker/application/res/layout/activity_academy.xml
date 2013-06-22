@@ -1,8 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AcademyActivity" >
+    
+    <ImageView
+        style="@style/ParagraphImageViewVertical"
+        android:src="@drawable/pat1" />
 
     <ListView
                 android:id="@+id/android:list"
@@ -12,4 +17,4 @@
                 android:dividerHeight="1dp"
                 android:listSelector="@drawable/lv_selector" />
 
-</RelativeLayout>
+</LinearLayout>

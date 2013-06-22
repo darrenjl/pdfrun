@@ -134,7 +134,7 @@
     </style>
     
     <style name="ParagraphImageViewHorizontal" parent="ParagraphImageView">
-        <item name="android:maxHeight">200dip</item>
+        <item name="android:maxWidth">150dip</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
     </style>
