@@ -1,16 +1,16 @@
 package com.patdivillyfitness.runcoach.activity;
 
-import com.patdivillyfitness.runcoach.R;
-import com.patdivillyfitness.runcoach.R.layout;
-import com.patdivillyfitness.runcoach.R.menu;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.view.View;
 
-public class GettingStartedActivity extends Activity
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.patdivillyfitness.runcoach.R;
+
+public class GettingStartedActivity extends SherlockActivity
 {
 
    @Override
@@ -36,7 +36,7 @@ public class GettingStartedActivity extends Activity
    public boolean onCreateOptionsMenu(Menu menu)
    {
       // Inflate the menu; this adds items to the action bar if it is present.
-      getMenuInflater().inflate(R.menu.getting_started, menu);
+      getSupportMenuInflater().inflate(R.menu.getting_started, menu);
       return true;
    }
 
@@ -57,6 +57,18 @@ public class GettingStartedActivity extends Activity
             return true;
       }
       return super.onOptionsItemSelected(item);
+   }
+
+   public void goToTrainingPlan(View view)
+   {
+      Intent i = new Intent(this, DashboardActivity.class);
+      startActivity(i);
+   }
+   
+   public void goToGoals(View view)
+   {
+      Intent i = new Intent(this, GroupsActivity.class);
+      startActivity(i);
    }
 
 }

@@ -35,6 +35,9 @@ public class AcademyActivity extends SherlockListActivity
    protected void onListItemClick(ListView l, View v, int position, long id) {
       Intent intent;
       switch(position){
+         case 0:
+            intent = new Intent(this, GettingStartedActivity.class);
+            break;
          case 1:
             boolean connected = PDFUtil.isConnected(AcademyActivity.this);
 

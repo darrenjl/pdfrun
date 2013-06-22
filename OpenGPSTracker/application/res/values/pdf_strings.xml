@@ -85,5 +85,11 @@
     <string name="training_plan_menu">Training Plan</string>
     <string name="goals_menu">Goals</string>
     <string name="academy_content">Academy content goes here</string>
+    
+    <!-- Getting Started Activity -->
+    <string name="getting_started_noobs">For the newbies, I\'ve got together with some top runners and triathletes to outline a 3 week plan to get you started. 21 days from now you will run you\'re first 5km.</string>
+    <string name="getting_started_noobs_btn">Training Plan</string>
+    <string name="getting_started_experienced">For the more experienced runners we\'ve set targets for to help you surpass you\'re running goals.</string>
+    <string name="getting_started_experienced_btn">Goals</string>
 
 </resources>
