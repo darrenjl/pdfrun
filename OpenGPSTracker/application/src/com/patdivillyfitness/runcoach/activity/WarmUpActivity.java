@@ -19,6 +19,7 @@ public class WarmUpActivity extends SherlockFragmentActivity
 
    static private final String DEVELOPER_KEY = DeveloperKey.DEVELOPER_KEY;
    static private final String VIDEO = "BQRhZdRgAs4";
+   private static final int RECOVERY_DIALOG_REQUEST = 1;
 
    @Override
    protected void onCreate(Bundle savedInstanceState)
@@ -46,9 +47,14 @@ public class WarmUpActivity extends SherlockFragmentActivity
             }
 
             @Override
-            public void onInitializationFailure(Provider arg0, YouTubeInitializationResult arg1)
+            public void onInitializationFailure(Provider provider, YouTubeInitializationResult errorReason)
             {
-               Toast.makeText(WarmUpActivity.this, "Oh no! " + arg1.toString(), Toast.LENGTH_LONG).show();
+               if (errorReason.isUserRecoverableError()) {
+                  errorReason.getErrorDialog(WarmUpActivity.this, RECOVERY_DIALOG_REQUEST).show();
+                } else {
+                  String errorMessage = String.format(getString(R.string.error_player), errorReason.toString());
+                  Toast.makeText(WarmUpActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                }
             }
 
          });

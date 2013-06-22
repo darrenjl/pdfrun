@@ -29,6 +29,8 @@
     <string name="distance_5km">5km</string>
     <string name="distance_8km">8km</string>
     <string name="distance_10km">10km</string>
+    <string name="error_thumbnail_view">There was an error initializing the YouTubeThumbnailView (%1$s)</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
 
     <!-- Info activity -->
     <string name="about_app_title">About The App</string>
