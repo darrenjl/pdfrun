@@ -17,7 +17,7 @@
 
             <TextView
                 style="@style/TableHeaderRowTextView"
-                android:text="Distance " />
+                android:text="@string/distance"/>
 
             <TextView
                 android:id="@+id/currentDistance"
@@ -29,7 +29,7 @@
 
             <TextView
                 style="@style/TableHeaderRowTextView"
-                android:text="Current Speed " />
+                android:text="@string/current_speed" />
 
             <TextView
                 android:id="@+id/currentSpeed"
@@ -41,7 +41,7 @@
 
             <TextView
                 style="@style/TableHeaderRowTextView"
-                android:text="Time " />
+                android:text="@string/time"/>
 
             <TextView
                 android:id="@+id/elapsedTime"
@@ -91,7 +91,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="startStopRun"
-            android:text="Start" />
+            android:text="@string/start" />
 
         <Button
             android:id="@+id/pauseResumeBtn"
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:enabled="false"
             android:onClick="pauseResumeRun"
-            android:text="Pause"
+            android:text="@string/pause"
             android:visibility="gone" />
     </LinearLayout>
 

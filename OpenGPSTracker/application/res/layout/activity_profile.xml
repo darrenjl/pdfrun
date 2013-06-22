@@ -29,11 +29,11 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Best Time" />
+                    android:text="@string/best_time" />
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Avg. Time" />
+                    android:text="@string/avg_time" />
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
@@ -47,7 +47,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="1km" />
+                    android:text="@string/distance_1km" />
 
                 <TextView
                     android:id="@+id/km_1_time"
@@ -60,7 +60,7 @@
                     android:text="" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/image_1km"
                     style="@style/TableRowImageView"
                     android:src="@drawable/medal" />
             </TableRow>
@@ -72,7 +72,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="3km" />
+                    android:text="@string/distance_3km" />
 
                 <TextView
                     android:id="@+id/km_3_time"
@@ -85,7 +85,7 @@
                     android:text="" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/image_3km"
                     style="@style/TableRowImageView"
                     android:src="@drawable/medal" />
             </TableRow>
@@ -97,7 +97,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="5km" />
+                    android:text="@string/distance_5km" />
 
                 <TextView
                     android:id="@+id/km_5_time"
@@ -110,7 +110,7 @@
                     android:text="" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/image_5km"
                     style="@style/TableRowImageView"
                     android:src="@drawable/medal" />
             </TableRow>
@@ -122,7 +122,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="8km" />
+                    android:text="@string/distance_8km" />
 
                 <TextView
                     android:id="@+id/km_8_time"
@@ -135,7 +135,7 @@
                     android:text="" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/image_8km"
                     style="@style/TableRowImageView"
                     android:src="@drawable/medal" />
             </TableRow>
@@ -147,7 +147,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="10km" />
+                    android:text="@string/distance_10km" />
 
                 <TextView
                     android:id="@+id/km_10_time"
@@ -160,7 +160,7 @@
                     android:text="" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/image_10km"
                     style="@style/TableRowImageView"
                     android:src="@drawable/medal" />
             </TableRow>
@@ -169,7 +169,7 @@
 
                 <TextView
                     style="@style/TableRowTextViewFooter"
-                    android:text="Number of Runs" />
+                    android:text="@string/num_runs" />
 
                 <TextView
                     android:id="@+id/numRuns"
@@ -180,7 +180,7 @@
 
                 <TextView
                     style="@style/TableRowTextViewFooter"
-                    android:text="Total distance run" />
+                    android:text="@string/total_distance" />
 
                 <TextView
                     android:id="@+id/totalDistance"

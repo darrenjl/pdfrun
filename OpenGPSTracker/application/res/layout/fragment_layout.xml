@@ -6,36 +6,36 @@
         android:id="@+id/btn_academy"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_groups"
-        android:text="Academy" />
+        android:text="@string/academy_menu" />
     
     <Button
         android:id="@+id/btn_record"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_record"
-        android:text="Record" />
+        android:text="@string/record_menu" />
     
     <Button
         android:id="@+id/btn_runs"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_groups"
-        android:text="Runs" />
+        android:text="@string/runs_menu" />
     
     <Button
         android:id="@+id/btn_profile"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_groups"
-        android:text="Profile" />
+        android:text="@string/profile_menu" />
 	
     <Button
         android:id="@+id/btn_about"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_groups"
-        android:text="About" />    
+        android:text="@string/about_menu" />    
 
     <Button
         android:id="@+id/btn_settings"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_groups"
-        android:text="Settings" />
+        android:text="@string/settings_menu" />
 
 </com.patdivillyfitness.runcoach.DashboardLayout>

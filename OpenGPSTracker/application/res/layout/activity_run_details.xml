@@ -67,7 +67,7 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Time for 1km" />
+                    android:text="@string/time_1km" />
 
                 <TextView
                     android:id="@+id/km_1_time"
@@ -81,7 +81,7 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Time for 3km" />
+                    android:text="@string/time_3km" />
 
                 <TextView
                     android:id="@+id/km_3_time"
@@ -95,7 +95,7 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Time for 5km" />
+                    android:text="@string/time_5km" />
 
                 <TextView
                     android:id="@+id/km_5_time"
@@ -109,7 +109,7 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Time for 8km" />
+                    android:text="@string/time_8km" />
 
                 <TextView
                     android:id="@+id/km_8_time"
@@ -123,7 +123,7 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="Time for 10km" />
+                    android:text="@string/time_10km" />
 
                 <TextView
                     android:id="@+id/km_10_time"
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="goToDashboard"
-                android:text="Home" 
+                android:text="@string/home_btn" 
                 android:layout_margin="10dp"/>
 
             <Button
@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="goToProfile"
-                android:text="Profile" 
+                android:text="@string/profile_btn" 
                 android:layout_margin="10dp"/>
         </LinearLayout>
     </LinearLayout>

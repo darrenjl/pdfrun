@@ -13,31 +13,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="About The App" />
+        android:text="@string/about_app_title" />
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="This app records a user\'s runs with GPS and uses this information to class their ability and give them the necessary information to improve their running ability. Information is provided by Pat Divilly, a professional fitness instructor from Galway." />
+        android:text="@string/about_app_text" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginTop="10dp"
-        android:text="Credits" />
+        android:text="@string/credits_title" />
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Open GPS Tracker" />
+        android:text="@string/credits_ogps_title" />
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="This project is forked from the GPL Licensed Open GPS Tracker hosted at https://code.google.com/p/open-gpstracker/. The authors put a lot of work into this project which is greatly appreciated." />
+        android:text="@string/credits_ogps_text" />
     
 </LinearLayout>

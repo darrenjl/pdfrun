@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/run_image_layout"
         android:layout_toRightOf="@+id/run_image_layout"
-        android:text="MyTackNameHere"
+        android:text=""
         android:textColor="@color/logo_dark"
         android:textStyle="bold"
         android:layout_marginTop="15dip"  />

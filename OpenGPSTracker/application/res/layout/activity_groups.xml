@@ -45,7 +45,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="1km" />
+                    android:text="@string/distance_1km" />
 
                 <TextView
                     android:id="@+id/bronze_km_1_time"
@@ -69,7 +69,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="3km" />
+                    android:text="@string/distance_3km" />
 
                 <TextView
                     android:id="@+id/bronze_km_3_time"
@@ -93,7 +93,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="5km" />
+                    android:text="@string/distance_5km" />
 
                 <TextView
                     android:id="@+id/bronze_km_5_time"
@@ -117,7 +117,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="8km" />
+                    android:text="@string/distance_8km" />
 
                 <TextView
                     android:id="@+id/bronze_km_8_time"
@@ -141,7 +141,7 @@
 
                 <TextView
                     style="@style/TableRowTextView"
-                    android:text="10km" />
+                    android:text="@string/distance_10km" />
 
                 <TextView
                     android:id="@+id/bronze_km_10_time"
