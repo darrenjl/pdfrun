@@ -82,6 +82,11 @@
     <string name="welcome">Welcome</string>
     <string name="cancel">Cancel</string>
     <string name="welcome_text">Welcome to Pat Divilly\'s Run Coach. We recommend you visit the getting started page? </string>
+    <string name="rate">Rate</string>
+    <string name="remind">Remind</string>
+    <string name="rate_app">Rate %1$s</string>
+    <string name="rate_app_text">If you enjoy using %1$s, please take a moment to rate it. Thanks for your support!</string>
+    <string name="google_play_launched">Google Play will be launched, once the app is on the market.</string>
 
     <!-- Academy Activity -->
     <string name="getting_started_menu">Getting Started</string>
