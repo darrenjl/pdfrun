@@ -14,8 +14,8 @@ public class AppLaunchChecker {
    private final static String APP_TITLE = Constants.APP_NAME;
    private final static String APP_PNAME = Constants.APP_PACKAGE;
    
-   private final static int DAYS_UNTIL_PROMPT = 0;
-   private final static int LAUNCHES_UNTIL_PROMPT = 0;
+   private final static int DAYS_UNTIL_PROMPT = 5;
+   private final static int LAUNCHES_UNTIL_PROMPT = 5;
    
    public static boolean checkFirstOrRateLaunch(Context mContext) {
        SharedPreferences prefs = mContext.getSharedPreferences(Constants.APP_LAUNCHER_CHECKER_PREF, 0);
