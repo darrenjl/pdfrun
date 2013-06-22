@@ -18,7 +18,8 @@
             android:id="@+id/run_image"
             android:layout_width="55dip"
             android:layout_height="55dip"
-            android:src="@drawable/medal"/>
+            android:src="@drawable/medal"
+            android:visibility="gone"/>
  
     </LinearLayout>
 

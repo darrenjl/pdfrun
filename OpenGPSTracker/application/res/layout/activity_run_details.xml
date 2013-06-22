@@ -72,6 +72,11 @@
                 <TextView
                     android:id="@+id/km_1_time"
                     style="@style/TableRowTextView" />
+                
+                <ImageView
+                    android:id="@+id/image_1km"
+                    style="@style/TableRowImageView"
+                    android:src="@drawable/ic_launcher" />
             </TableRow>
 
             <TableRow
@@ -86,6 +91,11 @@
                 <TextView
                     android:id="@+id/km_3_time"
                     style="@style/TableRowTextView" />
+                
+                <ImageView
+                    android:id="@+id/image_3km"
+                    style="@style/TableRowImageView"
+                    android:src="@drawable/ic_launcher" />
             </TableRow>
 
             <TableRow
@@ -100,6 +110,11 @@
                 <TextView
                     android:id="@+id/km_5_time"
                     style="@style/TableRowTextView" />
+                
+                <ImageView
+                    android:id="@+id/image_5km"
+                    style="@style/TableRowImageView"
+                    android:src="@drawable/ic_launcher" />
             </TableRow>
 
             <TableRow
@@ -114,6 +129,11 @@
                 <TextView
                     android:id="@+id/km_8_time"
                     style="@style/TableRowTextView" />
+                
+                <ImageView
+                    android:id="@+id/image_8km"
+                    style="@style/TableRowImageView"
+                    android:src="@drawable/ic_launcher" />
             </TableRow>
 
             <TableRow
@@ -128,6 +148,11 @@
                 <TextView
                     android:id="@+id/km_10_time"
                     style="@style/TableRowTextView" />
+                
+                <ImageView
+                    android:id="@+id/image_10km"
+                    style="@style/TableRowImageView"
+                    android:src="@drawable/ic_launcher" />
             </TableRow>
 
             <TableRow style="@style/TableRow" >
