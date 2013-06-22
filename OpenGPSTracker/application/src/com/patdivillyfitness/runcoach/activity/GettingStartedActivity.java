@@ -28,7 +28,7 @@ public class GettingStartedActivity extends SherlockActivity
    private void setupActionBar()
    {
 
-      getActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
    }
 
