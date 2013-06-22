@@ -12,7 +12,6 @@ import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.patdivillyfitness.runcoach.activity.WarmUpActivity;
 import com.patdivillyfitness.runcoach.PDFUtil;
-import com.patdivillyfitness.runcoach.PlanActivity;
 import com.patdivillyfitness.runcoach.R;
 import com.patdivillyfitness.runcoach.adapter.MySimpleArrayAdapter;
 

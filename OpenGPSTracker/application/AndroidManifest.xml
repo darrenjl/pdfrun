@@ -337,11 +337,18 @@
                 android:value="com.patdivillyfitness.runcoach.activity.AcademyActivity" />
         </activity>
         <activity
-            android:name="com.patdivillyfitness.runcoach.PlanActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.PlanActivity"
             android:label="@string/title_activity_plan" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.patdivillyfitness.runcoach.activity.AcademyActivity" />
+        </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.activity.PlanWk1Activity"
+            android:label="@string/title_activity_plan_wk1" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.PlanActivity" />
         </activity>
     </application>
 

@@ -94,5 +94,31 @@
     
     <!-- Training Plan Activity -->
     <string name="plan_content">Training Plan Content goes here</string>
+    <string name="wk1">Week 1</string>
+    <string name="wk2">Week 2</string>
+    <string name="wk3">Week 3</string>
+    <string name="day1">Day 1</string>
+    <string name="day2">Day 2</string>
+    <string name="day3">Day 3</string>
+    <string name="day4">Day 4</string>
+    <string name="day5">Day 5</string>
+    <string name="day6">Day 6</string>
+    <string name="day7">Day 7</string>    
+    <string name="minutes20">20 minutes</string>
+    <string name="minutes25">25 minutes</string>
+    <string name="minutes30">30 minutes</string>
+    <string name="minutes35">35 minutes</string>
+    <string name="minutes40">40 minutes</string>
+    <string name="minutes50">50 minutes</string>
+    <string name="minutes60">60 minutes</string>
+    <string name="text_wk1_day1">After 5 minutes of walking warm-up, alternate 5 minute jogs with 3 minutes walking. Repeat and finish with 4 minutes walk, then stretch.</string>
+    <string name="text_wk1_day3"> After 5 minutes walking warm-up, alternately jog for 10 minutes then walk 2 mins until finished.</string>
+    <string name="text_rest_day">Stretch after a hot bath to keep your muscles supple.</string>
+    <string name="text_wk1_day5">After 5 minutes walking warm-up,  jog for 13 minutes and walk 2 minutes then repeat.</string>
+    <string name="text_stretch_well">Stretch well.</string>
+    <string name="text_wk1_day7">After 3 minutes walking warm-up, jog 10 minutes with 2 minutes walk and repeat twice.</string>
+    <string name="rest">REST</string>
+    
+    
 
 </resources>
