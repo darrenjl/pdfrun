@@ -118,6 +118,15 @@
     <string name="text_stretch_well">Stretch well.</string>
     <string name="text_wk1_day7">After 3 minutes walking warm-up, jog 10 minutes with 2 minutes walk and repeat twice.</string>
     <string name="rest">REST</string>
+    <string name="text_wk2_day1">After 5 minutes walking, jog 16 minutes and finish with 4 minutes walk, then stretch.</string>
+    <string name="text_wk2_day3">After 3 minutes walking, jog for 15 minutes, then 2 mins brisk walk followed by 10 minutes jog and finish with five minutes walking.</string>
+    <string name="text_wk2_day5">After 3 minutes walking, jog for 20 minutes with 2 minutes walking, then a 10 minute jog and finish with five minutes walking.</string>
+    <string name="text_wk2_day7">After 4 minutes walk, jog 20 minutes with 3 minutes brisk walk, then repeat.</string>
+    <string name="text_wk3_day1">After 4 minutes walking, jog 14 minutes then 2 minutes walking and repeat. Finish with 4 minutes walk. and stretch.</string>
+    <string name="text_wk3_day3">After 5 minutes walking, jog for 25 minutes, then 5 minutes brisk walk followed by 20 minutes jog and finish with 5 minutes walking.</string>
+    <string name="text_wk3_day5">After 3 walk jog for 30 minutes then walk then until finished allotted time.</string>
+    <string name="race_day">RACE DAY</string>
+    <string name="text_race_day">Good luck and enjoy it!</string>
     
     
 

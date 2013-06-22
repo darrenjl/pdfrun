@@ -61,7 +61,7 @@ public class GettingStartedActivity extends SherlockActivity
 
    public void goToTrainingPlan(View view)
    {
-      Intent i = new Intent(this, DashboardActivity.class);
+      Intent i = new Intent(this, PlanActivity.class);
       startActivity(i);
    }
    

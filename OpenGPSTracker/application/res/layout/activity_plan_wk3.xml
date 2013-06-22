@@ -18,7 +18,7 @@
 
             <TableRow style="@style/TableRow" >
                 <TextView
-                    android:text="@string/wk1"
+                    android:text="@string/wk3"
                     style="@style/TableHeaderRowTextView" />
             </TableRow>
 
@@ -29,13 +29,13 @@
                     android:text="@string/day1" />
 
                 <TextView
-                    android:text="@string/minutes25"
+                    android:text="@string/minutes40"
                     style="@style/TableRowTextView" />
             </TableRow>
             
              <TableRow style="@style/TableRow" >
                 <TextView
-                    android:text="@string/text_wk1_day1"
+                    android:text="@string/text_wk3_day1"
                     style="@style/TableRowTextViewFooter" />
             </TableRow>
             <TableRow style="@style/TableRow" >
@@ -56,13 +56,13 @@
                     android:text="@string/day3" />
 
                 <TextView
-                    android:text="@string/minutes40"
+                    android:text="@string/minutes60"
                     style="@style/TableRowTextView" />
             </TableRow>
             
              <TableRow style="@style/TableRow" >
                 <TextView
-                    android:text="@string/text_wk1_day3"
+                    android:text="@string/text_wk3_day3"
                     style="@style/TableRowTextViewFooter" />
             </TableRow>
             
@@ -90,13 +90,13 @@
                     android:text="@string/day5" />
 
                 <TextView
-                    android:text="@string/minutes35"
+                    android:text="@string/minutes50"
                     style="@style/TableRowTextView" />
             </TableRow>
             
              <TableRow style="@style/TableRow" >
                 <TextView
-                    android:text="@string/text_wk1_day5"
+                    android:text="@string/text_wk3_day5"
                     style="@style/TableRowTextViewFooter" />
             </TableRow>
             
@@ -121,16 +121,12 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="@string/day7" />
-
-                <TextView
-                    android:text="@string/minutes40"
-                    style="@style/TableRowTextView" />
+                    android:text="@string/race_day" />
             </TableRow>
             
              <TableRow style="@style/TableRow" >
                 <TextView
-                    android:text="@string/text_wk1_day7"
+                    android:text="@string/text_race_day"
                     style="@style/TableRowTextViewFooter" />
             </TableRow>
            
