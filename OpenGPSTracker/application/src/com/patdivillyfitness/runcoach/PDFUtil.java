@@ -7,9 +7,11 @@ import java.io.OutputStream;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 public class PDFUtil
 {
+   private static final String TAG="PDFRun";
    public static String getTimeText(long time)
    {
       long s = time / 1000;
@@ -65,4 +67,9 @@ public class PDFUtil
           }
       }
   }
+   
+   public static int getLevelDrawable(long time, int[] goals){
+      Log.d(TAG, "getLevelDrawable");
+      return R.drawable.ic_launcher;
+   }
 }
