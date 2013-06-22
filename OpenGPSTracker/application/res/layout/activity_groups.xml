@@ -28,15 +28,15 @@
 
                 <ImageView
                     style="@style/TableHeaderRowImageView"
-                    android:src="@drawable/medal" />
+                    android:src="@drawable/medal_bronze" />
 
                 <ImageView
                     style="@style/TableHeaderRowImageView"
-                    android:src="@drawable/medal" />
+                    android:src="@drawable/medal_silver" />
 
                 <ImageView
                     style="@style/TableHeaderRowImageView"
-                    android:src="@drawable/medal" />
+                    android:src="@drawable/medal_gold" />
             </TableRow>
             
             <TableRow

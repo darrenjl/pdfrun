@@ -107,8 +107,8 @@
     
     <style name="TableRowImageView" parent="TableRowView">
         <item name="android:adjustViewBounds">true</item>
-        <item name="android:maxHeight">55dip</item>
-        <item name="android:maxWidth">55dip</item>
+        <item name="android:maxHeight">70dip</item>
+        <item name="android:maxWidth">70dip</item>
         <item name="android:scaleType">fitCenter</item>
     </style>
     
