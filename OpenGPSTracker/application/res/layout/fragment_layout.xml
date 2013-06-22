@@ -17,25 +17,25 @@
     <Button
         android:id="@+id/btn_runs"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_groups"
+        android:drawableTop="@drawable/btn_runs"
         android:text="@string/runs_menu" />
     
     <Button
         android:id="@+id/btn_profile"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_groups"
+        android:drawableTop="@drawable/btn_profile"
         android:text="@string/profile_menu" />
 	
     <Button
         android:id="@+id/btn_about"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_groups"
+        android:drawableTop="@drawable/btn_about"
         android:text="@string/about_menu" />    
 
     <Button
         android:id="@+id/btn_settings"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_groups"
+        android:drawableTop="@drawable/btn_settings"
         android:text="@string/settings_menu" />
 
 </com.patdivillyfitness.runcoach.DashboardLayout>
