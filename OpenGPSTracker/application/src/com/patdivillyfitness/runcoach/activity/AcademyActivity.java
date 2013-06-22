@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.View;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.patdivillyfitness.runcoach.activity.WarmUpActivity;
 import com.patdivillyfitness.runcoach.PDFUtil;
 import com.patdivillyfitness.runcoach.R;
@@ -29,6 +31,7 @@ public class AcademyActivity extends SherlockListActivity
       initialiseData();
       MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, values);
       setListAdapter(adapter);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
    }
    
    @Override
@@ -84,5 +87,24 @@ public class AcademyActivity extends SherlockListActivity
       // Showing Alert Message
       alertDialog.show();
   }
+   
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item)
+   {
+      switch (item.getItemId())
+      {
+         case android.R.id.home:
+            // This ID represents the Home or Up button. In the case of this
+            // activity, the Up button is shown. Use NavUtils to allow users
+            // to navigate up one level in the application structure. For
+            // more details, see the Navigation pattern on Android Design:
+            //
+            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+            //
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+      }
+      return super.onOptionsItemSelected(item);
+   }
 
 }

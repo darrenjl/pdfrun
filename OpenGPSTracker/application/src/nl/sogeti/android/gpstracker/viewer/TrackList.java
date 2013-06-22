@@ -156,6 +156,7 @@ public class TrackList extends SherlockListActivity implements ProgressListener
 //
 //      Intent service = new Intent(this, BreadcrumbsService.class);
 //      startService(service);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
    }
 
    @Override

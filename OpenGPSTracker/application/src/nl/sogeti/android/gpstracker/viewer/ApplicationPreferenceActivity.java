@@ -38,8 +38,10 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.support.v4.app.NavUtils;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.patdivillyfitness.runcoach.R;
 
 /**
@@ -73,7 +75,7 @@ public class ApplicationPreferenceActivity extends SherlockPreferenceActivity
       super.onCreate(savedInstanceState);
 
       addPreferencesFromResource(R.layout.settings);
-
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       //ListPreference precision = (ListPreference) findPreference(PRECISION_PREFERENCE);
       time = (EditTextPreference) findPreference(CUSTOMPRECISIONTIME_PREFERENCE);
       distance = (EditTextPreference) findPreference(CUSTOMPRECISIONDISTANCE_PREFERENCE);
@@ -134,4 +136,23 @@ public class ApplicationPreferenceActivity extends SherlockPreferenceActivity
 //      time.setEnabled(customPresicion);
 //      distance.setEnabled(customPresicion);
 //   }
+   
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item)
+   {
+      switch (item.getItemId())
+      {
+         case android.R.id.home:
+            // This ID represents the Home or Up button. In the case of this
+            // activity, the Up button is shown. Use NavUtils to allow users
+            // to navigate up one level in the application structure. For
+            // more details, see the Navigation pattern on Android Design:
+            //
+            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+            //
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+      }
+      return super.onOptionsItemSelected(item);
+   }
 }

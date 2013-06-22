@@ -20,6 +20,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -46,7 +47,8 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private static final String INSTANCE_TIME = "time";
    private static final String INSTANCE_SPEED = "speed";
    private static final String INSTANCE_DISTANCE = "distance";
-//   private Chronometer myChronometer;
+
+   //   private Chronometer myChronometer;
 
    @Override
    protected void onCreate(Bundle load)
@@ -58,7 +60,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       recordingTextView = (TextView) findViewById(R.id.recording);
       startStopBtn = (Button) findViewById(R.id.startStopBtn);
       pauseResumeBtn = (Button) findViewById(R.id.pauseResumeBtn);
-//      myChronometer = (Chronometer) findViewById(R.id.chronometer);
+      //      myChronometer = (Chronometer) findViewById(R.id.chronometer);
 
       mServiceConnected = new Runnable()
          {
@@ -66,7 +68,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
             public void run()
             {
                updateBlankingBehavior();
-               loggingState = mLoggerServiceManager.getLoggingState();               
+               loggingState = mLoggerServiceManager.getLoggingState();
                Log.d("PDFRun", "Record logging state: " + mLoggerServiceManager.getLoggingState());
                switch (loggingState)
                {
@@ -78,15 +80,16 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                      pauseBtn = true;
                      startStopBtn.setText(RecordActivity.this.getString(R.string.start));
                      startBtn = true;
-//                     myChronometer.stop();
+                     //                     myChronometer.stop();
                      break;
                   case Constants.LOGGING:
                      if (started)
                         recordingTextView.setText(RecordActivity.this.getString(R.string.recording_searching));
-                     else{
-                        recordingTextView.setText(RecordActivity.this.getString(R.string.recording));                                              
+                     else
+                     {
+                        recordingTextView.setText(RecordActivity.this.getString(R.string.recording));
                      }
-                     
+
                      startStopBtn.setText(RecordActivity.this.getString(R.string.stop));
                      startBtn = false;
                      pauseResumeBtn.setText(RecordActivity.this.getString(R.string.pause));
@@ -123,6 +126,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
                }
             }
          };
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
    }
 
    @Override
@@ -132,8 +136,8 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       {
          Log.d(TAG, "First Location Found");
          recordingTextView.setText(RecordActivity.this.getString(R.string.recording));
-//         myChronometer.start();
-//         myChronometer.setBase(SystemClock.elapsedRealtime());  
+         //         myChronometer.start();
+         //         myChronometer.setBase(SystemClock.elapsedRealtime());  
          speakOut();
          firstLocationFound = true;
       }
@@ -207,6 +211,19 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    @Override
    public boolean onOptionsItemSelected(MenuItem item)
    {
+      switch (item.getItemId())
+      {
+         case android.R.id.home:
+            // This ID represents the Home or Up button. In the case of this
+            // activity, the Up button is shown. Use NavUtils to allow users
+            // to navigate up one level in the application structure. For
+            // more details, see the Navigation pattern on Android Design:
+            //
+            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+            //
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+      }
       return true;
    }
 

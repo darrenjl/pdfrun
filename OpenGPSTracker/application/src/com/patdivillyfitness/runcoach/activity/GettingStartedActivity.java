@@ -22,21 +22,14 @@ public class GettingStartedActivity extends SherlockActivity
       setupActionBar();
    }
 
-   /**
-    * Set up the {@link android.app.ActionBar}.
-    */
    private void setupActionBar()
    {
-
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
    }
 
    @Override
    public boolean onCreateOptionsMenu(Menu menu)
    {
-      // Inflate the menu; this adds items to the action bar if it is present.
-      getSupportMenuInflater().inflate(R.menu.getting_started, menu);
       return true;
    }
 

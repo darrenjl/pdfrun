@@ -6,6 +6,7 @@ import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.util.UnitsI18n;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.patdivillyfitness.runcoach.R;
 import com.patdivillyfitness.runcoach.R.layout;
 import com.patdivillyfitness.runcoach.R.menu;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.ContentUris;
 import android.database.Cursor;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -94,6 +96,7 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
             Log.d("pdfrun", "units changed");
          }
       } );
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
    }
    
    @Override
@@ -185,5 +188,24 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
          avgKm10TimeView.setText(calculated.getTimeText(sum10kmTime/avg10kmTimeCounter));
          km10TimeTableRow.setVisibility(View.VISIBLE);
       }
+   }
+   
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item)
+   {
+      switch (item.getItemId())
+      {
+         case android.R.id.home:
+            // This ID represents the Home or Up button. In the case of this
+            // activity, the Up button is shown. Use NavUtils to allow users
+            // to navigate up one level in the application structure. For
+            // more details, see the Navigation pattern on Android Design:
+            //
+            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+            //
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+      }
+      return super.onOptionsItemSelected(item);
    }
 }

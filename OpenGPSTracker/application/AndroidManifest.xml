@@ -101,7 +101,11 @@
         </activity>
         <activity
             android:name="nl.sogeti.android.gpstracker.viewer.ApplicationPreferenceActivity"
-            android:label="@string/application_name" />
+            android:label="@string/application_name" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.DashboardActivity" />
+        </activity>
         <activity
             android:name="nl.sogeti.android.gpstracker.actions.NameTrack"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -279,6 +283,10 @@
                 <data android:host="nl.sogeti.android.gpstracker" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.nl.sogeti.android.track" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.DashboardActivity" />
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.DashboardActivity"
@@ -288,26 +296,44 @@
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.InfoActivity"
             android:label="@string/title_activity_info" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.DashboardActivity" />
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.ProfileActivity"
             android:label="@string/title_activity_profile" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.DashboardActivity" />
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.GroupsActivity"
             android:label="@string/title_activity_groups" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.AcademyActivity" />
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.AcademyActivity"
             android:label="@string/title_activity_academy" >
-        </activity>
-        <activity
-            android:name="com.patdivillyfitness.runcoach.activity.RunDetailsActivity"
-            android:label="@string/title_activity_run_details" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.DashboardActivity" />
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.RunsListActivity"
             android:label="@string/title_activity_runs_list" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.DashboardActivity" />
+        </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.activity.RunDetailsActivity"
+            android:label="@string/title_activity_run_details" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.RunsListActivity" />
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.SplashActivity"
@@ -320,14 +346,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.patdivillyfitness.runcoach.activity.GroupDetailsActivity"
-            android:label="@string/title_activity_group_details" >
-        </activity>
-        <activity
             android:name="com.patdivillyfitness.runcoach.activity.WarmUpActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_warm_up"
             android:screenOrientation="nosensor" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.patdivillyfitness.runcoach.activity.AcademyActivity" />
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.GettingStartedActivity"
