@@ -79,6 +79,9 @@
     <string name="about_menu">About</string>
     <string name="settings_menu">Settings</string>
     <string name="runs_menu">Runs</string>
+    <string name="welcome">Welcome</string>
+    <string name="cancel">Cancel</string>
+    <string name="welcome_text">Welcome to Pat Divilly\'s Run Coach. We recommend you visit the getting started page? </string>
 
     <!-- Academy Activity -->
     <string name="getting_started_menu">Getting Started</string>

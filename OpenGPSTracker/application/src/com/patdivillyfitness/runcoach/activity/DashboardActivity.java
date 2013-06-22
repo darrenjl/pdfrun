@@ -1,23 +1,29 @@
 package com.patdivillyfitness.runcoach.activity;
 
 import nl.sogeti.android.gpstracker.viewer.ApplicationPreferenceActivity;
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.Menu;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.patdivillyfitness.runcoach.AppLaunchChecker;
 import com.patdivillyfitness.runcoach.R;
 
-public class DashboardActivity extends Activity
+public class DashboardActivity extends SherlockActivity
 {
    private boolean isGPSEnabled;
    private LocationManager locationManager;
+   private static final String TAG = "PDFRun";
 
    @Override
    protected void onCreate(Bundle savedInstanceState)
@@ -107,6 +113,11 @@ public class DashboardActivity extends Activity
                startActivity(intent);
             }
          });
+
+      boolean firstLaunch = AppLaunchChecker.checkFirstOrRateLaunch(this);
+      Log.d(TAG, "First Launch: " + firstLaunch);
+      if(firstLaunch)
+         showGettingStartedDialog();
    }
 
    private void checkGPSAndGoToRecordingPage()
@@ -173,6 +184,7 @@ public class DashboardActivity extends Activity
       //      getMenuInflater().inflate(R.menu.dashboard, menu);
       return true;
    }
+
    //
    //   @Override
    //   public boolean onOptionsItemSelected(MenuItem item)
@@ -186,4 +198,37 @@ public class DashboardActivity extends Activity
    //      }
    //      return super.onOptionsItemSelected(item);
    //   }
+
+   private void showGettingStartedDialog()
+   {
+
+      AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+      alertDialog.setTitle(R.string.welcome);
+
+      alertDialog.setMessage(getString(R.string.welcome_text));
+
+      alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, DashboardActivity.this.getString(R.string.ok), new DialogInterface.OnClickListener()
+         {
+
+            public void onClick(DialogInterface dialog, int id)
+            {
+               startActivity(new Intent(DashboardActivity.this, GettingStartedActivity.class));
+               dialog.dismiss();
+            }
+         });
+
+      alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, DashboardActivity.this.getString(R.string.cancel), new DialogInterface.OnClickListener()
+         {
+
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+               dialog.dismiss();
+
+            }
+         });      
+
+      alertDialog.show();
+   }
 }
