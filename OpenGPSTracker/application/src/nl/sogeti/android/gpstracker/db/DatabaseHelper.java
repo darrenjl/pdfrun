@@ -28,7 +28,13 @@
  */
 package nl.sogeti.android.gpstracker.db;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
+
+import com.patdivillyfitness.runcoach.PDFUtil;
 
 import nl.sogeti.android.gpstracker.db.GPStracking.Media;
 import nl.sogeti.android.gpstracker.db.GPStracking.MediaColumns;
@@ -61,11 +67,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
 {
    private Context mContext;
    private final static String TAG = "OGT.DatabaseHelper";
-
+   private static String DB_PATH;
+   private boolean dbCreated=false;
    public DatabaseHelper(Context context)
    {
       super(context, GPStracking.DATABASE_NAME, null, GPStracking.DATABASE_VERSION);
       this.mContext = context;
+      DB_PATH = context.getDatabasePath(GPStracking.DATABASE_NAME).getAbsolutePath();
+      Log.d("PDFRun", "DB_PATH: "+ DB_PATH);
    }
 
    /*
@@ -82,6 +91,30 @@ public class DatabaseHelper extends SQLiteOpenHelper
       db.execSQL(Tracks.CREATE_STATEMENT);
       db.execSQL(Media.CREATE_STATEMENT);
       db.execSQL(MetaData.CREATE_STATEMENT);
+      Log.d("PDFRun", "database created");
+      dbCreated=true;
+   }
+   
+   /**
+    * Upgrade the database in internal storage if it exists but is not current. 
+    * Create a new empty database in internal storage if it does not exist.
+    */
+   public void initialiseDB() {
+       getWritableDatabase();
+
+       if (dbCreated) {
+          close();
+          try {
+             InputStream myInput = this.mContext.getAssets().open(GPStracking.DATABASE_NAME);
+             OutputStream myOutput = new FileOutputStream(DB_PATH);
+             PDFUtil.copyFile(myInput, myOutput);
+             dbCreated=false;
+         } catch (IOException e) {
+             Log.d("PDFRun", "Error copying database");
+         }
+          
+          getWritableDatabase().close();
+       }
    }
 
    /**

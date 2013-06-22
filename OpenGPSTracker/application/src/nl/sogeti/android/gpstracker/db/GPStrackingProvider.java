@@ -184,6 +184,7 @@ public class GPStrackingProvider extends ContentProvider
       {
          this.mDbHelper = new DatabaseHelper(getContext());
       }
+      mDbHelper.initialiseDB();
       return true;
    }
 

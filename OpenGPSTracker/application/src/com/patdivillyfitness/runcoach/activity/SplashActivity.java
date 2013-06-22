@@ -55,7 +55,7 @@ public class SplashActivity extends Activity {
       try
       {
         fis=new FileInputStream(f);
-        fos=new FileOutputStream("/mnt/sdcard/db_dump.dbs");
+        fos=new FileOutputStream("/mnt/sdcard/db_dump.db3");
         while(true)
         {
           int i=fis.read();

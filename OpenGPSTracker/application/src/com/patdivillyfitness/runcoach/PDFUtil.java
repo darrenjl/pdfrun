@@ -1,5 +1,9 @@
 package com.patdivillyfitness.runcoach;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -32,5 +36,33 @@ public class PDFUtil
 
         }
         return false;
+  }
+   
+   public static void copyFile(InputStream fromFile, OutputStream toFile) throws IOException {
+      // transfer bytes from the inputfile to the outputfile
+      byte[] buffer = new byte[1024];
+      int length;
+
+      try {
+          while ((length = fromFile.read(buffer)) > 0) {
+              toFile.write(buffer, 0, length);
+          }
+      }
+      // Close the streams
+      finally {
+          try {
+              if (toFile != null) {
+                  try {
+                      toFile.flush();
+                  } finally {
+                      toFile.close();
+                  }
+          }
+          } finally {
+              if (fromFile != null) {
+                  fromFile.close();
+              }
+          }
+      }
   }
 }
