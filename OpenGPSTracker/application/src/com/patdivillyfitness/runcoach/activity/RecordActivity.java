@@ -138,7 +138,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          recordingTextView.setText(RecordActivity.this.getString(R.string.recording));
          //         myChronometer.start();
          //         myChronometer.setBase(SystemClock.elapsedRealtime());  
-         speakOut();
+//         speakOut();
          firstLocationFound = true;
       }
       super.updateTrackNumbers();

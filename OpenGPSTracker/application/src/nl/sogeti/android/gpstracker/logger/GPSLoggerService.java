@@ -214,6 +214,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
    private TextToSpeech tts;
    private UnitsI18n mUnits;
    private int progressCounter=0;
+   private boolean firstLocation=true;
 
    /**
     * Listens to changes in preference to precision and sanity checks
@@ -273,6 +274,13 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       Location filteredLocation = locationFilter(location);
       if (filteredLocation != null)
       {
+         if(firstLocation){
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(500);
+            speakOut(getString(R.string.satelite_found));
+            firstLocation=false;
+            mStartTime=System.currentTimeMillis();
+         }
          if (mStartNextSegment)
          {
             mStartNextSegment = false;
@@ -287,7 +295,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
             mDistance += mPreviousLocation.distanceTo(filteredLocation);
             mElapsedTime = filteredLocation.getTime()- mStartTime;
             updateNotification();
-         }
+         }         
          beepIfRequired();
          storeDistanceTimeIfSignificant(mElapsedTime);
          storeLocation(filteredLocation);
@@ -1753,6 +1761,11 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       strBuilder.append(" in ");
       strBuilder.append(getElapsedTimeMinutesSecondsString(time,true));
       tts.speak(strBuilder.toString(), TextToSpeech.QUEUE_FLUSH, null);
+   }
+   
+   private void speakOut(String talk)
+   {      
+      tts.speak(talk, TextToSpeech.QUEUE_FLUSH, null);
    }
    
    private static String getElapsedTimeMinutesSecondsString(long miliseconds, boolean forSpeech) {
