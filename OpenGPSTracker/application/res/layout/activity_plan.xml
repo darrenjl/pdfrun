@@ -8,6 +8,14 @@
     <ImageView
         style="@style/ParagraphImageViewVertical"
         android:src="@drawable/pat3" />
+    
+    <TextView style="@style/ParagraphTextView"
+        android:text="@string/plan_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"/>
+    
 
     <ListView
         android:id="@+id/android:list"

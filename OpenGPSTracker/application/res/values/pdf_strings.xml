@@ -101,7 +101,7 @@
     <string name="getting_started_experienced_btn">Goals</string>
     
     <!-- Training Plan Activity -->
-    <string name="plan_content">Training Plan Content goes here</string>
+    <string name="plan_content">This plan will guide runners to reach a goal of running a 5km race after just 21 days.</string>
     <string name="wk1">Week 1</string>
     <string name="wk2">Week 2</string>
     <string name="wk3">Week 3</string>
