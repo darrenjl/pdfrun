@@ -1,5 +1,6 @@
 #custom
 OpenGPSTracker/application/res/values/keys.xml
+OpenGPSTracker/actionbarsherlock/*
 *DeveloperKey*
 # built application files
 *.apk
