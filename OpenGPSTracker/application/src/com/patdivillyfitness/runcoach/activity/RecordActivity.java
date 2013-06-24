@@ -29,13 +29,13 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.patdivillyfitness.runcoach.PDFChronometer;
 import com.patdivillyfitness.runcoach.R;
 
-public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitListener
+public class RecordActivity extends LoggerMap
 {
    private boolean isGPSEnabled;
    private LocationManager locationManager;
-   private TextToSpeech tts;
    private TextView recordingTextView;
    private Button startStopBtn;
    private Button pauseResumeBtn;
@@ -48,19 +48,18 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    private static final String INSTANCE_SPEED = "speed";
    private static final String INSTANCE_DISTANCE = "distance";
 
-   //   private Chronometer myChronometer;
+   private PDFChronometer myChronometer;
 
    @Override
    protected void onCreate(Bundle load)
    {
       this.layout = R.layout.activity_record;
       locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
-      tts = new TextToSpeech(this, this);
       super.onCreate(load);
       recordingTextView = (TextView) findViewById(R.id.recording);
       startStopBtn = (Button) findViewById(R.id.startStopBtn);
       pauseResumeBtn = (Button) findViewById(R.id.pauseResumeBtn);
-      //      myChronometer = (Chronometer) findViewById(R.id.chronometer);
+      myChronometer = (PDFChronometer) findViewById(R.id.chronometer);
 
       mServiceConnected = new Runnable()
          {
@@ -136,11 +135,11 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
       {
          Log.d(TAG, "First Location Found");
          recordingTextView.setText(RecordActivity.this.getString(R.string.recording));
-         //         myChronometer.start();
-         //         myChronometer.setBase(SystemClock.elapsedRealtime());  
-//         speakOut();
+         myChronometer.setMsElapsed(0);
+         myChronometer.start();  
          firstLocationFound = true;
-      }
+      } else
+         myChronometer.setMsElapsed(mLoggerServiceManager.getElapsedTime());
       super.updateTrackNumbers();
    }
 
@@ -263,47 +262,7 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
    //      return super.onKeyDown(keycode, e);
    //   }
 
-   @Override
-   public void onDestroy()
-   {
-      if (tts != null)
-      {
-         tts.stop();
-         tts.shutdown();
-      }
-      super.onDestroy();
-   }
 
-   @Override
-   public void onInit(int status)
-   {
-
-      if (status == TextToSpeech.SUCCESS)
-      {
-
-         int result = tts.setLanguage(Locale.UK);
-
-         if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED)
-         {
-            Log.e("TTS", "This Language is not supported");
-         }
-         //         else
-         //         {
-         //            speakOut();
-         //         }
-
-      }
-      else
-      {
-         Log.e("TTS", "Initilization Failed!");
-      }
-
-   }
-
-   private void speakOut()
-   {
-      tts.speak("Go", TextToSpeech.QUEUE_FLUSH, null);
-   }
 
    private void checkGPSAndOpenControls()
    {
@@ -345,6 +304,13 @@ public class RecordActivity extends LoggerMap implements TextToSpeech.OnInitList
          Intent intent = new Intent(this, ControlTracking.class);
          intent.putExtra(com.patdivillyfitness.runcoach.Constants.CONTROL_EXTRA, action);
          startActivityForResult(intent, MENU_TRACKING);
+         if(action==com.patdivillyfitness.runcoach.Constants.STOP){
+            myChronometer.stop();
+            myChronometer.setMsElapsed(0);
+            mDistanceView.setText(R.string.empty_detail);
+            mLastGPSSpeedView.setText(R.string.empty_detail);
+            mElapsedTimeView.setText(R.string.empty_time);
+         }
       }
    }
 

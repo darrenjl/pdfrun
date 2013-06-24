@@ -60,6 +60,8 @@
     <string name="recording_paused">Paused</string>
     <string name="recording_searching">Searching, get going and we will tell you when recording starts.</string>
     <string name="satelite_found">Satellites found, good luck with your run.</string>
+    <string name="empty_time">--:--</string>
+    <string name="empty_detail">-</string>
     
     <!-- Runs List -->
     <string name="runs_note">Note: Keep your finger on run below for more options.</string>

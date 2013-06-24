@@ -17,12 +17,12 @@
 
             <TextView
                 style="@style/TableHeaderRowTextView"
-                android:text="@string/distance"/>
+                android:text="@string/distance" />
 
             <TextView
                 android:id="@+id/currentDistance"
                 style="@style/TableRowTextView"
-                android:text="-" />
+                android:text="@string/empty_detail" />
         </TableRow>
 
         <TableRow style="@style/TableRow" >
@@ -34,19 +34,24 @@
             <TextView
                 android:id="@+id/currentSpeed"
                 style="@style/TableRowTextView"
-                android:text="-" />
+                android:text="@string/empty_detail" />
         </TableRow>
 
         <TableRow style="@style/TableRow" >
 
             <TextView
                 style="@style/TableHeaderRowTextView"
-                android:text="@string/time"/>
+                android:text="@string/time" />
 
             <TextView
                 android:id="@+id/elapsedTime"
                 style="@style/TableRowTextView"
-                android:text="--:--" />
+                android:text="@string/empty_time" 
+                android:visibility="gone"/>
+
+            <com.patdivillyfitness.runcoach.PDFChronometer
+                android:id="@+id/chronometer"
+                style="@style/TableRowTextView"/>
         </TableRow>
 
         <TableRow style="@style/TableRow" >
@@ -73,12 +78,6 @@
     <!-- android:textSize="12pt" /> -->
 
 
-    <!-- <Chronometer -->
-    <!-- android:id="@+id/chronometer" -->
-    <!-- android:layout_width="wrap_content" -->
-    <!-- android:layout_height="wrap_content" -->
-    <!-- android:textColor="#ff000000" -->
-    <!-- android:textSize="12pt" /> -->
     <!-- </LinearLayout> -->
 
     <LinearLayout
