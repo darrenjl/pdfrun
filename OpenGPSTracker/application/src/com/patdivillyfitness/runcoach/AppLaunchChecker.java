@@ -19,7 +19,7 @@ public class AppLaunchChecker {
    
    public static boolean checkFirstOrRateLaunch(Context mContext) {
        SharedPreferences prefs = mContext.getSharedPreferences(Constants.APP_LAUNCHER_CHECKER_PREF, 0);
-       if (prefs.getBoolean(Constants.DONT_ASK_AGAIN, false)) { return true; }
+       if (prefs.getBoolean(Constants.DONT_ASK_AGAIN, false)) { return false; }
        
        SharedPreferences.Editor editor = prefs.edit();       
        long launch_count = prefs.getLong(Constants.LAUNCH_COUNT, 0) + 1;
