@@ -38,7 +38,7 @@
                     style="@style/TableHeaderRowImageView"
                     android:src="@drawable/medal_gold" />
             </TableRow>
-            
+
             <TableRow
                 android:id="@+id/km_1_table_row"
                 style="@style/TableRow" >
@@ -86,7 +86,7 @@
                     style="@style/TableRowTextView"
                     android:text="" />
             </TableRow>
-            
+
             <TableRow
                 android:id="@+id/km_5_table_row"
                 style="@style/TableRow" >
@@ -110,7 +110,7 @@
                     style="@style/TableRowTextView"
                     android:text="" />
             </TableRow>
-            
+
             <TableRow
                 android:id="@+id/km_8_table_row"
                 style="@style/TableRow" >
@@ -134,7 +134,7 @@
                     style="@style/TableRowTextView"
                     android:text="" />
             </TableRow>
-            
+
             <TableRow
                 android:id="@+id/km_10_table_row"
                 style="@style/TableRow" >
@@ -158,11 +158,13 @@
                     style="@style/TableRowTextView"
                     android:text="" />
             </TableRow>
-            
-
-           
         </TableLayout>
 
+        <TextView
+            style="@style/ParagraphTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/goals_warning" />
     </LinearLayout>
 
 </ScrollView>

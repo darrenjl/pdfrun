@@ -141,6 +141,6 @@
     <string name="race_day">RACE DAY</string>
     <string name="text_race_day">Good luck and enjoy it!</string>
     
-    
-
+    <!-- Goals -->
+	<string name="goals_warning">This times should provide you with good targets, however, please note that these times are highly variable depending on; age, weight, sex, baseline fitness level and running experience.</string>
 </resources>
