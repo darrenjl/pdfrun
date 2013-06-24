@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+<!-- each int array represents the time goal in milliseconds for that distance in the order bronze, silver and gold -->
     <integer-array name="goals_1km">
-        <item>300000</item>
-        <item>200000</item>
-        <item>100000</item>
+        <item>540000</item>
+        <item>420000</item>
+        <item>240000</item>
     </integer-array>        
     
     <integer-array name="goals_3km">
-        <item>780000</item>
-        <item>720000</item>
-        <item>660000</item>
+        <item>1620000</item>
+        <item>1260000</item>
+        <item>840000</item>
     </integer-array>   
     
     <integer-array name="goals_5km">
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
+        <item>2220000</item>
+        <item>1800000</item>
+        <item>1320000</item>
     </integer-array>   
     
     <integer-array name="goals_8km">
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
+        <item>3000000</item>
+        <item>2400000</item>
+        <item>2100000</item>
     </integer-array>   
     
     <integer-array name="goals_10km">
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
+        <item>3900000</item>
+        <item>3300000</item>
+        <item>2700000</item>
     </integer-array>   
 
 </resources>
