@@ -20,6 +20,28 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
+                    android:text="@string/stat_date" />
+
+                <TextView
+                    android:id="@+id/stat_date"
+                    style="@style/TableRowTextView" />
+            </TableRow>
+            
+            <TableRow style="@style/TableRow" >
+
+                <TextView
+                    style="@style/TableHeaderRowTextView"
+                    android:text="@string/stat_time" />
+
+                <TextView
+                    android:id="@+id/stat_time"
+                    style="@style/TableRowTextView" />
+            </TableRow>
+            
+            <TableRow style="@style/TableRow" >
+
+                <TextView
+                    style="@style/TableHeaderRowTextView"
                     android:text="@string/stat_distance" />
 
                 <TextView

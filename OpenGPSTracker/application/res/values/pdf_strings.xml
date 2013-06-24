@@ -72,6 +72,8 @@
     <string name="time_10km">Time for 10km</string>
     <string name="home_btn">Home</string>
     <string name="profile_btn">Profile</string>
+    <string name="stat_date">Date</string>
+    <string name="stat_time">Time</string>
 
     <!-- Warm Up Activity -->
     <string name="warm_up_vid_des">Watch this video for a guide on how to stretch before your run.</string>

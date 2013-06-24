@@ -6,6 +6,8 @@
  */
 package com.patdivillyfitness.runcoach.activity;
 
+import java.util.Date;
+
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsCalulator;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
@@ -50,6 +52,8 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
    private TextView km5TimeView;
    private TextView km8TimeView;
    private TextView km10TimeView;
+   private TextView dateView;
+   private TextView timeView;
    private ImageView km1ImageView;
    private ImageView km3ImageView;
    private ImageView km5ImageView;
@@ -104,6 +108,8 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
       km5TimeView = (TextView) findViewById(R.id.km_5_time);
       km8TimeView = (TextView) findViewById(R.id.km_8_time);
       km10TimeView = (TextView) findViewById(R.id.km_10_time);
+      dateView = (TextView) findViewById(R.id.stat_date);
+      timeView = (TextView) findViewById(R.id.stat_time);
       km1ImageView = (ImageView) findViewById(R.id.image_1km);
       km3ImageView = (ImageView) findViewById(R.id.image_3km);
       km5ImageView = (ImageView) findViewById(R.id.image_5km);
@@ -124,7 +130,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
          mTrackUri = this.getIntent().getData();
       }
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      res = getResources();
+      res = getResources();      
    }
 
    @Override
@@ -201,7 +207,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
       mElapsedTimeView.setText(calculated.getDurationText());
       mAscensionView.setText(calculated.getAscensionText());
       avgSpeedView.setText(calculated.getAvgSpeedText());
-      distanceView.setText(calculated.getDistanceText());
+      distanceView.setText(calculated.getDistanceText());      
       String titleFormat = getString(R.string.stat_title);
       setTitle(String.format(titleFormat, calculated.getTracknameText()));
       if (calculated.getKm1Time() > 0)
@@ -234,7 +240,11 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
          km10TimeTableRow.setVisibility(View.VISIBLE);
          km10ImageView.setImageResource(PDFUtil.getLevelDrawable(calculated.getKm10Time(), res.getIntArray(R.array.goals_10km)));
       }
-      calculating = false;
+      calculating = false;   
+      String date = android.text.format.DateFormat.format("E, MMMM dd, yyyy",calculated.getCreationTime()).toString();
+      dateView.setText(date);
+      String time = android.text.format.DateFormat.format("h:mmaa",calculated.getCreationTime()).toString();
+      timeView.setText(time);
    }
 
    @Override

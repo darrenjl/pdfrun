@@ -69,6 +69,7 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
    private long km5Time;
    private long km8Time;
    private long km10Time;
+   private long creationTime;
    private double mAverageActiveSpeed;
    private StatisticsDelegate mDelegate;
    
@@ -139,7 +140,7 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
       Cursor trackCursor = null;
       try
       {
-         trackCursor = resolver.query( trackUri, new String[] { Tracks.NAME, Tracks.KM_1_TIME, Tracks.KM_3_TIME, Tracks.KM_5_TIME, Tracks.KM_8_TIME, Tracks.KM_10_TIME }, null, null, null );
+         trackCursor = resolver.query( trackUri, new String[] { Tracks.NAME, Tracks.KM_1_TIME, Tracks.KM_3_TIME, Tracks.KM_5_TIME, Tracks.KM_8_TIME, Tracks.KM_10_TIME, Tracks.CREATION_TIME }, null, null, null );
          if( trackCursor.moveToLast() )
          {
             tracknameText = trackCursor.getString( 0 );
@@ -148,6 +149,7 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
             km5Time = trackCursor.getLong(3);
             km8Time = trackCursor.getLong(4);
             km10Time = trackCursor.getLong(5);
+            creationTime  = trackCursor.getLong(6);
             Log.d("PDFRun", "km1time - "+km1Time);
             Log.d("PDFRun", "km3time - "+km3Time);
          }
@@ -459,7 +461,7 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
    public long getKm5Time(){return km5Time;}
    public long getKm8Time(){return km8Time;}
    public long getKm10Time(){return km10Time;}
-   
+   public long getCreationTime(){return creationTime;}
    public String getKm1TimeText(){return getTimeText(km1Time);}
    public String getKm3TimeText(){return getTimeText(km3Time);}
    public String getKm5TimeText(){return getTimeText(km5Time);}
