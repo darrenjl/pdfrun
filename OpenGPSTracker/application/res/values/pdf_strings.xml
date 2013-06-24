@@ -22,7 +22,7 @@
     <string name="action_delete">Delete</string>
     <string name="int_conn_title">Internet Connection</string>
     <string name="int_conn_text">This feature requires that you have internet connectivity enabled.</string>
-    <string name="gps_disabled_text">Your GPS module is disabled. Would you like to enable it ?</string>
+    <string name="gps_disabled_text">Your GPS module is disabled. This feature requires GPS to be enabled, please do so now.</string>
     <string name="ok">OK</string>
     <string name="no">No</string>
     <string name="distance_1km">1km</string>
@@ -60,6 +60,8 @@
     <string name="recording_paused">Paused</string>
     <string name="recording_searching">Searching, walk slowly until recording starts.</string>
     
+    <!-- Runs List -->
+    <string name="runs_note">Note: Keep your finger on run below for more options.</string>
 
     <!-- Run Details Activity -->
     <string name="time_1km">Time for 1km</string>
@@ -82,7 +84,7 @@
     <string name="runs_menu">Runs</string>
     <string name="welcome">Welcome</string>
     <string name="cancel">Cancel</string>
-    <string name="welcome_text">Welcome to Pat Divilly\'s Run Coach. We recommend you visit the getting started page? </string>
+    <string name="welcome_text">Welcome to Pat Divilly\'s Run Coach. We recommend you visit the getting started page. </string>
     <string name="rate">Rate</string>
     <string name="remind">Remind</string>
     <string name="rate_app">Rate %1$s</string>
@@ -96,10 +98,12 @@
     <string name="goals_menu">Goals</string>
     
     <!-- Getting Started Activity -->
-    <string name="getting_started_noobs">For the newbies, I\'ve got together with some top runners and triathletes to outline a 3 week plan to get you started. 21 days from now you will run you\'re first 5km.</string>
+    <string name="getting_started_noobs">For the Newbies, I got together with some top runners and triathletes to outline a 3 week plan to get you started. 21 days from now you will run your first 5km. This plan is available in the coach section of the app.</string>
     <string name="getting_started_noobs_btn">Training Plan</string>
-    <string name="getting_started_experienced">For the more experienced runners we\'ve set targets for to help you surpass you\'re running goals.</string>
+    <string name="getting_started_experienced">For the more experienced runners, we\'ve set targets for to help you surpass your running goals. These goals can be seen in the coach section of the app.</string>
     <string name="getting_started_experienced_btn">Goals</string>
+    <string name="getting_started_opening_text">Running is one of the most basic forms of exercise, but without the right information and guidance, many of us struggle to find our stride. This app was designed to help you reach your running goals, however big or small. So grab some running shoes and follow our step-by-step training guide to discover just what you can do.</string>
+    <string name="getting_started_gps">Using your phones GPS functionality, you can track your runs and you will be given feedback on the run in the form of bronze, silver and gold medals which will helpe motivate you to keep improving.</string>
     
     <!-- Training Plan Activity -->
     <string name="plan_content">This plan will guide runners to reach a goal of running a 5km race after just 21 days.</string>
@@ -121,7 +125,7 @@
     <string name="minutes50">50 minutes</string>
     <string name="minutes60">60 minutes</string>
     <string name="text_wk1_day1">After 5 minutes of walking warm-up, alternate 5 minute jogs with 3 minutes walking. Repeat and finish with 4 minutes walk, then stretch.</string>
-    <string name="text_wk1_day3"> After 5 minutes walking warm-up, alternately jog for 10 minutes then walk 2 mins until finished.</string>
+    <string name="text_wk1_day3"> After 5 minutes walking warm-up, jog for 10 minutes then walk 2 mins, repeatedly, until finished.</string>
     <string name="text_rest_day">Stretch after a hot bath to keep your muscles supple.</string>
     <string name="text_wk1_day5">After 5 minutes walking warm-up,  jog for 13 minutes and walk 2 minutes then repeat.</string>
     <string name="text_stretch_well">Stretch well.</string>
@@ -130,10 +134,10 @@
     <string name="text_wk2_day1">After 5 minutes walking, jog 16 minutes and finish with 4 minutes walk, then stretch.</string>
     <string name="text_wk2_day3">After 3 minutes walking, jog for 15 minutes, then 2 mins brisk walk followed by 10 minutes jog and finish with five minutes walking.</string>
     <string name="text_wk2_day5">After 3 minutes walking, jog for 20 minutes with 2 minutes walking, then a 10 minute jog and finish with five minutes walking.</string>
-    <string name="text_wk2_day7">After 4 minutes walk, jog 20 minutes with 3 minutes brisk walk, then repeat.</string>
-    <string name="text_wk3_day1">After 4 minutes walking, jog 14 minutes then 2 minutes walking and repeat. Finish with 4 minutes walk. and stretch.</string>
+    <string name="text_wk2_day7">After 4 minutes walking, jog 20 minutes with 3 minutes brisk walk, then repeat.</string>
+    <string name="text_wk3_day1">After 4 minutes walking, jog 14 minutes then 2 minutes walking and repeat. Finish with 4 minutes walk and stretch.</string>
     <string name="text_wk3_day3">After 5 minutes walking, jog for 25 minutes, then 5 minutes brisk walk followed by 20 minutes jog and finish with 5 minutes walking.</string>
-    <string name="text_wk3_day5">After 3 walk jog for 30 minutes then walk then until finished allotted time.</string>
+    <string name="text_wk3_day5">After 3 minutes walking, jog for 30 minutes then walk until finished allotted time.</string>
     <string name="race_day">RACE DAY</string>
     <string name="text_race_day">Good luck and enjoy it!</string>
     

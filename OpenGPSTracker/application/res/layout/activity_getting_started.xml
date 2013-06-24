@@ -27,13 +27,19 @@
                 style="@style/ParagraphTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/getting_started_opening_text" />
+
+            <TextView
+                style="@style/ParagraphTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/getting_started_noobs" />
 
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:onClick="goToTrainingPlan"
-                android:text="@string/getting_started_noobs_btn" />
+            <!-- <Button -->
+            <!-- android:layout_width="fill_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:onClick="goToTrainingPlan" -->
+            <!-- android:text="@string/getting_started_noobs_btn" /> -->
 
             <TextView
                 style="@style/ParagraphTextView"
@@ -41,11 +47,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/getting_started_experienced" />
 
-            <Button
-                android:layout_width="fill_parent"
+            <!-- <Button -->
+            <!-- android:layout_width="fill_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:onClick="goToGoals" -->
+            <!-- android:text="@string/getting_started_experienced_btn" /> -->
+
+            <TextView
+                style="@style/ParagraphTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="goToGoals"
-                android:text="@string/getting_started_experienced_btn" />
+                android:text="@string/getting_started_gps" />
         </LinearLayout>
     </LinearLayout>
 
