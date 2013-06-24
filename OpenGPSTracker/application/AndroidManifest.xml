@@ -36,7 +36,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/application_name"
         android:theme="@style/AppTheme" >
-<!--         <uses-library android:name="com.google.android.maps" /> -->
+        <uses-library android:name="com.google.android.maps" />
 
         <meta-data
             android:name="org.openintents.metadata.COMMENTS"

@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.patdivillyfitness.runcoach.Constants;
 import com.patdivillyfitness.runcoach.PDFUtil;
@@ -235,6 +238,13 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
    }
 
    @Override
+   public boolean onCreateOptionsMenu(Menu menu) {
+       MenuInflater inflater = getSupportMenuInflater();
+       inflater.inflate(R.menu.run_details, menu);
+       return super.onCreateOptionsMenu(menu);
+   }
+   
+   @Override
    public boolean onOptionsItemSelected(MenuItem item)
    {
       switch (item.getItemId())
@@ -247,6 +257,11 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+         case R.id.action_delete:
+            Log.d(TAG, "delete");
+            getContentResolver().delete(mTrackUri, null, null);
             NavUtils.navigateUpFromSameTask(this);
             return true;
       }
