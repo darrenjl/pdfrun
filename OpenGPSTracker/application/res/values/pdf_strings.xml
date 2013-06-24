@@ -9,7 +9,7 @@
     <string name="title_activity_info">About</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_groups">Goals</string>
-    <string name="title_activity_academy">Academy</string>
+    <string name="title_activity_academy">Coach</string>
     <string name="title_activity_run_details">Run Details</string>
     <string name="title_activity_runs_list">Runs</string>
     <string name="title_activity_splash">SplashActivity</string>
@@ -73,7 +73,7 @@
     <string name="warm_up_vid_des">Watch this video for a guide on how to stretch before your run.</string>
 
     <!-- Dashboard Profile -->
-    <string name="academy_menu">Academy</string>
+    <string name="academy_menu">Coach</string>
     <string name="record_menu">Record</string>
     <string name="profile_menu">Profile</string>
     <string name="about_menu">About</string>
