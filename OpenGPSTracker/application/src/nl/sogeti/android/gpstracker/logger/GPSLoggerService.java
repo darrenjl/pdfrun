@@ -833,6 +833,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       ;
       if (this.mLoggingState == Constants.STOPPED)
       {
+         firstLocation=true;
          startNewTrack();
          sendRequestLocationUpdatesMessage();
          sendRequestStatusUpdateMessage();
@@ -908,7 +909,7 @@ public class GPSLoggerService extends Service implements LocationListener, TextT
       updateWakeLock();
 
       PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this.mSharedPreferenceChangeListener);
-
+      
       mLocationManager.removeGpsStatusListener(mStatusListener);
       stopListening();
       stopNotification();

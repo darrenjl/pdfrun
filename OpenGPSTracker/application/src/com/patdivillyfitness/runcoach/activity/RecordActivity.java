@@ -151,6 +151,8 @@ public class RecordActivity extends LoggerMap
    public void startStopRun(View view)
    {
       Log.d(TAG, "startStopRun");
+      firstLocationFound = false;
+      started = false;
       if (startBtn)
          checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.START);
       else
