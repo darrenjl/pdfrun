@@ -305,8 +305,9 @@ public class RecordActivity extends LoggerMap
          intent.putExtra(com.patdivillyfitness.runcoach.Constants.CONTROL_EXTRA, action);
          startActivityForResult(intent, MENU_TRACKING);
          if(action==com.patdivillyfitness.runcoach.Constants.STOP){
-            myChronometer.stop();
             myChronometer.setMsElapsed(0);
+            myChronometer.stop();
+            myChronometer.setText(R.string.zero_time);
             mDistanceView.setText(R.string.empty_detail);
             mLastGPSSpeedView.setText(R.string.empty_detail);
             mElapsedTimeView.setText(R.string.empty_time);
