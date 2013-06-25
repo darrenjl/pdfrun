@@ -20,6 +20,8 @@
     <!-- Miscellaneos -->
     <string name="action_settings">Settings</string>
     <string name="action_delete">Delete</string>
+    <string name="action_share">Share</string>
+    <string name="action_edit">Edit</string>
     <string name="int_conn_title">Internet Connection</string>
     <string name="int_conn_text">This feature requires that you have internet connectivity enabled.</string>
     <string name="gps_disabled_text">Your GPS module is disabled. This feature requires GPS to be enabled, please do so now.</string>

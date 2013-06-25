@@ -10,10 +10,16 @@ import nl.sogeti.android.gpstracker.actions.utils.StatisticsCalulator;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.util.UnitsI18n;
+import nl.sogeti.android.gpstracker.viewer.TrackList;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.AlertDialog.Builder;
 import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnShowListener;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.net.Uri;
@@ -21,7 +27,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
@@ -67,6 +76,8 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
    private LinearLayout fromRecordingLayout;
    private Resources res;
    private UnitsI18n mUnits;
+   private EditText mTrackNameView;
+   private String runName;
 
    private final ContentObserver mTrackObserver = new ContentObserver(new Handler())
       {
@@ -209,7 +220,8 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
       avgSpeedView.setText(calculated.getAvgSpeedText());
       distanceView.setText(calculated.getDistanceText());
       String titleFormat = getString(R.string.stat_title);
-      setTitle(String.format(titleFormat, calculated.getTracknameText()));
+      runName = calculated.getTracknameText();
+      setTitle(runName);
       if (calculated.getKm1Time() > 0)
       {
          km1TimeView.setText(calculated.getKm1TimeText());
@@ -274,8 +286,60 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
             Log.d(TAG, "delete");
             showConfirmDeletedDialog();
             return true;
+         case R.id.action_share:
+            Log.d(TAG, "share");
+            return true;
+         case R.id.action_edit:
+            Log.d(TAG, "edit");
+            showRenameDialog();
+            return true;
       }
       return super.onOptionsItemSelected(item);
+   }
+
+   private void showRenameDialog()
+   {
+      Dialog dialog = null;
+      Builder builder = null;
+      LayoutInflater factory = LayoutInflater.from(this);
+      View view = factory.inflate(R.layout.namedialog, null);
+      mTrackNameView = (EditText) view.findViewById(R.id.nameField);
+      builder = new AlertDialog.Builder(this).setTitle(R.string.dialog_routename_title).setMessage(R.string.dialog_routename_message)
+            .setPositiveButton(R.string.btn_okay, new DialogInterface.OnClickListener()
+               {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which)
+                  {
+                     //         Log.d( TAG, "Context item selected: "+mDialogUri+" with name "+mDialogCurrentName );
+
+                     String trackName = mTrackNameView.getText().toString();
+                     ContentValues values = new ContentValues();
+                     values.put(Tracks.NAME, trackName);
+                     RunDetailsActivity.this.getContentResolver().update(RunDetailsActivity.this.mTrackUri, values, null, null);
+                  }
+               }).setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener()
+               {
+                  @Override
+                  public void onClick(DialogInterface dialog, int id)
+                  {
+
+                     dialog.dismiss();
+
+                  }
+               }).setView(view);
+      dialog = builder.create();
+      dialog.setOnShowListener(new OnShowListener()
+         {
+            @Override
+            public void onShow(DialogInterface dialog)
+            {
+               InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+               imm.showSoftInput(mTrackNameView, InputMethodManager.SHOW_IMPLICIT);
+            }
+         });
+      dialog.show();
+      mTrackNameView.setText(runName);
+      mTrackNameView.setSelection(0, runName.length());
    }
 
    private void showConfirmDeletedDialog()

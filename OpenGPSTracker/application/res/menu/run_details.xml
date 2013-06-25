@@ -5,5 +5,17 @@
         android:showAsAction="always"
         android:icon="@drawable/icon_discard"
         android:title="@string/action_delete"/>
+    
+    <item
+        android:id="@+id/action_share"
+        android:showAsAction="always" 
+        android:icon="@drawable/icon_share"       
+        android:title="@string/action_share"/>
+    
+    <item
+        android:id="@+id/action_edit"
+        android:showAsAction="always" 
+        android:icon="@drawable/icon_edit"       
+        android:title="@string/action_edit"/>
 
 </menu>
