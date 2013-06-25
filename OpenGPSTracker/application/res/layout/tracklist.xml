@@ -5,40 +5,26 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" 
-        android:background="@color/logo_dark">
+        android:layout_height="wrap_content"
+        android:background="@color/logo_dark"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/android:list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:choiceMode="multipleChoice"
+            android:divider="@color/logo_dark"
+            android:dividerHeight="1dp"
+            android:listSelector="@drawable/lv_selector" />
 
         <TextView
+            android:id="@+id/android:empty"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:padding="10dip"
-            android:text="@string/runs_note"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/white" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <ListView
-                android:id="@+id/android:list"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:choiceMode="multipleChoice"
-                android:divider="@color/logo_dark"
-                android:dividerHeight="1dp"
-                android:listSelector="@drawable/lv_selector" />
-
-            <TextView
-                android:id="@+id/android:empty"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:padding="10dip"
-                android:text="@string/no_tracks"
-                android:textColor="@color/red" />
-        </LinearLayout>
+            android:text="@string/no_tracks"
+            android:textColor="@color/red" />
     </LinearLayout>
 
 </FrameLayout>

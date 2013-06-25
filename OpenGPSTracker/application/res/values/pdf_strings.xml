@@ -82,7 +82,10 @@
     <string name="stat_time">Time</string>
     <string name="confirm_delete">Confirm Delete</string>
     <string name="confirm_delete_text">Are you sure you want to delete this run?</string>
-
+    <string name="share_choice">How do you want to share?</string>
+	<string name="share_title">Pat Divilly\'s Run Coach</string>
+	<string name="share_text">I just ran %1$s in %2$s with Pat Divilly\'s Run Coach.</string>
+    
     <!-- Warm Up Activity -->
     <string name="warm_up_vid_des">Watch this video for a guide on how to stretch before your run.</string>
 

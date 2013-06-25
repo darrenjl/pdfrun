@@ -6,6 +6,8 @@
  */
 package com.patdivillyfitness.runcoach.activity;
 
+import javax.xml.datatype.Duration;
+
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsCalulator;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
@@ -78,6 +80,8 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
    private UnitsI18n mUnits;
    private EditText mTrackNameView;
    private String runName;
+   private String distanceText;
+   private String timeText;
 
    private final ContentObserver mTrackObserver = new ContentObserver(new Handler())
       {
@@ -219,8 +223,9 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
       mAscensionView.setText(calculated.getAscensionText());
       avgSpeedView.setText(calculated.getAvgSpeedText());
       distanceView.setText(calculated.getDistanceText());
-      String titleFormat = getString(R.string.stat_title);
       runName = calculated.getTracknameText();
+      distanceText=calculated.getDistanceText();
+      timeText=calculated.getDurationText();
       setTitle(runName);
       if (calculated.getKm1Time() > 0)
       {
@@ -288,6 +293,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
             return true;
          case R.id.action_share:
             Log.d(TAG, "share");
+            showShareOptionsViaIntent();
             return true;
          case R.id.action_edit:
             Log.d(TAG, "edit");
@@ -295,6 +301,15 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
             return true;
       }
       return super.onOptionsItemSelected(item);
+   }
+   
+   private void showShareOptionsViaIntent(){
+      Intent intent=new Intent(android.content.Intent.ACTION_SEND);
+      intent.setType("text/plain");
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+      intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_title));
+      intent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.share_text), distanceText, timeText));
+      startActivity(Intent.createChooser(intent, getString(R.string.share_choice)));
    }
 
    private void showRenameDialog()
