@@ -120,7 +120,7 @@
 <!--                 android:title="@string/trackcoloring_title" /> -->
 
             <ListPreference
-                android:defaultValue="0"
+                android:defaultValue="2"
                 android:entries="@array/units_choices"
                 android:entryValues="@array/units_values"
                 android:key="units"
