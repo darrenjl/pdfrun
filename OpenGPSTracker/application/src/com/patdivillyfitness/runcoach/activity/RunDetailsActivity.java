@@ -6,13 +6,13 @@
  */
 package com.patdivillyfitness.runcoach.activity;
 
-import java.util.Date;
-
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsCalulator;
 import nl.sogeti.android.gpstracker.actions.utils.StatisticsDelegate;
 import nl.sogeti.android.gpstracker.db.GPStracking.Tracks;
 import nl.sogeti.android.gpstracker.util.UnitsI18n;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.ContentObserver;
@@ -130,7 +130,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
          mTrackUri = this.getIntent().getData();
       }
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      res = getResources();      
+      res = getResources();
    }
 
    @Override
@@ -207,7 +207,7 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
       mElapsedTimeView.setText(calculated.getDurationText());
       mAscensionView.setText(calculated.getAscensionText());
       avgSpeedView.setText(calculated.getAvgSpeedText());
-      distanceView.setText(calculated.getDistanceText());      
+      distanceView.setText(calculated.getDistanceText());
       String titleFormat = getString(R.string.stat_title);
       setTitle(String.format(titleFormat, calculated.getTracknameText()));
       if (calculated.getKm1Time() > 0)
@@ -240,20 +240,21 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
          km10TimeTableRow.setVisibility(View.VISIBLE);
          km10ImageView.setImageResource(PDFUtil.getLevelDrawable(calculated.getKm10Time(), res.getIntArray(R.array.goals_10km)));
       }
-      calculating = false;   
-      String date = android.text.format.DateFormat.format("E, MMMM dd, yyyy",calculated.getCreationTime()).toString();
+      calculating = false;
+      String date = android.text.format.DateFormat.format("E, MMMM dd, yyyy", calculated.getCreationTime()).toString();
       dateView.setText(date);
-      String time = android.text.format.DateFormat.format("h:mmaa",calculated.getCreationTime()).toString();
+      String time = android.text.format.DateFormat.format("h:mmaa", calculated.getCreationTime()).toString();
       timeView.setText(time);
    }
 
    @Override
-   public boolean onCreateOptionsMenu(Menu menu) {
-       MenuInflater inflater = getSupportMenuInflater();
-       inflater.inflate(R.menu.run_details, menu);
-       return super.onCreateOptionsMenu(menu);
+   public boolean onCreateOptionsMenu(Menu menu)
+   {
+      MenuInflater inflater = getSupportMenuInflater();
+      inflater.inflate(R.menu.run_details, menu);
+      return super.onCreateOptionsMenu(menu);
    }
-   
+
    @Override
    public boolean onOptionsItemSelected(MenuItem item)
    {
@@ -271,10 +272,42 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
             return true;
          case R.id.action_delete:
             Log.d(TAG, "delete");
-            getContentResolver().delete(mTrackUri, null, null);
-            NavUtils.navigateUpFromSameTask(this);
+            showConfirmDeletedDialog();
             return true;
       }
       return super.onOptionsItemSelected(item);
+   }
+
+   private void showConfirmDeletedDialog()
+   {
+
+      AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+      alertDialog.setTitle(R.string.confirm_delete);
+
+      alertDialog.setMessage(getString(R.string.confirm_delete_text));
+
+      alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, RunDetailsActivity.this.getString(R.string.yes), new DialogInterface.OnClickListener()
+         {
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+               getContentResolver().delete(mTrackUri, null, null);
+               NavUtils.navigateUpFromSameTask(RunDetailsActivity.this);
+            }
+         });
+
+      alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, RunDetailsActivity.this.getString(R.string.no), new DialogInterface.OnClickListener()
+         {
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+               dialog.dismiss();
+
+            }
+         });
+
+      alertDialog.show();
    }
 }
