@@ -138,8 +138,11 @@ public class RecordActivity extends LoggerMap
          myChronometer.setMsElapsed(0);
          myChronometer.start();  
          firstLocationFound = true;
-      } else
+      } else{
+         myChronometer.stop();
          myChronometer.setMsElapsed(mLoggerServiceManager.getElapsedTime());
+         myChronometer.start();
+      }
       super.updateTrackNumbers();
    }
 
