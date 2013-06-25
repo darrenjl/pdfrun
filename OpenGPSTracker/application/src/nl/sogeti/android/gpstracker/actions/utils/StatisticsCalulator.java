@@ -431,11 +431,8 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
    }
 
    public String getDurationText()
-   {
-      long s = mDuration / 1000;
-      String duration = String.format("%dh:%02dm:%02ds", s/3600, (s%3600)/60, (s%60));
-
-      return duration;
+   {    
+      return getTimeText(mDuration);
    }
 
    @Override

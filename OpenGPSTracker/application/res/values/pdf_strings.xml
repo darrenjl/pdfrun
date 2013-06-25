@@ -79,7 +79,8 @@
     <string name="home_btn">Home</string>
     <string name="profile_btn">Profile</string>
     <string name="stat_date">Date</string>
-    <string name="stat_time">Time</string>
+    <string name="stat_time">Start Time</string>
+    <string name="stat_duration">Duration</string>
     <string name="confirm_delete">Confirm Delete</string>
     <string name="confirm_delete_text">Are you sure you want to delete this run?</string>
     <string name="share_choice">How do you want to share?</string>

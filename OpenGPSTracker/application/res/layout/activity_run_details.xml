@@ -75,7 +75,7 @@
 
                 <TextView
                     style="@style/TableHeaderRowTextView"
-                    android:text="@string/stat_elapsedtime" />
+                    android:text="@string/stat_duration" />
 
                 <TextView
                     android:id="@+id/stat_elapsedtime"
