@@ -209,6 +209,8 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
 
    private void drawTrackingStatistics()
    {
+      if(Constants.DEBUG_MODE)
+         Log.d(TAG, "*********DISTANCE UNIT - "+mUnits.getDistanceUnit());
       calculating = true;
       StatisticsCalulator calculator = new StatisticsCalulator(this, mUnits, this);
       calculator.execute(mTrackUri);

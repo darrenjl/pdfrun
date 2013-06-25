@@ -20,5 +20,5 @@ public class Constants
    public static final String APP_LAUNCHER_CHECKER_PREF = "applaunchercheckerpref";
    public static final String LAUNCH_COUNT = "launchcount";
    public static final String FIRST_LAUNCH_DATE = "firstlaunchdate";
-   public static final boolean DEBUG_MODE = false;
+   public static final boolean DEBUG_MODE = true;
 }

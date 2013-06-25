@@ -38,6 +38,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.TypedValue;
 
 /**
@@ -92,7 +93,9 @@ public class UnitsI18n
 
    private void initBasedOnPreferences(SharedPreferences sharedPreferences)
    {
-      mUnits = Integer.parseInt(sharedPreferences.getString(Constants.UNITS, Integer.toString(Constants.UNITS_DEFAULT)));
+      mUnits = Integer.parseInt(sharedPreferences.getString(Constants.UNITS, Integer.toString(Constants.UNITS_METRIC)));
+      if (com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+         Log.d(TAG, "Units mode: " + mUnits);
       switch (mUnits)
       {
          case (Constants.UNITS_DEFAULT):
@@ -160,7 +163,7 @@ public class UnitsI18n
       resources.updateConfiguration(config, resources.getDisplayMetrics());
    }
 
-   /**
+   /** 
     * Based on a given Locale prefetch the units conversions and names.
     * 
     * @param resources Resources initialized with a Locale
