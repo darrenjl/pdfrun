@@ -150,8 +150,10 @@ public class StatisticsCalulator extends AsyncTask<Uri, Void, Void>
             km8Time = trackCursor.getLong(4);
             km10Time = trackCursor.getLong(5);
             creationTime  = trackCursor.getLong(6);
-            Log.d("PDFRun", "km1time - "+km1Time);
-            Log.d("PDFRun", "km3time - "+km3Time);
+            if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE){
+               Log.d("PDFRun", "km1time - "+km1Time);
+               Log.d("PDFRun", "km3time - "+km3Time);
+            }
          }
       }
       finally

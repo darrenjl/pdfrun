@@ -69,7 +69,8 @@ public class PDFUtil
   }
    
    public static int getLevelDrawable(long time, int[] goals){
-      Log.d(TAG, "getLevelDrawable");
+      if(Constants.DEBUG_MODE)
+         Log.d(TAG, "getLevelDrawable");
       if(time<goals[2])
          return R.drawable.medal_gold;
       else if (time<goals[1])

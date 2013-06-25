@@ -68,7 +68,8 @@ public class RecordActivity extends LoggerMap
             {
                updateBlankingBehavior();
                loggingState = mLoggerServiceManager.getLoggingState();
-               Log.d("PDFRun", "Record logging state: " + mLoggerServiceManager.getLoggingState());
+               if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+                  Log.d("PDFRun", "Record logging state: " + mLoggerServiceManager.getLoggingState());
                switch (loggingState)
                {
                   case Constants.STOPPED:
@@ -116,12 +117,14 @@ public class RecordActivity extends LoggerMap
             {
                if (!selfUpdate)
                {
-                  Log.d(TAG, "RA update track numbers");
+                  if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+                     Log.d(TAG, "RA update track numbers");
                   RecordActivity.this.updateTrackNumbers();
                }
                else
                {
-                  Log.w(TAG, "mSegmentWaypointsObserver skipping change on " + mLastSegment);
+                  if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+                     Log.w(TAG, "mSegmentWaypointsObserver skipping change on " + mLastSegment);
                }
             }
          };
@@ -133,7 +136,8 @@ public class RecordActivity extends LoggerMap
    {
       if (started && !firstLocationFound)
       {
-         Log.d(TAG, "First Location Found");
+         if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+            Log.d(TAG, "First Location Found");
          recordingTextView.setText(RecordActivity.this.getString(R.string.recording));
          myChronometer.setMsElapsed(0);
          myChronometer.start();  
@@ -153,7 +157,8 @@ public class RecordActivity extends LoggerMap
 
    public void startStopRun(View view)
    {
-      Log.d(TAG, "startStopRun");
+      if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+         Log.d(TAG, "startStopRun");
       firstLocationFound = false;
       started = false;
       if (startBtn)
@@ -164,7 +169,8 @@ public class RecordActivity extends LoggerMap
 
    public void pauseResumeRun(View view)
    {
-      Log.d(TAG, "pauseResumeRun");
+      if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+         Log.d(TAG, "pauseResumeRun");
       if (pauseBtn)
          checkGPSAndControlRecording(com.patdivillyfitness.runcoach.Constants.PAUSE);
       else
@@ -181,7 +187,8 @@ public class RecordActivity extends LoggerMap
          {
             if (intent.getBooleanExtra(com.patdivillyfitness.runcoach.Constants.TRACKING_STOPPED, false))
             {
-               Log.d("PDFRun", "Stopped tracking run");
+               if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+                  Log.d("PDFRun", "Stopped tracking run");
                Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, mTrackId);
                Intent detailsIntent = new Intent(this, RunDetailsActivity.class);
                detailsIntent.setData(trackUri);
@@ -323,7 +330,8 @@ public class RecordActivity extends LoggerMap
    @Override
    protected void onRestoreInstanceState(Bundle load)
    {
-      Log.d(TAG, "onRestoreInstanceState");
+      if(com.patdivillyfitness.runcoach.Constants.DEBUG_MODE)
+         Log.d(TAG, "onRestoreInstanceState");
       if (load != null)
       {
          super.onRestoreInstanceState(load);

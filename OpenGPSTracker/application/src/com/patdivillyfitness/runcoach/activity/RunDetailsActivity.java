@@ -288,15 +288,12 @@ public class RunDetailsActivity extends SherlockActivity implements StatisticsDe
             NavUtils.navigateUpFromSameTask(this);
             return true;
          case R.id.action_delete:
-            Log.d(TAG, "delete");
             showConfirmDeletedDialog();
             return true;
          case R.id.action_share:
-            Log.d(TAG, "share");
             showShareOptionsViaIntent();
             return true;
          case R.id.action_edit:
-            Log.d(TAG, "edit");
             showRenameDialog();
             return true;
       }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.patdivillyfitness.runcoach.Constants;
 import com.patdivillyfitness.runcoach.PDFUtil;
 import com.patdivillyfitness.runcoach.R;
 
@@ -102,7 +103,8 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
             @Override
             public void onUnitsChange()
             {
-               Log.d("pdfrun", "units changed");
+               if(Constants.DEBUG_MODE)
+                  Log.d("pdfrun", "units changed");
             }
          });
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -129,7 +131,8 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
       while (tracksCursor.isAfterLast() == false)
       {
          int id = tracksCursor.getInt(0);
-         Log.d("PDFRun", "track id: " + id);
+         if(Constants.DEBUG_MODE)
+            Log.d("PDFRun", "track id: " + id);
          tracksCursor.moveToNext();
          StatisticsCalulator calculator = new StatisticsCalulator(this, mUnits, this);
          Uri trackUri = ContentUris.withAppendedId(Tracks.CONTENT_URI, id);
@@ -140,8 +143,8 @@ public class ProfileActivity extends SherlockActivity implements StatisticsDeleg
    @Override
    public void finishedCalculations(StatisticsCalulator calculated)
    {
-
-      Log.d("runpdf", "finishedCalculations: distance " + calculated.getDistanceText());
+      if(Constants.DEBUG_MODE)
+         Log.d("runpdf", "finishedCalculations: distance " + calculated.getDistanceText());
       totalDistance += calculated.getDistanceTraveled();
       totalDistanceView.setText(String.format("%.2f %s", mUnits.conversionFromMeter(totalDistance), mUnits.getDistanceUnit()));
       //      if(calculated.getMaxSpeed()>maxSpeed){

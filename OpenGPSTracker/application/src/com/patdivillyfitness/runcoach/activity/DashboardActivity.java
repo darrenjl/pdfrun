@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.patdivillyfitness.runcoach.AppLaunchChecker;
+import com.patdivillyfitness.runcoach.Constants;
 import com.patdivillyfitness.runcoach.R;
 
 public class DashboardActivity extends SherlockActivity
@@ -115,7 +116,8 @@ public class DashboardActivity extends SherlockActivity
          });
 
       boolean firstLaunch = AppLaunchChecker.checkFirstOrRateLaunch(this);
-      Log.d(TAG, "First Launch: " + firstLaunch);
+      if(Constants.DEBUG_MODE)
+         Log.d(TAG, "First Launch: " + firstLaunch);
       if(firstLaunch)
          showGettingStartedDialog();
    }
