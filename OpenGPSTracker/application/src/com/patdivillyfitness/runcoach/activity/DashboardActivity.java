@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.patdivillyfitness.runcoach.AppLaunchChecker;
 import com.patdivillyfitness.runcoach.Constants;
 import com.patdivillyfitness.runcoach.R;
@@ -41,7 +42,8 @@ public class DashboardActivity extends SherlockActivity
 
       Button btn_profile = (Button) findViewById(R.id.btn_profile);
 
-      Button btn_about = (Button) findViewById(R.id.btn_about);
+//      Button btn_about = (Button) findViewById(R.id.btn_about);
+      Button btn_groups = (Button) findViewById(R.id.btn_groups);
 
       Button btn_academy = (Button) findViewById(R.id.btn_academy);
 
@@ -82,13 +84,13 @@ public class DashboardActivity extends SherlockActivity
             }
          });
 
-      btn_about.setOnClickListener(new View.OnClickListener()
+      btn_groups.setOnClickListener(new View.OnClickListener()
          {
 
             @Override
             public void onClick(View view)
             {
-               Intent i = new Intent(getApplicationContext(), InfoActivity.class);
+               Intent i = new Intent(getApplicationContext(), GroupsActivity.class);
                startActivity(i);
             }
          });
@@ -182,24 +184,24 @@ public class DashboardActivity extends SherlockActivity
    @Override
    public boolean onCreateOptionsMenu(Menu menu)
    {
-      // Inflate the menu; this adds items to the action bar if it is present.
-      //      getMenuInflater().inflate(R.menu.dashboard, menu);
+//       Inflate the menu; this adds items to the action bar if it is present.
+            getSupportMenuInflater().inflate(R.menu.dashboard, menu);
       return true;
    }
 
    //
-   //   @Override
-   //   public boolean onOptionsItemSelected(MenuItem item)
-   //   {
-   //      switch (item.getItemId())
-   //      {
-   //         case R.id.action_info:
-   //            Intent intent = new Intent(this, InfoActivity.class);
-   //            startActivity(intent);
-   //            break;
-   //      }
-   //      return super.onOptionsItemSelected(item);
-   //   }
+      @Override
+      public boolean onOptionsItemSelected(MenuItem item)
+      {
+         switch (item.getItemId())
+         {
+            case R.id.action_info:
+               Intent intent = new Intent(this, InfoActivity.class);
+               startActivity(intent);
+               break;
+         }
+         return super.onOptionsItemSelected(item);
+      }
 
    private void showGettingStartedDialog()
    {

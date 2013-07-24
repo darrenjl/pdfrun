@@ -22,6 +22,7 @@
     <string name="action_delete">Delete</string>
     <string name="action_share">Share</string>
     <string name="action_edit">Edit</string>
+    <string name="action_info">About</string>
     <string name="int_conn_title">Internet Connection</string>
     <string name="int_conn_text">This feature requires that you have internet connectivity enabled.</string>
     <string name="gps_disabled_text">Your GPS module is disabled. This feature requires GPS to be enabled, please do so now.</string>
@@ -95,6 +96,7 @@
     <string name="record_menu">Record</string>
     <string name="profile_menu">Profile</string>
     <string name="about_menu">About</string>
+    <string name="groups_menu">Groups</string>
     <string name="settings_menu">Settings</string>
     <string name="runs_menu">Runs</string>
     <string name="welcome">Welcome</string>

@@ -1,36 +1,41 @@
-<com.patdivillyfitness.runcoach.DashboardLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/dashboard">
-    
+<com.patdivillyfitness.runcoach.DashboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/dashboard" >
+
     <Button
         android:id="@+id/btn_academy"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_groups"
         android:text="@string/academy_menu" />
-    
+
     <Button
         android:id="@+id/btn_record"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_record"
         android:text="@string/record_menu" />
-    
+
     <Button
         android:id="@+id/btn_runs"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_runs"
         android:text="@string/runs_menu" />
-    
+
     <Button
         android:id="@+id/btn_profile"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/btn_profile"
         android:text="@string/profile_menu" />
-	
+
+    <!-- <Button -->
+    <!-- android:id="@+id/btn_about" -->
+    <!-- style="@style/DashboardButton" -->
+    <!-- android:drawableTop="@drawable/btn_about" -->
+    <!-- android:text="@string/about_menu" /> -->
+
     <Button
-        android:id="@+id/btn_about"
+        android:id="@+id/btn_groups"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/btn_about"
-        android:text="@string/about_menu" />    
+        android:drawableTop="@drawable/btn_groups"
+        android:text="@string/groups_menu" />
 
     <Button
         android:id="@+id/btn_settings"

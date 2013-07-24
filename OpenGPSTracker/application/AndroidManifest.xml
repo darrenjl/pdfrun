@@ -338,8 +338,8 @@
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.SplashActivity"
             android:label="@string/application_name"
-            android:theme="@android:style/Theme.NoTitleBar" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -389,6 +389,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.patdivillyfitness.runcoach.activity.PlanActivity" />
+        </activity>
+        <activity
+            android:name="com.patdivillyfitness.runcoach.activity.GroupsActivity"
+            android:label="@string/title_activity_groups" >
         </activity>
     </application>
 
