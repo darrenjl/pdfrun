@@ -58,7 +58,7 @@ public class AcademyActivity extends SherlockListActivity
             intent = new Intent(this, PlanActivity.class);
             break;
          case 3:
-            intent = new Intent(this, GroupsActivity.class);
+            intent = new Intent(this, GoalsActivity.class);
             break;
          default:
             intent = new Intent(this, DashboardActivity.class);         

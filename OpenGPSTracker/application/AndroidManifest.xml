@@ -308,7 +308,7 @@
                 android:value="com.patdivillyfitness.runcoach.activity.DashboardActivity" />
         </activity>
         <activity
-            android:name="com.patdivillyfitness.runcoach.activity.GroupsActivity"
+            android:name="com.patdivillyfitness.runcoach.activity.GoalsActivity"
             android:label="@string/title_activity_groups" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

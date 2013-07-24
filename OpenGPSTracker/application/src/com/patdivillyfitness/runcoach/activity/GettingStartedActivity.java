@@ -60,7 +60,7 @@ public class GettingStartedActivity extends SherlockActivity
    
    public void goToGoals(View view)
    {
-      Intent i = new Intent(this, GroupsActivity.class);
+      Intent i = new Intent(this, GoalsActivity.class);
       startActivity(i);
    }
 
