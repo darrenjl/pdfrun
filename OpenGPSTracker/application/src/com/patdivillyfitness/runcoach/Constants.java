@@ -21,4 +21,7 @@ public class Constants
    public static final String LAUNCH_COUNT = "launchcount";
    public static final String FIRST_LAUNCH_DATE = "firstlaunchdate";
    public static final boolean DEBUG_MODE = false;
+   public static final String USER_PREF = "userpref";
+   public static final String EMAIL_PREF = "emailpref";
+   public static final String LOGGED_IN_PREF = "loggedinpref";
 }
