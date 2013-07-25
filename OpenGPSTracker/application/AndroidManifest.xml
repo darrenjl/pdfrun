@@ -340,11 +340,11 @@
             android:label="@string/application_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter> -->
+<!--                 <action android:name="android.intent.action.MAIN" /> -->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
+<!--             </intent-filter> -->
         </activity>
         <activity
             android:name="com.patdivillyfitness.runcoach.activity.WarmUpActivity"
@@ -394,6 +394,23 @@
             android:name="com.patdivillyfitness.runcoach.activity.GroupsActivity"
             android:label="@string/title_activity_groups" >
         </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+
+        <activity
+            android:name="com.patdivillyfitness.runcoach.activity.LoginActivity"
+            android:label="@string/title_activity_login" 
+            android:theme="@style/AppNoTitleTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.facebook.LoginActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:label="@string/application_name" />
     </application>
 
 </manifest>

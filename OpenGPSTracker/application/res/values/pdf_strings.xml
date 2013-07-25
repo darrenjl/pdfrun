@@ -3,6 +3,8 @@
 
     <!-- App title -->
     <string name="application_name">Pat Divilly\'s Run Coach</string>
+    <string name="app_id">199515153543569</string>
+    
     <!-- Activity titles -->
     <string name="title_activity_record">Record new run</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
@@ -160,4 +162,7 @@
     
     <!-- Goals -->
 	<string name="goals_warning">This times should provide you with good targets, however, please note that these times are highly variable depending on; age, weight, sex, baseline fitness level and running experience.</string>
+	
+	<!-- Login -->
+	<string name="get_started">To get started, log in using Facebook</string>
 </resources>
