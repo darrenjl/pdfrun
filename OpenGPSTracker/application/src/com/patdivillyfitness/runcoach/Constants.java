@@ -24,4 +24,6 @@ public class Constants
    public static final String USER_PREF = "userpref";
    public static final String EMAIL_PREF = "emailpref";
    public static final String LOGGED_IN_PREF = "loggedinpref";
+   
+   public static final String USER_JSON_MAP = "org.springframework.validation.BindingResult.user";
 }

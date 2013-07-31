@@ -2,7 +2,7 @@
 
 	<servlet>
 		<servlet-name>St_server</servlet-name>
-		<servlet-class>com.patdivillyfitness.runcoach.St_serverServlet</servlet-class>
+		<servlet-class>com.patdivillyfitness.runcoach.PDF_serverServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

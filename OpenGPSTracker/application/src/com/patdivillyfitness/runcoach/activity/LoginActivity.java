@@ -4,6 +4,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -18,6 +21,11 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.facebook.FacebookException;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -27,7 +35,9 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.LoginButton.OnErrorListener;
+import com.patdivillyfitness.runcoach.Constants;
 import com.patdivillyfitness.runcoach.R;
+import com.patdivillyfitness.runcoach.model.PDFUser;
 
 public class LoginActivity extends FragmentActivity
 {
@@ -150,7 +160,7 @@ public class LoginActivity extends FragmentActivity
          // if the session is already open,
          // try to show the selection fragment
          Log.d("PDFRun", "fragments resumed - Logged in");
-         postLogin(session);
+//         postLogin(session);
       }
       else
       {
@@ -258,8 +268,36 @@ public class LoginActivity extends FragmentActivity
                      //                      // Set the Textview's text to the user's name.
                      //                      userNameView.setText(user.getName());
                      Log.d("PDFRun", "User email: " + user.getProperty("email"));
-                     Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-                     startActivity(intent);
+                     RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                     String url = "http://socialtransform.appspot.com/api/users/get?&email=d.lyons88@gmail.com";
+
+                     JsonObjectRequest jsObjRequest = new JsonObjectRequest(com.android.volley.Request.Method.GET, url, null, new com.android.volley.Response.Listener<JSONObject>()
+                        {
+
+                           @Override
+                           public void onResponse(JSONObject response)
+                           {
+                              // TODO Auto-generated method stub
+                              Log.d("PDFRun", response.toString());
+                              PDFUser user = parseUserJSON(response);
+                              if(null!=user){
+                              Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                              startActivity(intent);
+                              } else
+                                 Log.d("PDFRun", "User does not exist yet");
+                           }
+                        }, new com.android.volley.Response.ErrorListener()
+                        {
+
+                           @Override
+                           public void onErrorResponse(VolleyError error)
+                           {
+                              // TODO Auto-generated method stub
+
+                           }
+                        });
+                     queue.add(jsObjRequest);
+
                   }
                }
                if (response.getError() != null)
@@ -273,4 +311,24 @@ public class LoginActivity extends FragmentActivity
       request.setParameters(params);
       request.executeAsync();
    }
+
+   private PDFUser parseUserJSON(JSONObject json)
+   {
+      try
+      {
+         if(!json.isNull(Constants.USER_JSON_MAP)){
+            JSONObject jsonUser = json.getJSONObject(Constants.USER_JSON_MAP);
+            PDFUser user = new PDFUser();
+            user.setName(jsonUser.getString("name"));
+            return user;
+         }            
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+      }
+      return null;
+
+   }
+
 }
