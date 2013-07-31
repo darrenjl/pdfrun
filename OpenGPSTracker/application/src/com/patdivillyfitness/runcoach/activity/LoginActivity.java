@@ -114,15 +114,9 @@ public class LoginActivity extends FragmentActivity
          }
          if (state.isOpened())
          {
-            // If the session state is open:
-            // Show the authenticated fragment
             Log.d("PDFRun", "Session state changed - Logged in");
-            makeMeRequest(session);
-            showFragment(LOADING, false);
-//            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-//            startActivity(intent);
-            
-//            session.closeAndClearTokenInformation();
+            postLogin(session);
+
          }
          else if (state.isClosed())
          {
@@ -130,15 +124,17 @@ public class LoginActivity extends FragmentActivity
             // Show the login fragment
             showFragment(SPLASH, false);
             LoginButton authButton = (LoginButton) findViewById(R.id.login_button);
-            authButton.setOnErrorListener(new OnErrorListener() {
-             
-             @Override
-             public void onError(FacebookException error) {
-              Log.i("PDFRun", "Error " + error.getMessage());
-             }
-            });
+            authButton.setOnErrorListener(new OnErrorListener()
+               {
+
+                  @Override
+                  public void onError(FacebookException error)
+                  {
+                     Log.i("PDFRun", "Error " + error.getMessage());
+                  }
+               });
             // set permission list, Don't foeget to add email
-            authButton.setReadPermissions(Arrays.asList("basic_info","email"));
+            authButton.setReadPermissions(Arrays.asList("basic_info", "email"));
          }
       }
    }
@@ -154,11 +150,7 @@ public class LoginActivity extends FragmentActivity
          // if the session is already open,
          // try to show the selection fragment
          Log.d("PDFRun", "fragments resumed - Logged in");
-         makeMeRequest(session);
-         showFragment(LOADING, false);
-//         Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-//         startActivity(intent);         
-//         session.closeAndClearTokenInformation();
+         postLogin(session);
       }
       else
       {
@@ -166,16 +158,26 @@ public class LoginActivity extends FragmentActivity
          // and ask the person to login.
          showFragment(SPLASH, false);
          LoginButton authButton = (LoginButton) findViewById(R.id.login_button);
-         authButton.setOnErrorListener(new OnErrorListener() {
-          
-          @Override
-          public void onError(FacebookException error) {
-           Log.i("PDFRun", "Error " + error.getMessage());
-          }
-         });
+         authButton.setOnErrorListener(new OnErrorListener()
+            {
+
+               @Override
+               public void onError(FacebookException error)
+               {
+                  Log.i("PDFRun", "Error " + error.getMessage());
+               }
+            });
          // set permission list, Don't foeget to add email
-         authButton.setReadPermissions(Arrays.asList("basic_info","email"));
+         authButton.setReadPermissions(Arrays.asList("basic_info", "email"));
       }
+   }
+
+   private void postLogin(Session session)
+   {
+      makeMeRequest(session);
+      showFragment(LOADING, false);
+
+      //    session.closeAndClearTokenInformation();
    }
 
    private UiLifecycleHelper uiHelper;
@@ -214,48 +216,61 @@ public class LoginActivity extends FragmentActivity
       Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
       startActivity(intent);
    }
-   
-   private void getHash(){
-      try {
-         PackageInfo info = getPackageManager().getPackageInfo(
-                 "com.patdivillyfitness.runcoach", PackageManager.GET_SIGNATURES);
-         for (Signature signature : info.signatures) {
-             MessageDigest md = MessageDigest.getInstance("SHA");
-             md.update(signature.toByteArray());
-             Log.e("MY KEY HASH:",
-                     Base64.encodeToString(md.digest(), Base64.DEFAULT));
-         }
-     } catch (NameNotFoundException e) {
 
-     } catch (NoSuchAlgorithmException e) {}
+   private void getHash()
+   {
+      try
+      {
+         PackageInfo info = getPackageManager().getPackageInfo("com.patdivillyfitness.runcoach", PackageManager.GET_SIGNATURES);
+         for (Signature signature : info.signatures)
+         {
+            MessageDigest md = MessageDigest.getInstance("SHA");
+            md.update(signature.toByteArray());
+            Log.e("MY KEY HASH:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+         }
+      }
+      catch (NameNotFoundException e)
+      {
+
+      }
+      catch (NoSuchAlgorithmException e)
+      {
+      }
    }
-   
-   private void makeMeRequest(final Session session) {
+
+   private void makeMeRequest(final Session session)
+   {
       // Make an API call to get user data and define a 
       // new callback to handle the response.
-      Request request = Request.newMeRequest(session, 
-              new Request.GraphUserCallback() {
-          @Override
-          public void onCompleted(GraphUser user, Response response) {
-              // If the response is successful
-              if (session == Session.getActiveSession()) {
-                  if (user != null) {
-                      // Set the id for the ProfilePictureView
-                      // view that in turn displays the profile picture.
-//                      profilePictureView.setProfileId(user.getId());
-//                      // Set the Textview's text to the user's name.
-//                      userNameView.setText(user.getName());
-                      Log.d("PDFRun", "User email: "+user.getProperty("email") );
+      Request request = Request.newMeRequest(session, new Request.GraphUserCallback()
+         {
+            @Override
+            public void onCompleted(GraphUser user, Response response)
+            {
+               // If the response is successful
+               if (session == Session.getActiveSession())
+               {
+                  if (user != null)
+                  {
+                     // Set the id for the ProfilePictureView
+                     // view that in turn displays the profile picture.
+                     //                      profilePictureView.setProfileId(user.getId());
+                     //                      // Set the Textview's text to the user's name.
+                     //                      userNameView.setText(user.getName());
+                     Log.d("PDFRun", "User email: " + user.getProperty("email"));
+                     Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                     startActivity(intent);
                   }
-              }
-              if (response.getError() != null) {
+               }
+               if (response.getError() != null)
+               {
                   // Handle errors, will do so later.
-              }
-          }
-      });
+               }
+            }
+         });
       Bundle params = request.getParameters();
       params.putString("fields", "email,name");
       request.setParameters(params);
       request.executeAsync();
-  } 
+   }
 }
