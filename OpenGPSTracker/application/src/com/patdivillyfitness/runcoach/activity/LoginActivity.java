@@ -32,7 +32,8 @@ import com.patdivillyfitness.runcoach.R;
 public class LoginActivity extends FragmentActivity
 {
    private static final int SPLASH = 0;
-   private static final int FRAGMENT_COUNT = SPLASH + 1;
+   private static final int LOADING = 1;
+   private static final int FRAGMENT_COUNT = LOADING + 1;
    private boolean isResumed = false;
    private static final int REAUTH_ACTIVITY_CODE = 100;
 
@@ -49,6 +50,7 @@ public class LoginActivity extends FragmentActivity
 
       FragmentManager fm = getSupportFragmentManager();
       fragments[SPLASH] = fm.findFragmentById(R.id.loginFragment);
+      fragments[LOADING] = fm.findFragmentById(R.id.loadingFragment);
 
       FragmentTransaction transaction = fm.beginTransaction();
       for (int i = 0; i < fragments.length; i++)
@@ -116,8 +118,9 @@ public class LoginActivity extends FragmentActivity
             // Show the authenticated fragment
             Log.d("PDFRun", "Session state changed - Logged in");
             makeMeRequest(session);
-            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-            startActivity(intent);
+            showFragment(LOADING, false);
+//            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+//            startActivity(intent);
             
 //            session.closeAndClearTokenInformation();
          }
@@ -152,8 +155,9 @@ public class LoginActivity extends FragmentActivity
          // try to show the selection fragment
          Log.d("PDFRun", "fragments resumed - Logged in");
          makeMeRequest(session);
-         Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-         startActivity(intent);         
+         showFragment(LOADING, false);
+//         Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+//         startActivity(intent);         
 //         session.closeAndClearTokenInformation();
       }
       else

@@ -8,4 +8,8 @@
           android:id="@+id/loginFragment"
           android:layout_width="match_parent"
           android:layout_height="match_parent" />
+    <fragment android:name="com.patdivillyfitness.runcoach.fragment.LoadingFragment"
+          android:id="@+id/loadingFragment"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
 </LinearLayout>
